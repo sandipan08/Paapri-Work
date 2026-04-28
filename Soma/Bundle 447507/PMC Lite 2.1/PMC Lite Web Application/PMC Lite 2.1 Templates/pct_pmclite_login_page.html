@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PMC Lite 2.0 | Login</title>
+    <meta name="author" content="Rehan Nawaz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .alert-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+    }
+</style>
+
+<body>
+
+    <div class="container-fluid center">
+        <div class="row">
+            <div class="col-1 col-sm-3 col-md-3 col-lg-4"></div>
+            <div class="col-10 col-sm-6 col-md-6 col-lg-4">
+                <div class="pt-1 ">
+                    <form class="" id="url" action="" enctype="multipart/form-data" method="post" autocomplete="off"
+                        style="text-align:center;">
+                        <img src="https://5502879-sb1.app.netsuite.com/c.5502879_SB1/suitebundle447507/PMC%20Lite%202.1/PMC%20Lite%20Web%20Application/Images/Soma_logo.png" alt="Paapri Business Technologies" width="250px"
+                            style="margin-bottom: 20px;">
+
+
+                        <div class="form-group">
+                            <input type="password" required class="form-control" id="pwd" placeholder="PIN"
+                                autocomplete="false" name="custparam_userpin"
+                                style="text-align:center; border-radius: 100px; height: 45px;">
+                        </div>
+                        <button type="submit" class="btn btn-block shadow-lg "
+                            style="border-radius: 100px; height: 50px;background-color: #3B5998; color: white;">Login<i
+                                class="fa fa-sign-in" aria-hidden="true"
+                                style="float: right; margin-top: 4px; margin-right: 6px;"></i></button>
+                    </form>
+                    <div class="container alert-label">
+                        <div class="alert alert-danger text-center " style="margin-top: 50px;" ${ds.isHidden}>
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Password incorrect!</strong>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-1 col-sm-3 col-md-3 col-lg-4"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    document.getElementById("url").action = window.location.href;
+</script>
+
+</html>

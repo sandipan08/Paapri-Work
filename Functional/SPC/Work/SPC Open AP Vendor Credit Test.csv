@@ -1,0 +1,2 @@
+Type,tranid,entity,Vendor Internal Id,reference no,terms,Currency,exchangerate,duedate,postingperiod,trandate,purchaseItemline_itemRef,purchaseItemline_quantity,purchaseItemLine_rate,usertotal,purchaseItemLine_location
+Vendor Credit,7601014185-1-1,STAPLES ADVANTAGE,1494,7601014185-1-1,Net 30,US Dollar, 1.00 ,10/28/2022,Oct-22,10/28/2022,Open AP Item,1, 1.75 ,-1.75  ,3

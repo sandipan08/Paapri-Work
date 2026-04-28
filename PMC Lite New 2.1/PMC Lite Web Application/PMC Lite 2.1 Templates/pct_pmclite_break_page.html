@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PMC Lite 2.0 | Break</title>
+    <meta name="author" content="Rehan Nawaz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    input {
+        width: 100%;
+    }
+
+    .pct-margin-top {
+        margin-top: 50px;
+    }
+
+    .pct-large-text {
+        font-size: 48px;
+    }
+
+    .pct-medium-text {
+        font-size: 18px;
+    }
+
+    .pct-button-text {
+        font-size: 24px;
+    }
+
+    .stop-btn {
+        border-top: dotted;
+        border-bottom: dotted;
+    }
+
+    .round-btn {
+        border-radius: 25px;
+    }
+
+    @media only screen and (max-width: 580px) {
+
+        .pct-large-text {
+            font-size: 28px;
+        }
+
+        .pct-margin-top {
+            margin-top: 10px;
+        }
+
+        .pct-medium-text {
+            font-size: 14px;
+        }
+
+        .pct-button-text {
+            font-size: 18px;
+        }
+
+    }
+</style>
+
+<body>
+
+    <form action="" id="form-home" method="post" enctype="multipart/form-data" class="form-group mt-2">
+        <!-- Top label-->
+        <div class="container pct-medium-text pct-margin-top">
+            <div class="row">
+                <div class="col-8 col-sm-9 col-md-10 "><label for="pwd" id="user-name">${ds.userName}</label></div>
+
+                <div class="col-4 col-sm-3 col-md-2 "><label for="pwd" id="date">09/17/2019</label></div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-9 col-md-10 "><label for="pwd"></label></div>
+
+                <div class="col-4 col-sm-3 col-md-2 "><label for="pwd" id="time">11:30:50</label></div>
+            </div>
+        </div>
+        <!-- Top label End-->
+
+        <!-- Break In Progress-->
+        <div class="container text-center pct-large-text" style="margin-top: 80px;">
+            <span style="display: inline; font-weight:bold">${ds.selectedBreakOption}</span>
+            <br>
+            <span>Progress</span>
+        </div>
+
+        <!-- Timer-->
+        <div class="container text-center">
+            <span class="pct-large-text" style="font-weight:bold">TIME</span>
+            <div id="timer" style="font-size: 40px;">
+                <span class="time" id="hours">00 </span><span style="font-weight:bold"> : </span>
+                <span class="time" id="minutes">00 </span><span style="font-weight:bold"> : </span>
+                <span class="time" id="seconds">00</span>
+            </div>
+        </div>
+
+        <!-- Timer-->
+
+        <div class="container-fluid text-center" style="margin-top:30px">
+            <div class="row">
+                <div class="col-1 col-md-3 col-sm-3"></div>
+                <div class="col-10 col-md-6 col-sm-6"><button type="submit" method="post" id="btn-break-complete"
+                        class="btn shadow pct-button-text"
+                        style="width: 100%; border-radius: 100px;background-color: #3B5998; color: white;">Break
+                        Completed</button></div>
+                <div class="col-1 col-md-3 col-sm-3"></div>
+            </div>
+
+            <input type="hidden" id="user-id" name="custparam_userId" value="${ds.userId}">
+            <input type="hidden" id="breakHour" name="custparam_breakHour" value="${ds.breakHour}">
+            <input type="hidden" id="breakMin" name="custparam_breakMin" value="${ds.breakMin}">
+            <input type="hidden" id="breakSec" name="custparam_breakSec" value="${ds.breakSec}">
+            <input type="hidden" id="break-record-id" name="custparam_breakRecordId" value="${ds.breakRecordId}">
+            <input type="hidden" id="login-record-id" name="custparam_loginRecordId" value="${ds.loginRecordId}">
+
+            <input type="hidden" id="mode" name="custparam_mode" value="${ds.mode}">
+            <input type="hidden" id="start-record-id" name="custparam_startRecordId" value="${ds.startRecordId}">
+            <input type="hidden" id="ticket-number" name="custparam_ticketNumber" value="${ds.ticketNumber}">
+            <input type="hidden" id="back-from-break" name="custparam_backFromBreak" value="BREAK_COMPLETE">
+    </form>
+    </div>
+
+</body>
+<script>
+    document.getElementById("form-home").action = window.location.href;
+    var h = 0;
+    var m = 0;
+    var s = 0;
+
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    var milliseconds = 0;
+
+    // date function
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var mydate = month + "/" + day + "/" + year;
+    document.getElementById("date").innerHTML = mydate;
+    // date function end
+
+    // time function
+    function getTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        // add a zero in front of numbers<10  
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+        setTimeout(function () { getTime() }, 1000);
+    }
+    //setInterval("getTime()",1000);//another way  
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    // time function end
+
+
+    //timmer function start
+    var startTimer = function () {
+        millisecInt = setInterval(function () {
+            milliseconds = (milliseconds > 1000) ? 1 : (milliseconds + 1);
+            setTimeToHTML(hours, minutes, seconds, milliseconds);
+        }, 1);
+        secondsInt = setInterval(function () {
+            seconds = (seconds > 58) ? 0 : (seconds + 1);
+        }, 1000);
+        minutesInt = setInterval(function () {
+            minutes = (minutes > 58) ? 0 : (minutes + 1);
+        }, 1000 * 60);
+        hoursInt = setInterval(function () {
+            hours = (hours > 58) ? 0 : (hours + 1);
+        }, 1000 * 60 * 60);
+        document.getElementById("start").disabled = true;
+    }
+
+    var stopTimer = function () {
+        clearInterval(millisecInt); clearInterval(secondsInt); clearInterval(minutesInt); clearInterval(hoursInt);
+        document.getElementById("start").disabled = false;
+    }
+
+    var resetTimer = function () {
+        stopTimer();
+        hours = 0; minutes = 0; seconds = 0; milliseconds = 0;
+        setTimeToHTML(hours, minutes, seconds, milliseconds);
+        document.getElementById("start").disabled = false;
+    }
+
+    var setTimeToHTML = function (hours, minutes, seconds, milliseconds) {
+        document.getElementById("hours").innerText = (hours.toString().length == 1) ? ("0" + hours) : hours;
+        document.getElementById("minutes").innerText = (minutes.toString().length == 1) ? ("0" + minutes) : minutes;
+        document.getElementById("seconds").innerText = (seconds.toString().length == 1) ? ("0" + seconds) : seconds;
+
+        h = (hours.toString().length == 1) ? ("0" + hours) : hours;
+        m = (minutes.toString().length == 1) ? ("0" + minutes) : minutes;
+        s = (seconds.toString().length == 1) ? ("0" + seconds) : seconds;
+
+    }
+
+    $(document).ready(function () {
+
+        getTime();
+        startTimer();
+
+
+    });
+</script>
+
+</html>

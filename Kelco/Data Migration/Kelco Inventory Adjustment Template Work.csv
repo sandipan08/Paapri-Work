@@ -1,0 +1,3 @@
+account,tranDate,postingPeriod,memo,subsidiary,department,line_item,external Id,Item Internal Id,line_adjLocation,line_units,line_adjustQtyBy,line_unitCost,line_department,line_class,line_memo,Bin Location,detail_serialNumbers,Lot Number,detail_quantity
+5930 Valuation Adjustments,4/11/2025,,Opening Balance,Western Consolidated Technologies,,SR-20696.528,EXT-52109,52109,WCT HQ,EA,,0.6288,,NC,,E1-FG,4/29/2025,LOT-4/29/2025,4
+5931 Valuation Adjustments,4/22/2025,,Opening Balance,Western Consolidated Technologies,,SR-21424.528,EXT-52113,52113,WCT HQ,EA,,0.20268,,SL,,E1-FG,4/29/2025,LOT-4/29/2025,18

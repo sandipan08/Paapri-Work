@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>PCT QMS | PCT QMS Standard Form </title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+</head>
+<style>
+    img.logo-navbar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+
+    }
+
+    body {
+        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="nav navbar-brand" href="#" style="padding-top: 0.700rem;"><img src="${ds.faviconUrl}"
+                            class="logo-navbar" width="30px" height="30px"></a>
+                    <li><a style="font-size: medium; color: black;">PCT QMS</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> ${ds.custparam_userName}</a></li>
+                    <li><a href="${ds.logoutPageUrl}"><span class="glyphicon glyphicon-log-in" id="btn-change">
+                                Logout</span> </a></li>
+                    <!-- <button></button> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div style="width: 100%;">
+        <div style="width: 100%; height: 100px; float: left;">
+            <div
+                style="  margin-left: 20px; margin-right: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: auto; background: white;">
+                <!-- <table class="table table-success table-striped"> -->
+                <form id="currentURL" enctype="multipart/form-data" method="post"
+                    style="padding-top: 30px; padding-bottom: 30px; padding-left: 20px; padding-right: 20px;">
+
+                    <h3>PCT QMS Standard Form</h3>
+                    <p>Please fill in this form.</p>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <input type="text" id="productName" class="form-control" name="productName" disabled
+                                    value="${ds.productName}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Document Type</label>
+                                <input type="text" id="documentType" class="form-control" name="documentType" disabled
+                                    value="${ds.documentType}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Document Number</label>
+                                <input type="text" id="documentNumber" class="form-control" name="documentNumber"
+                                    disabled value="${ds.documentNumber}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" id="entryDate" class="form-control" name="entryDate">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Bill No</label>
+
+                                <input type="text" id="billNo" class="form-control" name="billNo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Batch No</label>
+                                <input type="text" id="batchNo" class="form-control" name="batchNo"
+                                    value="${ds.batchNo}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Party Name</label>
+                                <input type="text" id="partyName" class="form-control" name="partyName"
+                                    value="${ds.partyName}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Vehicle No</label>
+                                <input type="text" id="vehicleNo" class="form-control" name="vehicleNo">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Sp Gravity</label>
+                                <input type="text" id="spGravity" class="form-control" name="spGravity">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Viscosity at 30'c/25'c</label>
+                                <input type="text" id="viscosity" class="form-control" name="viscosity">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Temperature @ (30 Degree C)</label>
+                                <input type="text" id="temperature" class="form-control" name="temperature">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>PH Value</label>
+                                <input type="text" id="phValue" class="form-control" name="phValue">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Solid %</label>
+                                <input type="text" id="solidPercentage" class="form-control" name="solidPercentage">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Color</label>
+                                <input type="text" id="color" class="form-control" name="color">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Brightness</label>
+                                <input type="text" id="brightness" class="form-control" name="brightness">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Oil Absorption</label>
+                                <input type="text" id="oilAbsorption" class="form-control" name="oilAbsorption">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Water Absorption</label>
+                                <input type="text" id="waterAbsorption" class="form-control" name="waterAbsorption">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>HCL Reaction</label>
+                                <input type="text" id="hclReaction" class="form-control" name="hclReaction">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Mesh Analysis (300/500#)</label>
+                                <input type="text" id="meshAnalysis" class="form-control" name="meshAnalysis">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Viscosity (40/50% Solution)</label>
+                                <input type="text" id="viscositySolution" class="form-control" name="viscositySolution">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Color on Gardner Scale</label>
+                                <input type="text" id="colorGardnerScale" class="form-control" name="colorGardnerScale">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Clearity</label>
+                                <input type="text" id="clearity" class="form-control" name="clearity">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Drying Time Surface</label>
+                                <input type="text" id="dryingTimeSurface" class="form-control" name="dryingTimeSurface">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Drying Time Tack Free</label>
+                                <input type="text" id="dryingTimeTackFree" class="form-control"
+                                    name="dryingTimeTackFree">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Drying Time Hard</label>
+                                <input type="text" id="dryingTimeHard" class="form-control" name="dryingTimeHard ">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>ACID Value</label>
+                                <input type="text" id="acidValue" class="form-control" name="acidValue">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Tolerancy</label>
+                                <input type="text" id="tolerancy" class="form-control" name="tolerancy">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Gloss On Meter (60 Degree Gloss)</label>
+                                <input type="text" id="glossOnMeter" class="form-control" name="glossOnMeter">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Color On Matching Take ECO-1</label>
+                                <input type="text" id="colorOnMatchingTake" class="form-control"
+                                    name="colorOnMatchingTake">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Color On Matching Paste</label>
+                                <input type="text" id="colorOnMatchingPaste" class="form-control"
+                                    name="colorOnMatchingPaste ">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Whiteness</label>
+                                <input type="text" id="whiteness" class="form-control" name="whiteness">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+
+                                <input type="checkbox" id="qcChecked" name="qcChecked">
+                                <label>Qc Approved</label><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Report</label>
+                                <!-- <input type="text" id="report" class="form-control" name="report"
+                                    style="height: 100px;"> -->
+                                <input id="report" name="subject" placeholder="Write something.." class="form-control"
+                                    style="height:100px" name="report"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success ml-3 mr-2" onclick="check()">Submit</button>
+                        <button type="button" style="  background: #FF5370;" class="btn btn-success ml-3 mr-2"
+                            onclick="history.back()">Back</button>
+                    </div>
+                </form>
+                <footer>
+
+                    <p class="attribution" style="text-align: center; padding-bottom: 10px;">
+
+                        Copyright @2021 All rights reserved | Designed & Developed by <a
+                            href="https://www.paapri.com/">Paapri
+
+                            Business Technologies
+
+                        </a>
+
+                    </p>
+
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+
+
+<script>
+
+    //document.getElementById("url").action = window.location.href;
+    function check()
+    {
+        // swal({
+        //     title: "Success",
+        //     text: "Record Created",
+        //     icon: "success",
+        //     buttons: false
+
+        // })
+    }
+    //------------- For Existing Purpose Showing Value ----------------------
+    disable();
+    function disable()
+    {
+        var status = "${ds.documentStatus}";
+        console.log(status);
+        var qcCheck = "${ds.qcChecked}";
+        console.log(qcCheck);
+        console.log("${ds.report}");
+
+        var entryDate = "${ds.entryDate}";
+        if (status === "Existing")
+        {
+            $('#entryDate').prop('disabled', true);
+            $('#entryDate').get(0).type = 'text';
+            $("#entryDate").val(entryDate);
+            // document.getElementById("entryDate").value = "${ds.entryDate}";
+            $('#billNo').prop('disabled', true);
+            document.getElementById("billNo").value = "${ds.billNo}";
+            $('#vehicleNo').prop('disabled', true);
+            document.getElementById("vehicleNo").value = "${ds.vehicleNo}";
+            $('#phValue').prop('disabled', true);
+            document.getElementById("phValue").value = "${ds.phValue}";
+            $('#spGravity').prop('disabled', true);
+            document.getElementById("spGravity").value = "${ds.spGravity}";
+            $('#viscosity').prop('disabled', true);
+            document.getElementById("viscosity").value = "${ds.viscosity}";
+            $('#temperature').prop('disabled', true);
+            document.getElementById("temperature").value = "${ds.temperature}";
+            $('#acidValue').prop('disabled', true);
+            document.getElementById("acidValue").value = "${ds.acidValue}";
+            $('#solidPercentage').prop('disabled', true);
+            document.getElementById("solidPercentage").value = "${ds.solidPercentage}";
+            $('#color').prop('disabled', true);
+            document.getElementById("color").value = "${ds.color}";
+            $('#brightness').prop('disabled', true);
+            document.getElementById("brightness").value = "${ds.brightness}";
+            $('#oilAbsorption').prop('disabled', true);
+            document.getElementById("oilAbsorption").value = "${ds.oilAbsorption}";
+            $('#waterAbsorption').prop('disabled', true);
+            document.getElementById("waterAbsorption").value = "${ds.waterAbsorption}";
+            $('#hclReaction').prop('disabled', true);
+            document.getElementById("hclReaction").value = "${ds.hclReaction}";
+            $('#meshAnalysis').prop('disabled', true);
+            document.getElementById("meshAnalysis").value = "${ds.meshAnalysis}";
+            $('#viscositySolution').prop('disabled', true);
+            document.getElementById("viscositySolution").value = "${ds.viscositySolution}";
+            $('#clearity').prop('disabled', true);
+            document.getElementById("clearity").value = "${ds.clearity}";
+            $('#glossOnMeter').prop('disabled', true);
+            document.getElementById("glossOnMeter").value = "${ds.glossOnMeter}";
+            $('#tolerancy').prop('disabled', true);
+            document.getElementById("tolerancy").value = "${ds.tolerancy}";
+            $('#dryingTimeSurface').prop('disabled', true);
+            document.getElementById("dryingTimeSurface").value = "${ds.dryingTimeSurface}";
+            $('#dryingTimeTackFree').prop('disabled', true);
+            document.getElementById("dryingTimeTackFree").value = "${ds.dryingTimeTackFree}";
+            $('#dryingTimeHard').prop('disabled', true);
+            document.getElementById("dryingTimeHard").value = "${ds.dryingTimeHard}";
+            $('#colorGardnerScale').prop('disabled', true);
+            document.getElementById("colorGardnerScale").value = "${ds.colorGardnerScale}";
+            $('#whiteness').prop('disabled', true);
+            document.getElementById("whiteness").value = "${ds.whiteness}";
+            $('#colorOnMatchingTake').prop('disabled', true);
+            document.getElementById("colorOnMatchingTake").value = "${ds.colorOnMatchingTake}";
+            $('#colorOnMatchingPaste').prop('disabled', true);
+            document.getElementById("colorOnMatchingPaste").value = "${ds.colorOnMatchingPaste}";
+            $('#report').prop('disabled', true);
+
+            document.getElementById("report").value = "${ds.report}";
+
+            $('#qcChecked').prop('disabled', true);
+            //  document.getElementById("qcChecked").value = "${ds.qcChecked}";
+
+            if (qcCheck == "true")
+            {
+                console.log("QC Checked True");
+                $("#qcChecked").prop("checked", true);
+            }
+            else if (qcCheck == "false")
+            {
+                console.log("QC Checked False");
+                $("#qcChecked").prop("checked", false);
+            }
+            $(':input[type="submit"]').prop('disabled', true);
+
+        }
+        else
+        {
+            $('#entryDate').prop('disabled', false);
+            $('#billNo').prop('disabled', false);
+            $('#vehicleNo').prop('disabled', false);
+            $('#phValue').prop('disabled', false);
+            $('#spGravity').prop('disabled', false);
+            $('#viscosity').prop('disabled', false);
+            $('#temperature').prop('disabled', false);
+            $('#acidValue').prop('disabled', false);
+            $('#solidPercentage').prop('disabled', false);
+            $('#color').prop('disabled', false);
+            $('#brightness').prop('disabled', false);
+            $('#oilAbsorption').prop('disabled', false);
+            $('#waterAbsorption').prop('disabled', false);
+            $('#hclReaction').prop('disabled', false);
+            $('#meshAnalysis').prop('disabled', false);
+            $('#viscositySolution').prop('disabled', false);
+            $('#colOnGardnerScale').prop('disabled', false);
+            $('#clearity').prop('disabled', false);
+            $('#glossOnMeter').prop('disabled', false);
+            $('#tolerancy').prop('disabled', false);
+            $('#dryingTimeSurface').prop('disabled', false);
+            $('#dryingTimeTackFree').prop('disabled', false);
+            $('#colorGardnerScale').prop('disabled', false);
+            $('#dryingTimeHard').prop('disabled', false);
+            $('#colorOnMatchingPaste').prop('disabled', false);
+            $('#colorOnMatchingTake').prop('disabled', false);
+            $('#whiteness').prop('disabled', false);
+            $('#report').prop('disabled', false);
+            $('#qcChecked').prop('disabled', false);
+
+        }
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+Model,Model ID,Occupancy,Occupancy ID,Make,Make ID,Type,Type Id,TypeDetail,TypeDetail Id,Suspension,Suspension Id,SubItem,MSRP
+Adventurer 2+2,1,4-PASS,2,Yamaha,1,GAS,3,EFI,1,Lifted,1,"Yamaha,Adventurer 2+2,4-PASS,EFI,GAS,Lifted",14995.00
+Adventurer 2+2,1,4-PASS,2,Yamaha,1,ELECTRIC,2,FLA,4,Lifted,1,"Yamaha,Adventurer 2+2,4-PASS,FLA,ELECTRIC,Lifted",14995.00
+Concierge 4,2,4-PASS,2,Yamaha,1,GAS,3,EFI,1,Non-lifted,2,"Yamaha,Concierge 4,4-PASS,EFI,GAS,Non-lifted",16500.00
+Concierge 4,2,4-PASS,2,Yamaha,1,ELECTRIC,2,FLA,4,Non-lifted,2,"Yamaha,Concierge 4,4-PASS,FLA,ELECTRIC,Non-lifted",16500.00
+Drive2 Fleet,3,2-PASS,1,Yamaha,1,ELECTRIC,2,FLA,4,Non-lifted,2,"Yamaha,Drive2 Fleet,2-PASS,FLA,ELECTRIC,Non-lifted",9650.00
+Drive2 AFI,4,2-PASS,1,Yamaha,1,GAS,3,EFI,1,Non-lifted,2,"Yamaha,Drive2 AFI,2-PASS,EFI,GAS,Non-lifted",9650.00
+Drive2,5,2-PASS,1,Yamaha,1,ELECTRIC,2,FLA,4,Non-lifted,2,"Yamaha,Drive2,2-PASS,FLA,ELECTRIC,Non-lifted",9650.00
+Drive2,5,2-PASS,1,Yamaha,1,GAS,3,EFI,1,Non-lifted,2,"Yamaha,Drive2,2-PASS,EFI,GAS,Non-lifted",9650.00
+Drive2,5,2-PASS,1,Yamaha,1,ELECTRIC,2,AGM,2,Non-lifted,2,"Yamaha,Drive2,2-PASS,AGM,ELECTRIC,Non-lifted",10650.00
+Drive2,5,2-PASS,1,Yamaha,1,ELECTRIC,2,LITHIUM,5,Non-lifted,2,"Yamaha,Drive2,2-PASS,LITHIUM,ELECTRIC,Non-lifted",14995.00
+I20,6,2-PASS,1,Icon,2,ELECTRIC,2,FLA,4,Non-lifted,2,"Icon,I20,2-PASS,FLA,ELECTRIC,Non-lifted",8999.00
+I20,6,2-PASS,1,Icon,2,ELECTRIC,2,AGM,2,Non-lifted,2,"Icon,I20,2-PASS,AGM,ELECTRIC,Non-lifted",9999.00
+I20U,7,2-PASS,1,Icon,2,ELECTRIC,2,FLA,4,Lifted,1,"Icon,I20U,2-PASS,FLA,ELECTRIC,Lifted",11999.00
+I20U,7,2-PASS,1,Icon,2,ELECTRIC,2,AGM,2,Lifted,1,"Icon,I20U,2-PASS,AGM,ELECTRIC,Lifted",12999.00
+I20UL,8,2-PASS,1,Icon,2,ELECTRIC,2,FLA,4,Lifted,1,"Icon,I20UL,2-PASS,FLA,ELECTRIC,Lifted",12999.00
+I20UL,8,2-PASS,1,Icon,2,ELECTRIC,2,AGM,2,Lifted,1,"Icon,I20UL,2-PASS,AGM,ELECTRIC,Lifted",13999.00
+I40,9,4-PASS,2,Icon,2,ELECTRIC,2,FLA,4,Non-lifted,2,"Icon,I40,4-PASS,FLA,ELECTRIC,Non-lifted",8999.00
+I40,9,4-PASS,2,Icon,2,ELECTRIC,2,AGM,2,Non-lifted,2,"Icon,I40,4-PASS,AGM,ELECTRIC,Non-lifted",9999.00
+I40F,10,4-PASS,2,Icon,2,ELECTRIC,2,FLA,4,Non-lifted,2,"Icon,I40F,4-PASS,FLA,ELECTRIC,Non-lifted",9999.00
+I40F,10,4-PASS,2,Icon,2,ELECTRIC,2,AGM,2,Non-lifted,2,"Icon,I40F,4-PASS,AGM,ELECTRIC,Non-lifted",10999.00
+I40FL,11,4-PASS,2,Icon,2,ELECTRIC,2,FLA,4,Lifted,1,"Icon,I40FL,4-PASS,FLA,ELECTRIC,Lifted",10999.00
+I40FL,11,4-PASS,2,Icon,2,ELECTRIC,2,AGM,2,Lifted,1,"Icon,I40FL,4-PASS,AGM,ELECTRIC,Lifted",11999.00
+I40L,12,4-PASS,2,Icon,2,ELECTRIC,2,FLA,4,Lifted,1,"Icon,I40L,4-PASS,FLA,ELECTRIC,Lifted",9999.00
+I40L,12,4-PASS,2,Icon,2,ELECTRIC,2,AGM,2,Lifted,1,"Icon,I40L,4-PASS,AGM,ELECTRIC,Lifted",10999.00
+I60,13,6-PASS,3,Icon,2,ELECTRIC,2,FLA,4,Non-lifted,2,"Icon,I60,6-PASS,FLA,ELECTRIC,Non-lifted",10499.00
+I60,13,6-PASS,3,Icon,2,ELECTRIC,2,AGM,2,Non-lifted,2,"Icon,I60,6-PASS,AGM,ELECTRIC,Non-lifted",11499.00
+I60L,14,6-PASS,3,Icon,2,ELECTRIC,2,FLA,4,Lifted,1,"Icon,I60L,6-PASS,FLA,ELECTRIC,Lifted",11499.00
+I60L,14,6-PASS,3,Icon,2,ELECTRIC,2,AGM,2,Lifted,1,"Icon,I60L,6-PASS,AGM,ELECTRIC,Lifted",12499.00
+Onward HP,15,2-Pass,1,Club Car,3,ELECTRIC,2,FLA,4,Non-lifted,2,"Club Car,Onward HP,2-Pass,FLA,ELECTRIC,Non-lifted",11700.00
+Onward HP,15,4-PASS,2,Club Car,3,ELECTRIC,2,FLA,4,Non-lifted,2,"Club Car,Onward HP,4-PASS,FLA,ELECTRIC,Non-lifted",12900.00
+Onward HP,15,6-PASS,3,Club Car,3,ELECTRIC,2,FLA,4,Non-lifted,2,"Club Car,Onward HP,6-PASS,FLA,ELECTRIC,Non-lifted",16600.00
+Onward HP,15,4-PASS,2,Club Car,3,ELECTRIC,2,FLA,4,Lifted,1,"Club Car,Onward HP,4-PASS,FLA,ELECTRIC,Lifted",13600.00
+Onward HP,15,6-PASS,3,Club Car,3,ELECTRIC,2,FLA,4,Lifted,1,"Club Car,Onward HP,6-PASS,FLA,ELECTRIC,Lifted",17900.00
+Onward,16,2-PASS,1,Club Car,3,ELECTRIC,2,FLA,4,Non-lifted,2,"Club Car,Onward,2-PASS,FLA,ELECTRIC,Non-lifted",10495.00
+Onward,16,2-PASS,1,Club Car,3,GAS,3,EFI,1,Non-lifted,2,"Club Car,Onward,2-PASS,EFI,GAS,Non-lifted",10800.00
+Onward,16,2-PASS,1,Club Car,3,ELECTRIC,2,Lithium,5,Non-lifted,2,"Club Car,Onward,2-PASS,Lithium,ELECTRIC,Non-lifted",13800.00
+Onward,16,4-PASS,2,Club Car,3,ELECTRIC,2,FLA,4,Non-lifted,2,"Club Car,Onward,4-PASS,FLA,ELECTRIC,Non-lifted",11600.00
+Onward,16,4-PASS,2,Club Car,3,GAS,3,EFI,1,Non-lifted,2,"Club Car,Onward,4-PASS,EFI,GAS,Non-lifted",12200.00
+Onward,16,4-PASS,2,Club Car,3,ELECTRIC,2,Lithium,5,Non-lifted,2,"Club Car,Onward,4-PASS,Lithium,ELECTRIC,Non-lifted",14995.00
+Onward,16,4-PASS,2,Club Car,3,ELECTRIC,2,FLA,4,Lifted,1,"Club Car,Onward,4-PASS,FLA,ELECTRIC,Lifted",12400.00
+Onward,16,4-PASS,2,Club Car,3,GAS,3,EFI,1,Lifted,1,"Club Car,Onward,4-PASS,EFI,GAS,Lifted",13200.00
+Onward,16,4-PASS,2,Club Car,3,ELECTRIC,2,Lithium,5,Lifted,1,"Club Car,Onward,4-PASS,Lithium,ELECTRIC,Lifted",15700.00
+Onward,16,6-PASS,3,Club Car,3,GAS,3,EFI,1,Non-lifted,2,"Club Car,Onward,6-PASS,EFI,GAS,Non-lifted",15500.00
+Onward,16,6-PASS,3,Club Car,3,GAS,3,EFI,1,Lifted,1,"Club Car,Onward,6-PASS,EFI,GAS,Lifted",16500.00
+Tempo,18,2-PASS,1,Club Car,3,ELECTRIC,2,FLA,4,Non-lifted,2,"Club Car,Tempo,2-PASS,FLA,ELECTRIC,Non-lifted",8495.00
+Tempo,18,2-PASS,1,Club Car,3,GAS,3,EFI,1,Non-lifted,2,"Club Car,Tempo,2-PASS,EFI,GAS,Non-lifted",8495.00
+UMAX One,19,2-PASS,1,Yamaha,1,GAS,3,EFI,1,Non-lifted,2,"Yamaha,UMAX One,2-PASS,EFI,GAS,Non-lifted",11500.00
+UMAX Rally 2+2,20,4-PASS,2,Yamaha,1,GAS,3,EFI,1,Lifted,1,"Yamaha,UMAX Rally 2+2,4-PASS,EFI,GAS,Lifted",13500.00
+UMAX Rally,21,4-PASS,2,Yamaha,1,GAS,3,EFI,1,Lifted,1,"Yamaha,UMAX Rally,4-PASS,EFI,GAS,Lifted",12500.00
+UMAX Two,22,2-PASS,1,Yamaha,1,GAS,3,EFI,1,Non-lifted,2,"Yamaha,UMAX Two,2-PASS,EFI,GAS,Non-lifted",12500.00
+E20,23,2-PASS,1,Epic,4,ELECTRIC,2,AGM,2,Non-lifted,2,"Epic,E20,2-PASS,AGM,ELECTRIC,Non-lifted",11900.00
+E40,24,4-PASS,2,Epic,4,ELECTRIC,2,AGM,2,Non-lifted,2,"Epic,E40,4-PASS,AGM,ELECTRIC,Non-lifted",11900.00
+E40F,25,4-PASS,2,Epic,4,ELECTRIC,2,AGM,2,Non-lifted,2,"Epic,E40F,4-PASS,AGM,ELECTRIC,Non-lifted",13900.00
+E40FL,26,4-PASS,2,Epic,4,ELECTRIC,2,AGM,2,Lifted,1,"Epic,E40FL,4-PASS,AGM,ELECTRIC,Lifted",14900.00
+E40L,27,4-PASS,2,Epic,4,ELECTRIC,2,AGM,2,Lifted,1,"Epic,E40L,4-PASS,AGM,ELECTRIC,Lifted",12900.00
+E60,28,6-PASS,3,Epic,4,ELECTRIC,2,AGM,2,Non-lifted,2,"Epic,E60,6-PASS,AGM,ELECTRIC,Non-lifted",14900.00
+E60L,29,6-PASS,3,Epic,4,ELECTRIC,2,AGM,2,Lifted,1,"Epic,E60L,6-PASS,AGM,ELECTRIC,Lifted",15900.00
+Pro XD Mid-Size,30,2-PASS,1,Polaris,5,GAS,3,EFI,1,Non-lifted,2,"Polaris,Pro XD Mid-Size,2-PASS,EFI,GAS,Non-lifted",15500.00
+Pro XD Mid-Size,30,4-PASS,2,Polaris,5,GAS,3,EFI,1,Non-lifted,2,"Polaris,Pro XD Mid-Size,4-PASS,EFI,GAS,Non-lifted",17500.00
+Pro XD Full-Size,31,2-PASS,1,Polaris,5,GAS,3,EFI,1,Non-lifted,2,"Polaris,Pro XD Full-Size,2-PASS,EFI,GAS,Non-lifted",18995.00
+Pro XD Full-Size,31,4-PASS,2,Polaris,5,GAS,3,EFI,1,Non-lifted,2,"Polaris,Pro XD Full-Size,4-PASS,EFI,GAS,Non-lifted",21500.00
+Pro XD Full-Size,31,2-PASS,1,Polaris,5,DIESEL,1,DIESEL,3,Non-lifted,2,"Polaris,Pro XD Full-Size,2-PASS,DIESEL,DIESEL,Non-lifted",20500.00
+Pro XD Full-Size,31,4-PASS,2,Polaris,5,DIESEL,1,DIESEL,3,Non-lifted,2,"Polaris,Pro XD Full-Size,4-PASS,DIESEL,DIESEL,Non-lifted",22500.00
+V4L,32,4-PASS,2,Club Car,3,ELECTRIC,2,FLA,4,Lifted,1,"Club Car,V4L,4-PASS,FLA,ELECTRIC,Lifted",10495.00
+V4L,32,4-PASS,2,Club Car,3,GAS,3,EFI,1,Lifted,1,"Club Car,V4L,4-PASS,EFI,GAS,Lifted",11495.00

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PCT Billing | Login</title>
+    <meta name="author" content="Sandipan Sau">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        function preventBack()
+        {
+            window.history.forward();
+        }
+
+        setTimeout("preventBack()", 0);
+
+        window.onunload = function () { null };
+    </script>
+</head>
+<style>
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .alert-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+    }
+</style>
+
+<body>
+
+
+
+
+    <div class="container-fluid center">
+        <div class="row">
+            <div class="col-1 col-sm-3 col-md-3 col-lg-4"></div>
+            <div class="col-10 col-sm-6 col-md-6 col-lg-4">
+                <div class="pt-1 ">
+                    <form class="" id="url" action="" enctype="multipart/form-data" method="post" autocomplete="off"
+                        style="text-align:center;">
+                        <img src="${ds.bodyImgUrl}" alt="Paapri Business Technologies" width="250px"
+                            style="margin-bottom: 20px;">
+                        <img src="${ds.popularImgUrl}" alt="Popular Paints" width="160px" style="margin-bottom: 13px;">
+
+                        <div class="from-group" style="padding-bottom: 10px;">
+                            Hi ${ds.custparam_userName} Please Enter Your Password
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" required class="form-control" id="pwd"
+                                placeholder="Enter Your Password ...." autocomplete="false" name="custparam_userpin"
+                                style="text-align:center; border-radius: 100px; height: 45px;">
+
+                            <input type="email" hidden class="form-control" id="email" placeholder="Email"
+                                name="custparam_useremail"
+                                style="text-align:center; border-radius: 100px; height: 45px;"
+                                value="${ds.custparam_useremail}">
+
+                        </div>
+                        <button type="submit" class="btn btn-block shadow-lg "
+                            style="border-radius: 100px; height: 50px;background-color: #3B5998; color: white;">Login<i
+                                class="fa fa-sign-in" aria-hidden="true"
+                                style="float: right; margin-top: 4px; margin-right: 6px;"></i></button>
+
+                        <!-- <button type="reset" id="btn-forgot-password" class="btn btn-block shadow-lg "
+                            style="border-radius: 100px; height: 50px;background-color: #3B5998; color: white;">Forgot
+                            Password<i class="fa fa-key" aria-hidden="true"
+                                style="float: right; margin-top: 4px; margin-right: 6px;"></i></button> -->
+
+                        <button type="button" id="btn-change" class="btn btn-block shadow-lg "
+                            style="border-radius: 100px; height: 50px;background-color: #3B5998; color: white;">Try
+                            Another Email<i class="fa fa-sign-out" aria-hidden="true"
+                                style="float: right; margin-top: 4px; margin-right: 6px;"></i></button>
+                    </form>
+                    <div class="container alert-label">
+                        <div class="alert alert-danger text-center " style="margin-top: 72px;" ${ds.isHidden}>
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Pin Incorrect!</strong>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script>
+    document.getElementById("url").action = window.location.href;
+
+    $(document).ready(function ()
+    {
+
+        var LOGIN_EMAIL_PAGE_URL = '${ds.loginEmailPageUrl}';
+
+        $("#btn-change").click(function ()
+        {
+            $(location).attr('href', LOGIN_EMAIL_PAGE_URL);
+        });
+        $("#btn-forgot-password").click(function ()
+        {
+            alert("Reset Your Password from Employee Record")
+        });
+
+    });
+</script>
+
+</html>

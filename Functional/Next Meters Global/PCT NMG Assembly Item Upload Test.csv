@@ -1,0 +1,2 @@
+itemId,Internal Id,displayname,unitstype,stockunit,purchaseunit,saleunits,Consumption Unit,Location,MPN,Track Landed Cost,costingmethod,cogsaccount,incomeaccount,assetaccount,taxSchedule,bomName,masterDefault,supplyreplenishmentmethod,planningitemcategory
+ST201,1661,Spacer Tubes,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Spacer Tubes,Yes,Average,523,845,422,Taxable,,,Master Production Scheduling,NMG Finished Goods

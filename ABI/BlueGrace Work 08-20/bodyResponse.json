@@ -1,0 +1,113 @@
+{
+    "bol": null,
+    "action": "Book",
+    "businessUnit": null,
+    "accountNumber": null,
+    "mode": "LTL",
+    "addresses": [
+        {
+            "sequence": 1,
+            "name": "*In Transit / 3rd Party",
+            "address1": "520 S Byrkit St",
+            "address2": null,
+            "city": "Mishawaka",
+            "stateProvince": "IN",
+            "country": "USA",
+            "postalCode": "46544-3019",
+            "locationCode": null,
+            "earliestDate": null,
+            "latestDate": null,
+            "earliestAppointmentDateTime": null,
+            "latestAppointmentDateTime": null,
+            "appointmentNumber": null,
+            "accessorials": [
+                "Liftgate"
+            ],
+            "addressComment": null,
+            "contact": {
+                "name": null,
+                "email": null,
+                "phone": null,
+                "fax": null
+            }
+        },
+        {
+            "sequence": 2,
+            "name": "Dutch Barn Lanscaping",
+            "address1": "22013 School House Rd.",
+            "address2": null,
+            "city": "New Lenox",
+            "stateProvince": "IL",
+            "country": "USA",
+            "postalCode": "60451",
+            "locationCode": null,
+            "earliestDate": null,
+            "latestDate": null,
+            "earliestAppointmentDateTime": null,
+            "latestAppointmentDateTime": null,
+            "appointmentNumber": null,
+            "accessorials": [
+                "Liftgate"
+            ],
+            "addressComment": null,
+            "contact": {
+                "name": null,
+                "email": null,
+                "phone": null,
+                "fax": null
+            }
+        }
+    ],
+    "accessorials": null,
+    "items": [
+        {
+            "description": "10' ABI Dragmaster Elite (V3)",
+            "orderReferenceNumber": "SO384387",
+            "poLineRef": null,
+            "customerPartNumber": null,
+            "upc": null,
+            "classificationType": null,
+            "class": 150,
+            "nmfcCode": "",
+            "weight": 3406,
+            "weightUnits": "lbs",
+            "handlingQty": 1,
+            "handlingUnits": "Pallets",
+            "pieceQty": null,
+            "pieceUnits": null,
+            "valueOfGoods": null,
+            "glCode": null,
+            "isStackable": null,
+            "fluidVolume": null,
+            "fluidVolumeUnits": null,
+            "dimensions": {
+                "length": 121,
+                "width": 102,
+                "height": 97,
+                "dimUnits": "in"
+            },
+            "pickupLocationCode": null,
+            "dropLocationCode": null,
+            "pickupSequenceID": null,
+            "dropSequenceID": null
+        }
+    ],
+    "rateSelection": {
+        "method": "Carrier",
+        "criteria": {
+            "scac": "SAIA",
+            "days": null,
+            "threshold": null
+        },
+        "serviceLevel": null
+    },
+    "references": [
+        {
+            "name": "Order Number",
+            "value": "SO384387"
+        }
+    ],
+    "specialInstructions": "",
+    "notes": null,
+    "linearFeet": null
+}

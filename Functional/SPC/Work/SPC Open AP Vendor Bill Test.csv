@@ -1,0 +1,7 @@
+Type,tranid,entity,Vendor Internal Id,reference no,terms,Currency,exchangerate,duedate,postingperiod,trandate,purchaseItemline_itemRef,purchaseItemline_quantity,purchaseItemLine_rate,usertotal,purchaseItemLine_location
+Bill,789451,HANSON SPRING CO,1319,789451,2,US Dollar, 1.00 ,11/17/2022,Oct-22,10/18/2022,Open AP Item,1,872.00,872.00,3
+Bill,435820-1,INDUSTRIAL EQUIPMENT CO,1338,435820-1,2,US Dollar, 1.00 ,11/17/2022,Oct-22,10/18/2022,Open AP Item,1,663.00,663.00,3
+Bill,TXKI000005125,DHL EXPRESS,1269,TXKI000005125,2,US Dollar, 1.00 ,12/1/2022,Nov-22,11/16/2022,Open AP Item,1,7325.56,7325.56,3
+Bill,TXKI000005125,DHL EXPRESS,1269,TXKI000005125,2,US Dollar, 1.00 ,12/1/2022,Nov-22,11/16/2022,Open AP Item,1,4194.16,4194.16,5
+Bill,0000X40605472,UPS.H,1540,0000X40605472,2,US Dollar, 1.00 ,11/28/2022,Nov-22,11/19/2022,Open AP Item,1,954.67,954.67,3
+Bill,0000X40605472,UPS.V,1541,0000X40605472,2,US Dollar, 1.00 ,11/28/2022,Nov-22,11/19/2022,Open AP Item,1,10.98,10.98,4

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCT QMS Lite</title>
+
+
+
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<style>
+    body {
+        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+    }
+
+    .contact-form {
+        background: #fff;
+        margin-top: 10%;
+        margin-bottom: 5%;
+        width: 60%;
+    }
+
+    .contact-form .form-control {
+        border-radius: 1rem;
+    }
+
+    .contact-image {
+        text-align: center;
+    }
+
+    .contact-image img {
+        /* border-radius: 8rem; */
+        width: 13%;
+        margin-top: -13%;
+        /* transform: rotate(29deg); */
+    }
+
+    .contact-form form {
+        padding: 8%;
+    }
+
+    .contact-form form .row {
+        margin-bottom: -7%;
+    }
+
+    .contact-form h3 {
+        margin-bottom: 8%;
+        margin-top: -10%;
+        text-align: center;
+        color: #0062cc;
+    }
+
+    .contact-form .btnContact {
+        width: 50%;
+        border: none;
+        border-radius: 1rem;
+        padding: 1.5%;
+        background: #4CAF50;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+
+    }
+
+    .btnContactSubmit {
+        width: 50%;
+        border-radius: 1rem;
+        padding: 1.5%;
+        color: #fff;
+        background-color: #0062cc;
+        border: none;
+        cursor: pointer;
+    }
+
+    .order-card {
+        color: #fff;
+    }
+
+    .bg-c-blue {
+        background: linear-gradient(45deg, #4099ff, #73b4ff);
+    }
+
+    .bg-c-green {
+        background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+    }
+
+    .bg-c-yellow {
+        background: linear-gradient(45deg, #FFB64D, #ffcb80);
+    }
+
+    .bg-c-pink {
+        background: linear-gradient(45deg, #FF5370, #ff869a);
+    }
+
+
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        border: none;
+        margin-bottom: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card .card-block {
+        padding: 25px;
+    }
+
+    .order-card i {
+        font-size: 26px;
+    }
+
+    .f-left {
+        float: left;
+    }
+
+    .f-right {
+        float: right;
+    }
+
+    label {
+        display: block;
+        font: 1rem 'Fira Sans', sans-serif;
+    }
+
+    input,
+    label {
+        margin: .4rem 0;
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="nav navbar-brand" href="#" style="padding-top: 0.700rem;"><img src="${ds.faviconUrl}"
+                            class="logo-navbar" width="30px" height="30px"></a>
+                    <li><a style="font-size: medium; color: black; font-weight: bold;">PCT QMS Lite</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> ${ds.custparam_userName}</a></li>
+                    <li><a href="${ds.logoutPageUrl}"><span class="glyphicon glyphicon-log-in" id="btn-change">
+                                Logout</span> </a></li>
+                    <!-- <button></button> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="${ds.paapriLogoUrl}" alt="rocket_contact" />
+        </div>
+        <form method="post">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h3>Select Your Record</h3>
+                    <div class="form-group">
+                        <!-- <label>Document</label> -->
+                        <select id="documentType" class="form-control" name="documentType">
+                            <option value=-1 selected>Select Document No ...</option>
+                            <option value="itemreceipt">Item Receipt</option>
+                            <option value="assemblybuild">Assembly Build</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label>Document Status</label> -->
+                        <select id="documentStatus" class="form-control" name="documentStatus">
+                            <option value=-1 selected>Select Document Status ...</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Existing">Existing</option>
+                        </select>
+                    </div>
+                    <!-- <div class="form-group">
+                       
+                        <input type="date" id="createDate" class="form-control" name="createDate">
+                    </div> -->
+
+
+                    <div class="form-group" style="display: flex;gap: 10px;">
+                        <button type="submit" name="btnSubmit" class="btnContact" style="background: #50C878;"
+                            onclick="return check()">Submit</button>
+                        <button type="button" id="btnReport" class="btnContact"
+                            style="background: #FF5370;">Report</button>
+                    </div>
+                </div>
+        </form>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <div class="card bg-c-pink order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Assembly build</h6>
+                        <h2 class="text-right"><i class="fa fa-spinner f-left"></i><span>${ds.assemblybuildCount}</span>
+                        </h2>
+                        <p class="m-b-0">Pending</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card bg-c-yellow order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Item Receipt</h6>
+                        <h2 class="text-right"><i class="fa fa-spinner f-left"></i><span>${ds.itemReceiptCount}</span>
+                        </h2>
+                        <p class="m-b-0">Pending</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="attribution" style="text-align: center;">
+            Copyright @2021 All rights reserved | Designed & Developed by <a href="https://www.paapri.com/">Paapri
+                Business Technologies
+            </a>
+        </p>
+    </footer>
+    </div>
+
+
+</body>
+
+<script>
+    // runCommands()
+    // function runCommands()
+    // {
+    //     // run commands
+    //     $('#id-findModal').modal()
+    // }
+
+    // document.getElementById("url").action = window.location.href;
+    function check() {
+        var documentType = $('#documentType').val();
+        var documentStatus = $('#documentStatus').val();
+        var createDate = $('#createDate').val();
+        console.log("Date : " + createDate)
+        if (documentType == -1) {
+            $('#documentType').focus();
+            alert("Please Select the Proper Document");
+            return false;
+        }
+        if (documentStatus == -1) {
+            $('#documentStatus').focus();
+            alert("Please Select the Proper Document Status");
+            return false;
+        }
+
+    }
+
+    $(document).ready(function () {
+        // alert('hi')
+
+        var reportUrl = 'https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=483&deploy=1&compid=7255402&h=59ef403fade57a9952b9'//'${ds.reportUrl}';
+
+        $("#btnReport").click(function () {
+
+
+            window.open(reportUrl)
+
+        });
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PCT Billing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="${ds.faviconUrl}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
+</head>
+<style>
+    img.logo-navbar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .top-buffer {
+        margin-top: 10px;
+    }
+
+    .body {
+        background: #4cb8c4;
+        background: -webkit-linear-gradient(to right, #4cb8c4, #3cd3ad);
+        background: linear-gradient(to right, #4cb8c4, #3cd3ad);
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+
+<body class="body">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand"
+                    href="https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=466&deploy=1&compid=7255402&h=741700278bc9a50d40eb&custparam_userId=&invArray=%5B%5D&invCount=0&soCount=1&custName=2965+Email+Test+Customer2&soArray=%5B%22SO1426%22%5D&custparam_userName=Subrata+Ghosal&whence="><img
+                        src="${ds.faviconUrl}" class="logo-navbar" width="auto" height="auto"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="empName">
+                            Welcome, ${ds.userName}!
+                        </a></li>
+                    <li><a
+                            href="https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=196&deploy=1&compid=7255402&h=38a57cec7478fc49f8d3"><span
+                                class="glyphicon glyphicon-off"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card-body">
+        <form action="" class="fieldclass" method="post">
+            <div style=" border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 10px;">
+                <div class="row mt-2">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Zone</label>
+                            <select id="zone" class="form-control" name="zone">
+                                #ZONE-DROPDOWN#
+                            </select>
+                            <input type="hidden" id="hiddenZoneId" name="hiddenZoneId" />
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <button type="submit" id="btnSubmit" name="btnSubmit"
+                                    class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div style=" border-radius: 5px;
+                    background-color: #f2f2f2;
+                    padding: 10px; margin-top: 15px;">
+                <table id="soTable" class="table table-striped table-hover" width="100%">
+                    <thead id="soTableThead">
+                        #TABLE-HEAD-CONTENTS#
+                    </thead>
+                    <tbody id="soTableTbody">
+                        #TABLE-BODY-CONTENTS#
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+
+
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYTSsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://malsup.github.io/jquery.blockUI.js"> </script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+
+
+<script>
+    $(document).ready(function ()
+    {
+        $('#soTable').DataTable({
+            pagination: true,
+            search: true,
+            pageLength: 25,
+            ordering: false
+        });
+        $("#zone").change(() =>
+        {
+            var zone = $('#zone').val();
+            $('#hiddenZoneId').val(zone)
+        })
+    });
+
+
+</script>
+
+
+
+
+
+</html>

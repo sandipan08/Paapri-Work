@@ -1,0 +1,7 @@
+Customer ID,Internal Id,Label,Attention,Addressee,Phone,Address 1,Address 2,City,Province/State,Postal Code/Zip,Country,Default Billing,Default Shipping
+QPE214238,1095,Mailing,,"3M Company, IATD",,P.O. Box 33121,,St. Paul,MN,55133-3121,United States,No,No
+QPE214238,1095,Billing,,"3M Company, IATD",,P.O. Box 33121,,St. Paul,MN,55133-3121,United States,Yes,No
+QPE214238,1095,Shipping,,"3M Company, IATD",,,,,,,,No,Yes
+YAE139452,1096,Mailing,,The Strouse Corporation,,1211 Independence Way,,Westminster,MD,21157-0000,United States,No,No
+YAE139452,1096,Billing,,The Strouse Corporation,,1211 Independence Way,,Westminster,MD,21157-0000,United States,Yes,No
+YAE139452,1096,Shipping,,The Strouse Corporation,,1211 Independence Way,,Westminster,MD,21157-0000,United States,No,Yes

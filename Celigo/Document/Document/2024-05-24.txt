@@ -1,0 +1,51 @@
+### Error Handling Specification for Celigo Integration: SFTP to NetSuite Sales Order Creation
+#### 1. Objective
+This section outlines the error handling strategy for the integration process where Celigo fetches files from an SFTP server, reads and imports the data into NetSuite by creating sales orders, and subsequently moves the files to a backup location. This ensures robust handling of failures and availability of files for retry operations.
+#### 2. Error Scenarios and Handling
+##### 2.1. SFTP Server Connection Failure
+**Scenario:** Celigo is unable to establish a connection with the SFTP server.
+- **Error Handling:**
+ - Log the error with details (timestamp, error code, and description).
+ - Notify the support team via email or integration platform alerts.
+ - Retry connection at configured intervals (e.g., every 15 minutes) for a predefined number of attempts (e.g., 5 attempts).
+ - If the retries fail, escalate the issue and halt the process until manual intervention.
+##### 2.2. File Fetch Failure
+**Scenario:** Celigo fails to fetch files from the SFTP server.
+- **Error Handling:**
+ - Log the error with details (filename, timestamp, error code, and description).
+ - Notify the support team via email or integration platform alerts.
+ - Retry fetching the file at configured intervals for a predefined number of attempts.
+ - If the retries fail, escalate the issue and halt the process until manual intervention.
+##### 2.3. File Read/Parse Error
+**Scenario:** Celigo encounters an error while reading or parsing the file.
+- **Error Handling:**
+ - Log the error with details (filename, timestamp, error code, and description).
+ - Move the file to an "Error" folder on the SFTP server for further inspection.
+ - Notify the support team via email or integration platform alerts with file details and error specifics.
+ - Mark the file for retry after resolving the parsing issue.
+##### 2.4. NetSuite Import Failure
+**Scenario:** Celigo fails to create a sales order in NetSuite due to validation errors, network issues, or API limits.
+- **Error Handling:**
+ - Log the error with details (order data, timestamp, error code, and description).
+ - Notify the support team via email or integration platform alerts.
+ - Retry the import process at configured intervals for a predefined number of attempts.
+ - If retries fail, move the file to a "Retry" folder on the SFTP server for future processing.
+ - Provide a detailed error report to facilitate troubleshooting and manual intervention.
+##### 2.5. Post-Processing Backup Failure
+**Scenario:** Celigo encounters an error while moving processed files to the backup location on the SFTP server.
+- **Error Handling:**
+ - Log the error with details (filename, timestamp, error code, and description).
+ - Retry moving the file at configured intervals for a predefined number of attempts.
+ - If retries fail, notify the support team via email or integration platform alerts.
+ - Keep the file in a temporary location and ensure it is not reprocessed until the backup issue is resolved.
+#### 3. Retry Mechanism
+- **Automatic Retries:** Implement automatic retry logic with exponential backoff for transient errors such as network issues or temporary unavailability of NetSuite services.
+- **Manual Retries:** Provide an interface or mechanism for manually retrying failed operations after resolving the underlying issues. Ensure that files in the "Error" and "Retry" folders are accessible for manual reprocessing.
+#### 4. Logging and Monitoring
+- **Comprehensive Logging:** Maintain detailed logs for each step of the integration process, capturing success and failure events along with relevant metadata.
+- **Real-Time Monitoring:** Implement real-time monitoring and alerting for critical failures to ensure timely intervention and resolution.
+- **Error Dashboards:** Provide dashboards to visualize error trends and track the status of retries and manual interventions.
+#### 5. Notification and Escalation
+- **Immediate Alerts:** Configure immediate alerts for critical errors to ensure prompt action.
+- **Escalation Policies:** Define escalation policies for unresolved issues, including notifications to higher-level support teams or stakeholders if errors persist beyond a certain threshold.
+By following the above error handling strategies, Celigo integration can achieve robust handling of failures, ensuring that files are available for retry and minimizing disruption to the sales order creation process in NetSuite.

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Report</title>
+    <!-- Custom StyleSheet Link -->
+    <link rel="stylesheet" href="#STYLESHEET-URL#">
+    <!-- Bootstrap StyleSheet Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Jquery Datatable CSS CDN Start -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.css" />
+    <!-- Jquery Datatable CSS CDN End -->
+    <!-- Datatable buttons CDN Start -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+    <!-- Datatable buttons CDN Start -->
+</head>
+
+<body>
+
+    <!-- Navbar Design Start -->
+    <nav class="navbar navbar-expand navbar-light shadow alert alert-primary sticky-top text-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="#FETCH-LOGO#" alt="" width="40" height="40" class="d-inline-block align-text-bottom fw-bold">
+                <span class="position-absolute top-50 start-50 translate-middle" style=" font-size: 25px;">POS
+                    Report</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Navbar Design End -->
+    <!-- Filter Region Design Start -->
+    <div class="container-fluid" id="vendor-filter-container">
+        <div class="card">
+            <div class="card-header center">
+                <h4>Filter Region</h4>
+            </div>
+            <div class="card-body">
+                <form id="posReportFilterForm" class="needFilter">
+                    <!-- Vendor Input Design Start -->
+                    <!-- <div id="vendor-list-container" class="d-flex flex-column align-items-center mt-lg-2">
+                    </div> -->
+                    <!-- Vendor Input Design End -->
+                    <div class="row mt-2">
+                        <div class="col-sm-4" id="vendorFilter">
+                            <div class="form-group">
+                                <label style="padding: 3px;">Vendor</label>
+                                <select id="vendor" class="form-control" name="vendor">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" id="fromDateFilter">
+                            <div class="form-group">
+                                <label style="padding: 3px;">From Date</label>
+                                <input type="date" id="fromDate" name="fromDate" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2" id="toDateFilter">
+                            <div class="form-group">
+                                <label style="padding: 3px;">To Date</label>
+                                <input type="date" id="toDate" name="toDate" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <button type="button" id="btnSubmit" name="btnSubmit"
+                                        class="btn btn-success">Generate Report</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Filter Region Design ENd -->
+    <div class="container-fluid" id="pos-report-container">
+        <div class="card mt-3">
+            <div class="card-header center">
+                <h4>Report</h4>
+            </div>
+            <div class="card-body">
+                <table id="posReportTable" class="table table-striped table-hover text-nowrap" width="100%">
+                    <thead id="posReportThead">
+                    </thead>
+                    <tbody id="posReportTbody">
+                        <p class="selectPOSReportClass fs-5 text-center">-- Please Select Any Vendor to View the
+                            POS Report --</p>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Loader Design Start -->
+    <div class="modal" id="loader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="loaderLabel">
+        <div class="modal-dialog">
+            <div class="modal-body">
+                <div class="shape-container">
+                    <div class="shape shape-9">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #cf7046"></div>
+                            <div class="shape-middle" style="background-color: #cf7046"></div>
+                            <div class="shape-bottom" style="background-color: #cf7046"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-8">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #ff5d60"></div>
+                            <div class="shape-middle" style="background-color: #ff5d60"></div>
+                            <div class="shape-bottom" style="background-color: #ff5d60"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-7">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #b85856"></div>
+                            <div class="shape-middle" style="background-color: #b85856"></div>
+                            <div class="shape-bottom" style="background-color: #b85856"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-6">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #008ca7"></div>
+                            <div class="shape-middle" style="background-color: #008ca7"></div>
+                            <div class="shape-bottom" style="background-color: #008ca7"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-5">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #6cab36"></div>
+                            <div class="shape-middle" style="background-color: #6cab36"></div>
+                            <div class="shape-bottom" style="background-color: #6cab36"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-4">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #97a822"></div>
+                            <div class="shape-middle" style="background-color: #97a822"></div>
+                            <div class="shape-bottom" style="background-color: #97a822"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-3">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #718f40"></div>
+                            <div class="shape-middle" style="background-color: #718f40"></div>
+                            <div class="shape-bottom" style="background-color: #718f40"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-2">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #00b8a8"></div>
+                            <div class="shape-middle" style="background-color: #00b8a8"></div>
+                            <div class="shape-bottom" style="background-color: #00b8a8"></div>
+                        </div>
+                    </div>
+                    <div class="shape shape-1">
+                        <div class="inner-shape">
+                            <div class="shape-top" style="background-color: #ffaf3a"></div>
+                            <div class="shape-middle" style="background-color: #ffaf3a"></div>
+                            <div class="shape-bottom" style="background-color: #ffaf3a"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader Design End -->
+    <!-- Footer Copyright Start -->
+    <footer class="text-center mt-5">
+        <p id="copyRight" class="py-3 my-4 text-muted">© 2023 <a href="https://www.paapri.com/" target="_blank">Paapri
+                Cloud
+                Technologies.</a> All Rights Reserved.</p>
+    </footer>
+    <!-- Footer Copyright End -->
+
+
+    <!-- Jquery JS Link -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Jquery UI JS Link -->
+    <script src="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js"></script>
+    <!-- Bootstrap JS Link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Sweet alert CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Jquery Datatable JS Link Start -->
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+    <!-- Jquery Datatable JS Link End -->
+    <!-- Datatable buttons CDN Start -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <!-- Datatable buttons CDN End -->
+    <!-- Controller JS Link -->
+    <script src="#FETCH-CONTROLLER#"></script>
+</body>
+
+</html>

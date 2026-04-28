@@ -1,0 +1,40 @@
+Inventory Add Restlet ( PCT Inventory Warehouse ) 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=357&deploy=1
+
+Call Map Reduce for Inventory Transfer 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=361&deploy=1
+
+Warehouse Tracking Deatils Add Restlet ( PCT Warehouse Tracking Details ) 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=359&deploy=1
+
+Call Map Reduce for Tracking Details to Fulfillment 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=373&deploy=1
+
+Lock Location to Maisonette 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=367&deploy=1
+
+Odrer Push to Maisonette Web Order
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=370&deploy=1
+
+Call Map Reduce for Sales Odrer Transfer
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=372&deploy=1
+
+Maisonette Location to Lock Location
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=368&deploy=1
+
+Invoice Response Get 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=363&deploy=1
+
+Invoice Close Restlet 
+
+https://7235140.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=374&deploy=1
+

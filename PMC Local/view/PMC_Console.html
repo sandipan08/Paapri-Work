@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paapri Manufacturing Console</title>
+    <!-- Bootstrap CSS CDN Start -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS CDN End -->
+    <!-- External Stylesheet Link Start -->
+    <link rel="stylesheet" href="#FETCH-STYLESHEET#">
+    <!-- External Stylesheet Link End -->
+    <!-- Line Awsome Icons Link Start -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- Line Awsome Icons Link End -->
+</head>
+
+<body>
+    <!-- Navabr Design Start -->
+    <nav class="navbar navbar-expand bg-light navbar-light shadow sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand"><img src="#FETCH-LOGO#" alt="logo" height="30px" width="30px"></span>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a id="user" class="nav-link active" href="#">No User</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" id="logOut" hidden>Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navabr Design End -->
+
+    <!-- Open Work Order Table Design Start -->
+    <div class="card m-3 shadow" id="openWorkOrderContainer">
+        <div class="card-header">
+            <p>Open Work Orders</p>
+        </div>
+        <div class="card-body"></div>
+    </div>
+    <!-- Open Work Order Table Design End -->
+
+    <!-- Information & Buttons Section Design Start -->
+    <div id="informationAndButtoms">
+        <div class="d-flex m-3">
+            <div id="informationSection" class="card col-4 shadow">
+                <div class="card-header">
+                    <p>Information</p>
+                </div>
+                <div class="card-body"></div>
+            </div>
+            <div class="m-1"></div>
+            <div id="buttonsSection" class="card flex-fill shadow">
+                <div class="card-header">
+                    <p>Actions</p>
+                </div>
+                <div class="card-body d-flex justify-content-center functionalButtonContainer">
+                    <div class="d-flex flex-column align-items-center">
+                        <button class="btn functionalButtonDesign" id="setup"><i class="las la-cogs la-3x"></i></button>
+                        <p>Setup</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <button class="btn functionalButtonDesign" id="production"><i
+                                class="las la-industry la-3x"></i></button>
+                        <p>Completion</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <button class="btn functionalButtonDesign" id="workOrderIssue"><i
+                                class="las la-tools la-3x"></i></button>
+                        <p>Issue</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <!-- Stopwach Design Start -->
+                    <div class="container">
+                        <div id="timerDisplay" class="card">
+                            00 : 00 : 00 : 000
+                        </div>
+                        <div class="buttons">
+                            <button id="pauseTimer" class="btn" disabled>Pause</button>
+                            <button id="startTimer" class="btn">Start</button>
+                            <button id="stopTimer" class="btn" disabled>Stop</button>
+                            <button id="restartTimer" class="btn" disabled>Restart</button>
+                        </div>
+                    </div>
+                    <!-- Stopwach Design End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Information & Buttons Section Design End -->
+
+    <!-- Work Order Issue Table Design Start -->
+    <!-- Work Order Issue Table Design End -->
+
+    <!-- Additional Detals Design Start -->
+    <div class="card m-3 shadow" id="additionalData">
+        <div class="card-body">
+            <nav class="card-title">
+                <div class="nav nav-pills" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                    tabindex="0">Home Data</div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+                    tabindex="0">Profile Data</div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
+                    tabindex="0">Contact Data</div>
+            </div>
+        </div>
+    </div>
+    <!-- Additional Detals Design End -->
+
+    <!-- Login Page Design Start -->
+    <div class="container w-25 mt-5" id="logInFormContainer">
+        <form id="loginForm" class="card shadow">
+            <div class="card-header text-uppercase">Login</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="badgeId" class="form-label text-uppercase">Enter Badgeid</label>
+                    <input type="number" id="badgeId" class="form-control" required>
+                </div>
+                <button type="button" id="logIn" class="btn btn-dark">LOGIN</button>
+            </div>
+        </form>
+    </div>
+    <!-- Login Page Design End -->
+    <!-- Utility Data Store Start -->
+    <span id="scriptIdFetchRestletId" hidden>#FETCH-SCRIPTID-RESTLET#</span>
+    <!-- Utility Data Store End -->
+    <!-- Jquery JS CDN Start -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Jquery JS CDN End -->
+    <!-- Bootstrap JS CDN Start -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS CDN End -->
+    <!-- Controller Link Start -->
+    <script src="#FETCH-CONTROLLER#"></script>
+    <!-- Controller Link End -->
+</body>
+
+</html>

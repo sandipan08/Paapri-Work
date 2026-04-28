@@ -1,0 +1,22 @@
+
+FLOW 1st (Create SO In NetSuite)
+1. NetSuite Import - Sales Order.
+2. Need to fetch SO detail from three folders "Fellers", "Grimco", "JDS".
+3. Export customer's order file in celigo and read and then import it to the netsuite by creatng sales order.
+
+FLOW 2nd (Create ordconf.csv file to SFTP server)
+1. Source NetSuite - load open SO & open Quote data through saved search.
+2. Import that data into the SFTP.
+3. create this file in every 15 to 20 minutes
+
+FLOW 3rd(Create dalinv.csv to SFTP)
+1. Open inv fetch from NetSuite and import it to the SFTP.
+
+FLOW 4th (Create custstmt.csv file to SFTP )
+1. Fetch from NetSUite "customer statement" record / customer A/R record and import it to the SFTP server.
+2. create this file daily at 11:30 PM
+
+
+FLOW 5th(Create invaval.csv file to SFTP)
+1. Fetch from NteUSiuite via a saved search created on invventory and send it to the SFTP server. 
+

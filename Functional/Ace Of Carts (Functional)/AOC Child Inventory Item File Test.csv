@@ -1,0 +1,4 @@
+Model,Model Id,Occupancy,Occupancy Id,Make,Make Id,Type,Type Id,TypeDetail,TypeDetail2,Suspension,Suspension Id,Color,Canopy Top Color,Subitem of,Subitem Id,Child Item,MSRP
+Adventurer 2+2,1,4-PASS,2,Yamaha,1,GAS,3,EFI,1,Lifted,1,Atomic Orange,Black,"Yamaha,Adventurer 2+2,4-PASS,EFI,GAS,Lifted",2647,"Yamaha,Adventurer 2+2,Atomic Orange,4-PASS,EFI,GAS,Lifted,CT_Black",14995.00
+Adventurer 2+2,1,4-PASS,2,Yamaha,1,ELECTRIC,2,FLA,4,Lifted,1,Graphite Matte,Stone,"Yamaha,Adventurer 2+2,4-PASS,FLA,ELECTRIC,Lifted",2648,"Yamaha,Adventurer 2+2,Graphite Matte,4-PASS,FLA,ELECTRIC,Lifted,CT_Stone",14995.00
+Adventurer 2+2,1,4-PASS,2,Yamaha,1,ELECTRIC,2,FLA,4,Lifted,1,Mica Matte,Black,"Yamaha,Adventurer 2+2,4-PASS,FLA,ELECTRIC,Lifted",2648,"Yamaha,Adventurer 2+2,Mica Matte,4-PASS,FLA,ELECTRIC,Lifted,CT_Black",14995.00

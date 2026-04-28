@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <!--************************************************** Required meta tags **************************************************-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">      
+
+  <!--************************************************** Icons **************************************************-->
+
+  <link rel="icon" href="#FAVICON#" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="#APPLE-ICON#">
+
+  <!--************************************************** Bootstrap CSS **************************************************-->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!--************************************************** FontAwesome CSS **************************************************-->
+
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <!--************************************************** SweetAlert CSS **************************************************-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" integrity="sha512-p4DnlqTeGE7mQ9HvOXlJjG/IwuKnR7NIAlsrVZRHRY2PODpuywYxdhOKy59zzeRcIlYwE6cSjrwEguzVC8TMgg==" crossorigin="anonymous" />
+
+  <!--************************************************** Datatable CSS **************************************************-->
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.css"/>
+
+  <!--************************************************** JQuery UI CSS **************************************************-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css" integrity="sha512-+0Vhbu8sRUlg+R/NKgTv7ahM+szPDF10G6J5PcHb1tOrAaquZIUiKUV3TH16mi6fuH4NjvHqlok6ppBhR6Nxuw==" crossorigin="anonymous" />
+
+  <!--************************************************** START **************************************************-->
+
+  <title>MOTT TIMESHEET</title>
+
+  <style>
+
+    html {
+      overflow-x: hidden;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    }
+    *{
+      box-sizing: border-box;
+    }
+    ::-webkit-scrollbar {
+      height: 6px;
+      width: 0px;  /* Remove scrollbar space */
+      background: transparent;  /* Optional: just make scrollbar invisible */      
+      -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.25);
+      border-radius: 5px;
+    }    
+    ::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(120deg, #c2e9fb 0%, #93d6f5 100%);
+      -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5);
+      border-radius: 5px;
+    }
+    .nobr { 
+      white-space: nowrap;
+    }    
+    body{
+      margin-top: 3.55rem;
+      background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .cursor-grab {
+      cursor: grab;
+    }
+    .navbar {
+      margin:0rem !important;
+      padding: 0rem !important;
+    }
+    .logo-pad {
+      cursor: grab;
+      vertical-align: middle;
+      padding-left: 15px;
+      padding-right: 0px;
+    }
+    .responsive-width {
+      font-size: 1vw;
+    }
+    @media screen and (max-width: 320px) {
+      .logo-pad {
+        margin-top: -10px;
+        padding-left: 15px;
+        padding-right: 0px;
+        width: 45px;
+        height: 30px;
+      }
+    }
+    .card-title {
+      font-size: 18pt;
+      font-weight: 550;
+    }
+    .reqd {
+      color:red;
+    }
+    #timer {
+      height: 6.5rem;
+      width: 11rem;
+      margin-top: 4.5rem;
+      margin-right: 0rem;
+      margin-bottom: 2.25rem;
+      margin-left: 2rem;
+      /*background: #0f3854;
+      background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+      border: 10px solid;
+      border-image-slice: 1;
+      border-width: 6px;
+      border-image-source: linear-gradient(to left, #410896, #daf0ff);
+      border: 4px solid white;
+      box-shadow: inset 0 0 12px #fff,
+      inset 10px 0 20px #f0f,
+      inset -20px 0 20px #0ff,
+      inset 20px 0 50px #f0f,
+      inset -20px 0 50px #0ff,
+      0 0 25px #fff,
+      -10px 0 20px #f0f,
+      10px 0 20px #0ff;*/
+      background-image: linear-gradient(135deg, #dfba02 25%, #333 25%, #333 50%, #dfba02 50%, #dfba02 75%, #333 75%, #333 100%);
+      background-size: 65px 65px;
+    }
+    #clock {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.3rem;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #0f3854;
+      background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+      padding-top: 16px;
+      padding-bottom: 16px;
+      color: #daf6ff;
+      text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);    
+    }
+
+    /*<-------------------------------------------------- COLORS -------------------------------------------------->*/
+
+    .nav-custom-color {
+      background-image: linear-gradient(15deg, #94ade4 0%, #5c85c7 100%);
+    }
+    .lightblue-custom-color {
+      background-image: -webkit-gradient(linear, left top, right top, from(#95d7f5), to(#52b7ff));
+      background-image: linear-gradient(to right, #95d7f5 0%, #52b7ff 100%);
+    }
+    .lightblue-custom-color:hover {
+      background-image: -webkit-gradient(linear, left top, right top, from(#8acfed), to(#48a1e0));
+      background-image: linear-gradient(to right, #8acfed 0%, #48a1e0 100%);
+    }
+    .lightblue-custom-color-disabled {
+      background-image: -webkit-gradient(linear, left top, right top, from(#c1d3db), to(#bed5e6));
+      background-image: linear-gradient(to right, #c1d3db 0%, #bed5e6 100%);
+    }
+    .lightblue-custom-color-darker {
+      background-image: -webkit-gradient(linear, left top, right top, from(#8acfed), to(#48a1e0));
+      background-image: linear-gradient(to right, #8acfed 0%, #48a1e0 100%);
+    }
+    .lightblue-custom-color-darker:hover {
+      background-image: -webkit-gradient(linear, left top, right top, from(#76c2e3), to(#46a0e0));
+      background-image: linear-gradient(to right, #76c2e3 0%, #46a0e0 100%);
+    }
+    .no-user-logged-in-red {
+      background-image: linear-gradient(15deg, #fa625a 0%, #f26d66 100%);
+    }
+    .no-user-logged-in-red:hover {
+      background-image: linear-gradient(15deg, #ed4e5e 0%, #dc3546 100%);
+    }
+    .lost-connection-red {
+      background-image: linear-gradient(to right, #ff8080 0%, #ed6f6f 100%);
+    }
+    .lost-connection-red:hover {
+      background-image: linear-gradient(to right, #d97979 0%, #b04d4d 100%);
+    }
+    .peachyellow-custom-color {
+      background-image: -webkit-gradient(linear, left top, right top, from(#f0dabd), to(#f5c0ae));
+      background-image: linear-gradient(to right, #f0dabd 0%, #f5c0ae 100%);
+    }
+    .peachyellow-custom-color:hover {
+      background-image: -webkit-gradient(linear, left top, right top, from(#f2d4ac), to(#edaf9a));
+      background-image: linear-gradient(to right, #f2d4ac 0%, #edaf9a 100%);
+    }
+    .peachyellow-custom-color-darker {
+      background-image: -webkit-gradient(linear, left top, right top, from(#f5cf9d), to(#f5aa90));
+      background-image: linear-gradient(to right, #f5cf9d 0%, #f5aa90 100%);
+    }
+    .peachyellow-custom-color-darker:hover {
+      background-image: -webkit-gradient(linear, left top, right top, from(#f5c88c), to(#fca386));
+      background-image: linear-gradient(to right, #f5c88c 0%, #fca386 100%);
+    }
+    .reddish-pink-custom-color {
+      background-image: -webkit-gradient(linear, left top, right top, from(#fcbdbb), to(#ff9a9e));
+      background-image: linear-gradient(to right, #fcbdbb 0%, #ff9a9e 100%)
+    }
+    .reddish-pink-custom-color:hover {
+      background-image: -webkit-gradient(linear, left top, right top, from(#ffb3b0), to(#fc8388));
+      background-image: linear-gradient(to right, #ffb3b0 0%, #fc8388 100%)
+    }
+    .card-title-gradient {
+      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    }
+    .datatable-row-selected {
+      background-image: -webkit-gradient(linear, left top, right top, from(#cae391), to(#b4cf76));
+      background-image: linear-gradient(to right, #cae391 0%, #b4cf76 100%);
+    }
+    .datatable-row-selected:hover {
+      background-image: -webkit-gradient(linear, left top, right top, from(#b5cf7c), to(#9cbd4d));
+      background-image: linear-gradient(to right, #b8d96c 0%, #9cbd4d 100%);
+    }
+
+    /*<-------------------------------------------------- BUTTON STYLES -------------------------------------------------->*/
+
+    .pad-y {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .additional-user-login {
+      padding-left: 4px;
+      padding-right: 4px;
+      display: block;
+      float: left;
+      border-radius: 0;
+    }
+    .additional-user-login:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .no-user-logged-in-btn {
+      padding-left: 4px;
+      padding-right: 4px;
+      display: block;
+      float: left;
+      border-radius: 0;
+    }
+    .logged-in-btn {
+      margin-left: -1px;
+      margin-right: -4px;
+      padding-left: 4px;
+      padding-right: 4px;
+      border-radius: 0;
+    }
+    #username:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .operator-btn {
+      border-radius: 0;
+    }
+    .operator-btn:hover {
+      background-image: linear-gradient(15deg, #9ab1e5 0%, #6897e2 100%);
+    }
+    .operator-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .time-tracking-btn {
+      height: 11rem;
+      width: 11rem;
+      margin-top: 2.25rem;
+      margin-right: 0rem;
+      margin-bottom: 2.25rem;
+      margin-left: 2rem;      
+    }
+    .time-tracking-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .newtime-btn {
+      height: 11rem;
+      width: 11rem;
+      margin-top: 2.25rem;
+      margin-right: 2rem;
+      margin-bottom: 2.25rem;
+      margin-left: 2rem;
+    }
+    .newtime-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .pause-btn {
+      height: 11rem;
+      width: 11rem;
+      margin: 2.25rem 1.5rem;
+    }
+    .pause-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar fixed-top nav-custom-color nobr">
+    <a class="navbar-brand py-0 mx-md-2 logo-pad"><img src="#LOGO#" width="auto" height="20" alt="Logo" loading="lazy"></a>
+    <div class="pull-right mx-md-3">
+      <button type="button" class="btn btn-sm pad-y additional-user-login lightblue-custom-color lightblue-custom-color-hover nobr" id="additional-user" data-toggle="tooltip" data-placement="bottom" title="Opens another tab" onclick="additionalUserLogin();">Additional User Login
+      </button>
+      <button type="button" class="btn btn-sm pad-y no-user-logged-in-btn no-user-logged-in-red nobr" id="username" data-toggle="tooltip" data-placement="bottom" title="Please Login">No User Logged In</button>
+      <button type="button" class="btn btn-sm dropdown-toggle pad-y operator-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Operator
+      </button>
+      <div class="dropdown-menu dropdown-menu-right nav-custom-color my-0 py-0">
+        <button class="dropdown-item operator-btn login py-2" type="button" id="login"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login
+        </button>
+        <button class="dropdown-item operator-btn logout py-2" type="button" id="logout" style="display:none;"><i class="fa fa-sign-out" aria-hidden="true">
+        </i>&nbsp;Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="body">
+  <div class="mx-sm-3 my-sm-2" id="project-card" style="display:none;">
+    <div class="shadow-sm bg-white rounded">
+      <div class="card">
+        <div class="card-header card-title-gradient">
+          <span class = "card-title cursor-grab">Projects</span>
+          <div class="float-right">
+            <a class="btn" role="button" data-toggle="collapse" data-target="#projectsCardCollapse" aria-expanded="true" aria-controls="projectsCardCollapse" onclick="minimize_card(1)"><span class="align-text-bottom"><i class="fa fa-minus" id="minimizebutton1"></i></span>
+            </a>
+            <a class="btn ml-n3 mr-n2" role="button" id="refreshProjectsCard"><i class="fa fa-refresh cursor-pointer" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="collapse show" id="projectsCardCollapse">
+          <div class="card-body mr-n2">
+            <div class="container-fluid my-2 mx-n2">
+              <table class="table table-responsive table-bordered table-hover table-sm nobr cursor-pointer" id="projectsTable" style="width: 100%">
+                <thead id="projectsTableHead"></thead>
+                <tbody id="projectsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 ml-0 mr-n2" id="information-action-cards" style="display:none;">
+    <div class="col-lg-7 my-sm-2 mr-sm-n1">
+      <div class="card h-100 shadow-sm bg-white rounded" id="h-100-2">
+        <div class="card-header card-title-gradient">
+          <span class = "card-title cursor-grab">Information</span>
+          <div class="float-right">
+            <a class="btn" role="button" data-toggle="collapse" data-target="#informationCardCollapse" aria-expanded="true" aria-controls="informationCardCollapse" onclick="minimize_card(2)"><span class="align-text-bottom"><i class="fa fa-minus" id="minimizebutton2"></i></span>
+            </a>
+            <!--<a class="btn ml-n3 mr-n2" role="button" id="refreshInformationCard"><i class="fa fa-refresh cursor-pointer" aria-hidden="true"></i></a>-->
+          </div>
+        </div>
+        <div class="collapse show" id="informationCardCollapse">
+          <div class="card-body mr-sm-n2">
+            <div class="container-fluid my-2 mx-n2">
+              <dl class="row">
+                <dt class="col-sm-3" id="project_name_term">Project Name</dt>
+                <dd class="col-sm-9" id="project_name_description"></dd>
+
+                <dt class="col-sm-3" id="customer_term">Customer</dt>
+                <dd class="col-sm-9" id="customer_description"></dd>
+
+                <dt class="col-sm-3" id="subsidiary_term">Subsidiary</dt>
+                <dd class="col-sm-9" id="subsidiary_description"></dd>
+
+                <dt class="col-sm-3" id="primary_contact_term">Primary Contact</dt>
+                <dd class="col-sm-9" id="primary_contact_description"></dd>
+
+                <dt class="col-sm-3" id="start_date_term">Start Date</dt>
+                <dd class="col-sm-9" id="start_date_description"></dd>
+
+                <dt class="col-sm-3" id="end_date_term">End Date</dt>
+                <dd class="col-sm-9" id="end_date_description"></dd>
+
+                <dt class="col-sm-3" id="admin_term">Admin</dt>
+                <dd class="col-sm-9" id="admin_description"></dd>                  
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 my-sm-2 ml-sm-n1">
+      <div class="card h-100 shadow-sm bg-white rounded" id="h-100-3">
+        <div class="card-header card-title-gradient">
+          <span class = "card-title cursor-grab">Actions</span>
+          <div class="float-right">
+            <a class="btn" role="button" data-toggle="collapse" data-target="#ActionsCardCollapse" aria-expanded="true" aria-controls="ActionsCardCollapse" onclick="minimize_card(3)"><span class="align-text-bottom"><i class="fa fa-minus" id="minimizebutton3"></i></span>
+            </a>
+            <!--<a class="btn ml-n3 mr-n2" role="button" id="refreshActionsCard"><i class="fa fa-refresh cursor-pointer" aria-hidden="true"></i></a>-->
+          </div>
+        </div>
+        <div class="collapse show" id="ActionsCardCollapse">
+          <div class="card-body mx-sm-2">
+            <div class="container-fluid">
+              <div class="d-flex d-flex-column align-items-center justify-content-center">
+                <div style="display: flex; flex-flow: row wrap;">
+                  <div>
+                    <input type="button" class="btn peachyellow-custom-color shadow bg-white rounded py-5 time-tracking-btn" value="Start Timetracking" id="record-time-button" aria-disabled="false">
+                  </div>
+                  <div>
+                    <input type="button" class="btn lightblue-custom-color shadow bg-white rounded py-5 newtime-btn" value="New Time" id="new-time-button" aria-disabled="false">
+                  </div>
+                  <div id="timer" style="display: none;">
+                    <div id="clock">
+                      <div id="elapsedTime">Elapsed Time</div>
+                      <div id="time">{{ time }}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <input type="button" class="btn reddish-pink-custom-color shadow bg-white rounded py-5 pause-btn" value="Pause" id="pause-button" aria-disabled="false" style="display: none;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ml-sm-0 mr-sm-0" id="time-tracking-card" style="display:none;">
+    <div class="col-lg-12 my-sm-2">
+      <div class="shadow-sm bg-white rounded">
+        <div class="card">
+          <div class="card-header card-title-gradient">
+            <span class = "card-title cursor-grab nobr">Time Tracking</span>
+            <div class="float-right">
+              <a class="btn" role="button" data-toggle="collapse" data-target="#timeTrackingCardCollapse" aria-expanded="true" aria-controls="timeTrackingCardCollapse" onclick="minimize_card(4)"><span class="align-text-bottom"><i class="fa fa-minus" id="minimizebutton4"></i></span>
+              </a>
+              <a class="btn ml-sm-n3 mr-sm-n2" role="button" id="refreshTimeTrackingCard"><i class="fa fa-refresh cursor-pointer" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="collapse show" id="timeTrackingCardCollapse">
+            <div class="card-body">
+              <div class="container-fluid my-sm-2 mx-sm-n2">
+                <form class="timeTracking_Validation" novalidate id="timeTracking_Form">
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="timeTracking_InputEmployee">Employee</label>
+                      <input type="text" class="form-control" id="timeTracking_InputEmployee" value="" readonly>
+                      <div class="valid-feedback">Looks good!</div>
+                      <div class="invalid-feedback">Please provide your name.</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="timeTracking_InputCustomer">Customer : Job</label>
+                      <input type="text" class="form-control" id="timeTracking_InputCustomer" value="" readonly>
+                      <div class="valid-feedback">Looks good!</div>
+                      <div class="invalid-feedback">Please provide a valid customer.</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="timeTracking_InputDuration"><span class="reqd nobr">* </span>Duration</label>
+                      <input type="number" class="form-control" id="timeTracking_InputDuration" value="" min="0.01" max="2400" step="0.01" maxlength="8" required>
+                      <div class="valid-feedback">Looks good!</div>
+                      <div class="invalid-feedback">Please provide a valid duration.</div>
+                    </div>
+                  </div>
+                  <!--<div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Address 2</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  </div>-->
+                  <!--<div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">City</label>
+                      <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">State</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="inputZip">Zip</label>
+                      <input type="text" class="form-control" id="inputZip">
+                    </div>
+                  </div>-->
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="timeTracking_InputLocation"><span class="reqd nobr">* </span>Location</label>
+                      <select id="timeTracking_InputLocation" class="form-control nobr" required>
+                        <option value=""> -Select- </option>
+                      </select>
+                      <div class="valid-feedback">Looks good!</div>
+                      <div class="invalid-feedback">Please choose a location.</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="timeTracking_InputTask">Task</label>
+                      <select id="timeTracking_InputTask" class="form-control nobr">
+                        <option value=""> -Select- </option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="timeTracking_InputMemo">Memo</label>
+                      <input type="text" class="form-control" id="timeTracking_InputMemo" value="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="timeTracking_formCheck" required>
+                      <label class="form-check-label nobr" for="timeTracking_formCheck">
+                        I approve
+                      </label>
+                      <div class="invalid-feedback">You must approve before submitting.</div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="timeTracking_FormSubmit">Submit</button>
+                  <button type="button" class="btn btn-secondary px-3 mx-1" id="timeTracking_FormCancel">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ml-0 mr-0" id="saved-time-entries-card" style="display:none;">
+    <div class="col-lg-12 my-sm-2">
+      <div class="shadow-sm bg-white rounded">
+        <div class="card">
+          <div class="card-header card-title-gradient">
+            <span class = "card-title cursor-grab nobr">Saved Time Entries</span>
+            <div class="float-right">
+              <a class="btn" role="button" data-toggle="collapse" data-target="#savedTimeEntriesCardCollapse" aria-expanded="true" aria-controls="savedTimeEntriesCardCollapse" onclick="minimize_card(5)"><span class="align-text-bottom"><i class="fa fa-minus" id="minimizebutton5"></i></span>
+              </a>
+              <a class="btn ml-sm-n3 mr-sm-n2" role="button" id="refreshSavedTimeEntriesCard"><i class="fa fa-refresh cursor-pointer" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="collapse show" id="savedTimeEntriesCardCollapse">
+            <div class="card-body">
+              <div class="container-fluid my-sm-2 mx-sm-n2">
+                <table class="table table-hover table-sm nobr cursor-pointer" id="savedTimeEntriesTable" style="width:100%">
+                  <thead id="savedTimeEntriesTableHead"></thead>
+                  <tbody id="savedTimeEntriesTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div aria-live="polite" aria-atomic="true" id="record_save_notification_maindiv" style="position: fixed; top: 75%; right: 0.5%; z-index: -1;">
+    <div class="toast" style="position: sticky" id="record_save_notification" data-delay="15000">
+      <div class="toast-header datatable-row-selected my-n2 pt-0 pb-1">
+        <strong class="mr-auto">Saved!</strong>
+        <small>3 secs ago</small>
+        <a class="btn close" role="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true" class="mr-n2" style="font-size: 1.1rem;"><i class="fa fa-times fa-xs mb-2" aria-hidden="true"></i></span></a>
+      </div>
+      <div class="toast-body bg-light" id="record_save_notification_body">
+        <!--Time tracking record has been created, you can view the record <a href="#" target="_blank" id="time_tracking_record_link">here.</a>-->
+      </div>
+    </div>
+  </div>
+  <div aria-live="polite" aria-atomic="true" id="lost_connection_notification_maindiv" style="position: fixed; top: 75%; right: 0.5%; z-index: -1;">
+    <div class="toast" style="position: sticky" id="lost_connection_notification" data-delay="15000">
+      <div class="toast-header lost-connection-red my-sm-n2 pt-sm-0 pb-sm-1">
+        <strong class="mr-auto" style="color: #ede9e6;">Connection Error</strong>
+        <small style="color: #d9d5d2;">3 secs ago</small>
+        <a class="btn close" role="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true" class="mr-n2" style="font-size: 1.1rem;"><i class="fa fa-times fa-xs mb-2" aria-hidden="true"></i></span></a>
+      </div>
+      <div class="toast-body bg-light" id="lost_connection_notification_body">
+        You have lost connection with Netsuite, please <a href="#" target="_blank" id="relogin_link">relogin</a> and try again.
+      </div>
+    </div>
+  </div>
+  <div id="loading_screen" style="display:none; cursor: default">
+    <span class="spinner-grow" role="status" aria-hidden="true"></span>
+    <span style="font-size: 150%">&nbsp;Please Wait...</span>
+  </div>
+</div>
+
+<!--****************************************** Hidden Fields For Miscellaneous Purposes ******************************************-->
+
+<input id="script-searcher-script" name="" value="#SCRIPT-SEARCHER-SCRIPT#" type="hidden">
+<input id="dynamic-part-of-record-url" name="" value="" type="hidden">
+
+<!--************************************************** Footer **************************************************-->
+
+<footer class="pt-1 mr-sm-3 my-sm-5 pt-sm-3 border-top">
+  <div class="float-right">
+    <!--<img class="mb-2" src="PCT_Logo.png" alt="PCT_Logo" width="100" height="40">-->
+    <small class="mb-sm-2 text-muted nobr">&copy; 2020 <a href="https://www.paapri.com" target="_blank">Paapri Cloud Technologies</a>. All Rights Reserved.</small>
+  </div>
+</footer>
+
+<!--************************************************** Scripts **************************************************-->
+
+<script>
+  function minimize_card(cardNumber)
+  {
+    var elementID = "minimizebutton"+cardNumber;
+    var fa_button = document.getElementById(elementID);
+    if (fa_button.className == "fa fa-minus") {      
+      fa_button.className = "fa fa-plus";
+      if(cardNumber == 2 || cardNumber == 3)
+      {
+        document.getElementById("h-100-"+cardNumber).classList.remove("h-100");
+      }
+    }    
+    else {
+      fa_button.className = "fa fa-minus";
+      if(cardNumber == 2 || cardNumber == 3)
+      {
+        document.getElementById("h-100-"+cardNumber).classList.add("h-100");
+      }
+    }
+  }
+
+  function additionalUserLogin() {
+    var url = window.location.href;
+    window.open(url,'_blank');
+  }
+
+  function setDynamicPartOfUrl(){
+    var url = window.location.href;
+    url = url.split('site')[0];
+    document.getElementById("dynamic-part-of-record-url").value = url;
+    var enterpriseName = url.split('.app')[0];
+    enterpriseName = enterpriseName.split('https://')[1].toUpperCase();
+    document.getElementById("relogin_link").href = url+'login/secure/enterpriselogin.nl?c='+enterpriseName;
+  }
+  window.onload = setDynamicPartOfUrl;
+
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('timeTracking_Validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          else
+          {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>
+<!--****************************************************** AJAX ******************************************************-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!--**************************************************** JQuery UI ****************************************************-->
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+<!--************************************************* SweetAlert2 JS *************************************************-->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@6.6.5/dist/sweetalert2.min.js" integrity="sha256-xofl41Tt0WRg2Q0LrntvSB6qv1Mzz/ZLvSyi+O08d1g=" crossorigin="anonymous"></script>
+
+<!--************************************************* BlockUI Plugin *************************************************-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg==" crossorigin="anonymous"></script>
+
+<!--****************************************************** Mouse Wheel plugin ******************************************************-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js" integrity="sha512-rCjfoab9CVKOH/w/T6GbBxnAH5Azhy4+q1EXW5XEURefHbIkRbQ++ZR+GBClo3/d3q583X/gO4FKmOFuhkKrdA==" crossorigin="anonymous"></script>
+
+<!--************************************************** DataTables JS **************************************************-->
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
+
+<!--************************************************ External Scripts ************************************************-->
+
+<script src="#CONTROLLER#"></script>
+
+<!--************************************************** BootStrap JS **************************************************-->
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

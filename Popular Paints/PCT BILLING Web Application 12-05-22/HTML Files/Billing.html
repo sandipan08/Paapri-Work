@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PCT Billing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="${ds.faviconUrl}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
+</head>
+<style>
+    img.logo-navbar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .item-table {
+        background-color: #f5f4f5;
+        margin: 10px 0px 0px 1px;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .top-buffer {
+        margin-top: 10px;
+    }
+
+    .body {
+        background: #4cb8c4;
+        background: -webkit-linear-gradient(to right, #4cb8c4, #3cd3ad);
+        background: linear-gradient(to right, #4cb8c4, #3cd3ad);
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+
+<body onload="startTime()" class="body">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="${ds.pctLogo}" class="logo-navbar" width="auto"
+                        height="auto"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="empName">
+                            <!--<span class="glyphicon glyphicon-user"></span>--> Welcome, ${ds.empName}!
+                        </a></li>
+                    <li><a
+                            href="https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=196&deploy=1&compid=7255402&h=38a57cec7478fc49f8d3"><span
+                                class="glyphicon glyphicon-off"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="text-align:center ">
+
+        <form class="form-inline" id="url" action="" enctype="multipart/form-data" method="post">
+            <div class="row" style="padding: 0px; margin: 0px;">
+
+                <div class="col-xs-12" style="margin-bottom:5px" id="time">
+                </div>
+                <div class="col-xs-12" style="margin-bottom:5px" id="date">
+
+                </div>
+
+                <div class="col-xs-12" style="margin-bottom:5px">
+
+                    <div class="form-group">
+
+
+                        <!-- <select id="customerName" class="form-control" name="customerName"
+                                onchange="blankSoCheck(this)">
+                                <option selected>Select a Customer..</option>
+                                #CUSTOMER-CONTENTS#
+                            </select> -->
+
+
+
+                        #dataList#
+
+                    </div>
+                    <button type="submit" class="btn btn-warning" id="generateSo" name="generateSo"
+                        value="displaySalesOrder" onclick="custNameFound()" disabled>Load
+                        Details</button>
+                </div>
+
+                <div class="col-xs-12" style="margin-bottom:5px">
+                    <div class="form-group">
+                        <label class="sr-only" for="cust_id">Sales Order</label>
+                        <select id="soNumber" class="form-control" name="soNumber">
+
+                            #SODROPDOWN-CONTENTS#
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" id="checkSo" name="checkSo"
+                        value="detailsSalesOrder">Load
+                        Sales Order Details</button>
+
+                    <button type="submit" class="btn btn-info" id="printSo" name="printSo" value="printSalesOrder">Print
+                        Sales
+                        Order</button>
+                    <button type="submit" class="btn btn-danger" id="printPT" name="printPT"
+                        value="printPickingTicket">Print Picking Ticket</button>
+                </div>
+
+                <div class="col-xs-12" style="margin-bottom:5px">
+                    <div class="form-group">
+                        <label class="sr-only" for="inv_id">Invoice Number:</label>
+                        <select class="form-control" id="inv_id" name="inv_id">
+
+                            #DROPDOWN-INVOICE#
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success" id="load_invoice" name="load_invoice"
+                        value="loadInvoice">Load
+                        Invoice</button>
+                    <button type="submit" class="btn btn-primary" id="generate_invoice" name="generate_invoice"
+                        value="displayInvoice" disabled>Print
+                        Invoice</button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <button type="submit" id="printingSalesOrder" name="printingSalesOrder" class='btn btn-default'
+                onclick="buttonClick()">
+                Printing Sales Order
+            </button>
+        </div>
+        <div>
+            <button type="submit" id="transportReceipt" name="transportReceipt" class='btn btn-default'
+                onclick="buttonSubmit()">
+                Transport Receipt Form
+            </button>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p class="attribution" style="text-align: center;">
+            Copyright @2021 All rights reserved | Designed & Developed by <a href="https://www.paapri.com/">Paapri
+                Business Technologies
+            </a>
+        </p>
+
+    </div>
+
+</body>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    document.getElementById("url").action = window.location.href;
+    function startTime()
+    {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+        var current_date = new Date();
+        var dd = current_date.getDate();
+        var mm = current_date.getMonth() + 1;
+        var yyyy = current_date.getFullYear();
+
+        document.getElementById('date').innerHTML = dd + "/" + mm + "/" + yyyy;
+
+        setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i)
+    {
+        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        return i;
+    }
+    disable();
+    function disable()
+    {
+
+        var soCount = "${ds.soCount}";
+        console.log("SO : " + soCount);
+        var invCount = "${ds.invCount}";
+        console.log("inv : " + invCount);
+        if (invCount != 0)
+        {
+            $('#generate_invoice').prop('disabled', false);
+
+        }
+
+        if (soCount != 0)
+        {
+
+            $('#checkSo').prop('disabled', false);
+            $('#printSo').prop('disabled', false);
+            $('#printPT').prop('disabled', false);
+            //$('#generate_invoice').prop('disabled', false);
+
+        }
+        else if (soCount == 0)
+        {
+            $('#checkSo').prop('disabled', true);
+            $('#printSo').prop('disabled', true);
+            $('#printPT').prop('disabled', true);
+        }
+
+    }
+
+    function blankSoCheck(customerName)
+    {
+        console.log("Value: " + document.getElementById("customerName").value);
+        if (document.getElementById("customerName").value != "")
+        {
+            $('#generateSo').prop('disabled', false);
+        }
+        else
+        {
+            $('#generateSo').prop('disabled', true);
+        }
+
+
+    }
+    function blankInvCheck(inv_id)
+    {
+        console.log("Value: " + document.getElementById("inv_id").value);
+        if (document.getElementById("inv_id").value != "")
+        {
+            $('#generate_invoice').prop('disabled', false);
+        }
+        else
+        {
+            $('#generate_invoice').prop('disabled', true);
+        }
+
+    }
+    function custNameFound()
+    {
+        swal({
+
+            title: "Selected Customer:",
+            text: document.getElementById("customerName").value,
+            icon: "success"
+        }).then(() =>
+        {
+            swal({
+                title: "Gathering Sales Orders..",
+                icon: "info"
+            });
+        });
+
+    }
+    function buttonClick()
+    {
+        console.log("Button Click");
+        // window.open(`https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=590&custparam_userName=${"Sandipan"}deploy=1&compid=7255402&h=bc8e3598ab0df9ae9850`, "_self");
+        window.open(`https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=590&deploy=1&compid=7255402&h=bc8e3598ab0df9ae9850&userName=${ds.empName}`, "_self")
+    }
+    function buttonSubmit()
+    {
+        console.log("Button Click");
+        // window.open(`https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=590&custparam_userName=${"Sandipan"}deploy=1&compid=7255402&h=bc8e3598ab0df9ae9850`, "_self");
+        window.open(`https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=594&deploy=1&compid=7255402&h=93639630c5db0170da52&userName=${ds.empName}`, "_self")
+    }
+</script>
+
+
+</html>

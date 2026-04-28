@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+<head>
+	<link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}" src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}" src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+	<#if .locale == "zh_CN">
+		<link name="NotoSansCJKsc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKsc_Regular}" src-bold="${nsfont.NotoSansCJKsc_Bold}" bytes="2" />
+	<#elseif .locale == "zh_TW">
+		<link name="NotoSansCJKtc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKtc_Regular}" src-bold="${nsfont.NotoSansCJKtc_Bold}" bytes="2" />
+	<#elseif .locale == "ja_JP">
+		<link name="NotoSansCJKjp" type="font" subtype="opentype" src="${nsfont.NotoSansCJKjp_Regular}" src-bold="${nsfont.NotoSansCJKjp_Bold}" bytes="2" />
+	<#elseif .locale == "ko_KR">
+		<link name="NotoSansCJKkr" type="font" subtype="opentype" src="${nsfont.NotoSansCJKkr_Regular}" src-bold="${nsfont.NotoSansCJKkr_Bold}" bytes="2" />
+	<#elseif .locale == "th_TH">
+		<link name="NotoSansThai" type="font" subtype="opentype" src="${nsfont.NotoSansThai_Regular}" src-bold="${nsfont.NotoSansThai_Bold}" bytes="2" />
+	</#if>
+    <macrolist>
+        <macro id="nlheader">
+            <table class="header" style="width: 100%;">
+                <tr>
+                    <td rowspan="3">
+                    <#if companyInformation.logoUrl?length != 0>
+                        <@filecabinet nstype="image" style="float: left; margin: 7px; height: 50px; width: 250px" src="${companyInformation.logoUrl}" />
+                    </#if><br /><br /><br /><br /><br /><br />
+                        <span class="nameandaddress">${companyInformation.companyName}</span><br />
+						<span class="nameandaddress">${companyInformation.addressText}</span>
+                    </td>
+                    <td align="right"><span class="title">${record@title}</span></td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="number">#${record.tranid}</span></td>
+                </tr>
+                <tr>
+                    <td align="right">${record.trandate}</td>
+                </tr>
+            </table>
+        </macro>
+        <macro id="nlfooter">
+            <table class="footer" style="width: 100%;">
+                <tr>
+                    <td>
+                        <barcode codetype="code128" showtext="true" value="${record.tranid}"/>
+                    </td>
+                    <td align="right">
+                        <pagenumber/> of <totalpages/>
+                    </td>
+                </tr>
+            </table>
+        </macro>
+    </macrolist>
+    <style>
+		* {
+		<#if .locale == "zh_CN">
+			font-family: NotoSans, NotoSansCJKsc, sans-serif;
+		<#elseif .locale == "zh_TW">
+			font-family: NotoSans, NotoSansCJKtc, sans-serif;
+		<#elseif .locale == "ja_JP">
+			font-family: NotoSans, NotoSansCJKjp, sans-serif;
+		<#elseif .locale == "ko_KR">
+			font-family: NotoSans, NotoSansCJKkr, sans-serif;
+		<#elseif .locale == "th_TH">
+			font-family: NotoSans, NotoSansThai, sans-serif;
+		<#else>
+			font-family: NotoSans, sans-serif;
+		</#if>
+		}
+		table {
+			font-size: 9pt;
+			table-layout: fixed;
+		}
+        th {
+            font-weight: bold;
+            font-size: 8pt;
+            vertical-align: middle;
+            padding: 5px 6px 3px;
+            background-color: #e3e3e3;
+            color: #333333;
+        }
+        td {
+            padding: 4px 6px;
+        }
+		td p { align:left }
+        b {
+            font-weight: bold;
+            color: #333333;
+        }
+        table.header td {
+            padding: 0;
+            font-size: 10pt;
+        }
+        table.footer td {
+            padding: 0;
+            font-size: 8pt;
+        }
+        table.itemtable th {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+            table.vPConfigureDetailsTable th {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        table.productionOrderDetailsTable th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+table.pRODUCTDESCRIPTIONTable th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+table.sETUPDESCRIPTIONTable th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+table.pACKAGINGINSTRUCTIONSTable th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+table.gENERALCOMMUNICATIONNOTETable th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+        table.body td {
+            padding-top: 2px;
+        }
+        span.title {
+            font-size: 28pt;
+        }
+        span.number {
+            font-size: 16pt;
+        }
+        span.itemname {
+            font-weight: bold;
+            line-height: 150%;
+        }
+        hr {
+            width: 100%;
+            color: #d3d3d3;
+            background-color: #d3d3d3;
+            height: 1px;
+        }
+    </style>
+</head>
+<body header="nlheader" header-height="20%" footer="nlfooter" footer-height="10pt" padding="0.5in 0.5in 0.5in 0.5in" size="letter-landscape">
+    <table class="body" style="width: 100%; margin-top: 10px;">
+        <tr>
+            <th>${record.entity@label}</th>
+            <th>${record.assemblyitem@label}</th>
+            <th>${record.quantity@label}</th>
+            <th>${record.revision@label}</th>
+            <th>${record.units@label}</th>
+        </tr>
+        <tr>
+            <td>${record.entity}</td>
+            <td>${record.assemblyitem}</td>
+            <td>${record.quantity}</td>
+            <td>${record.revision}</td>
+            <td>${record.units}</td>
+        </tr>
+    </table>
+<table class="vPConfigureDetailsTable" style="width: 100%; margin-top: 10px;">
+    <thead>
+        <tr >
+
+            <th colspan="12" align="left">VP Configure Details</th>
+        </tr>
+    </thead>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_first_piece_aud@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_first_piece_aud}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_cpq_cust_qty@label} :</b> ${record.assemblyitem.custitem_pct_cpq_cust_qty}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_cpq_cust_rate@label} :</b> ${record.assemblyitem.custitem_pct_cpq_cust_rate}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_compliance@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_compliance}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_cpq_cust_uom@label} :</b> ${record.assemblyitem.custitem_pct_cpq_cust_uom}</td>
+    </tr>
+</table>
+
+<table class="productionOrderDetailsTable" style="width: 100%; margin-top: 10px;">
+    <thead>
+        <tr >
+
+            <th colspan="12" align="left">Production Order Details</th>
+        </tr>
+    </thead>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_line@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_line}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_type_of_packag@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_type_of_packag}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_po_label@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_label}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_bq@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_bq}</td>
+          </tr>
+</table>
+  <table class="pRODUCTDESCRIPTIONTable" style="width: 100%; margin-top: 10px;">
+    <thead>
+        <tr >
+
+            <th colspan="12" align="left">PRODUCT DESCRIPTION</th>
+        </tr>
+    </thead>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_bosd@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_bosd}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_roll_diam@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_roll_diam}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_product_type@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_product_type}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_mil@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_mil}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_wght_ctn_fie@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_wght_ctn_fie}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_po_bs@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_bs}</td>
+          </tr>
+</table>
+
+  <table class="sETUPDESCRIPTIONTable" style="width: 100%; margin-top: 10px;">
+    <thead>
+        <tr >
+
+            <th colspan="12" align="left">SETUP DESCRIPTION</th>
+        </tr>
+    </thead>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_per_ctn_roll@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_per_ctn_roll}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_print@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_print}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_dyne_level@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_dyne_level}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_fda@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_fda}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_print_plate_number@label} :</b> ${record.assemblyitem.custitem_pct_vp_print_plate_number}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_treat_notes@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_treat_notes}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_vent@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_vent}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_color_prin@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_color_prin}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_slip_level@label} :</b> ${record.assemblyitem.custitem_pct_vp_slip_level}</td>
+    </tr>
+     <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_vent_pattern@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_vent_pattern}</td>
+        <!-- <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_print_image@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_print_image}</td> -->
+       
+      
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_resin_blend_add@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_resin_blend_add}</td>
+    </tr>
+     <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_film_color@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_film_color}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_treated@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_treated}</td>
+        </tr>
+     <tr style="margin-top: 5px;">
+       <td colspan="12" align=""><b>${record.assemblyitem.custitem_pct_vp_config_extra_setup_not@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_extra_setup_not}</td>
+    </tr>
+     <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_film_opacity@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_film_opacity}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_treat_descripti@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_treat_descripti}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_film_color_note@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_film_color_note}</td>
+    </tr>
+</table>
+  <table class="pACKAGINGINSTRUCTIONSTable" style="width: 100%; margin-top: 10px;">
+    <thead>
+        <tr >
+
+            <th colspan="12" align="left">PACKAGING INSTRUCTIONS</th>
+        </tr>
+    </thead>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_core_thickness@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_core_thickness}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_carton_caps@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_carton_caps}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_po_ots@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_ots}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_core_diameter@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_core_diameter}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_cp@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_cp}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_po_rs@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_rs}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_core_qty@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_core_qty}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_roll_wrap@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_roll_wrap}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_sample_notes@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_sample_notes}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_confog_po_carton@label} :</b> ${record.assemblyitem.custitem_pct_vp_confog_po_carton}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_cradle@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_cradle}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_po_spe_pack_ins@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_spe_pack_ins}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_po_cs@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_cs}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_pallets@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_pallets}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_carton_quantity@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_carton_quantity}</td>
+    </tr>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_qty_per_pallet@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_qty_per_pallet}</td>
+        <td colspan="4" align="center"><b>${record.assemblyitem.custitem_pct_vp_config_po_ib@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_ib}</td>
+        <td colspan="4" align="right"><b>${record.assemblyitem.custitem_pct_vp_config_po_wrss@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_po_wrss}</td>
+    </tr>
+</table>
+  <table class="gENERALCOMMUNICATIONNOTETable" style="width: 100%; margin-top: 10px;">
+    <thead>
+        <tr >
+
+            <th colspan="12" align="left">GENERAL COMMUNICATION NOTES</th>
+        </tr>
+    </thead>
+    <tr style="margin-top: 5px;">
+        <td colspan="4" align="left"><b>${record.assemblyitem.custitem_pct_vp_config_core_thickness@label} :</b> ${record.assemblyitem.custitem_pct_vp_config_core_thickness}</td>
+    </tr>
+  
+</table>
+    <#if record.item?has_content>
+    <table class="itemtable" style="width: 100%; margin-top: 10px;">
+        <!-- start items -->
+        <#list record.item as item>
+            <#if item_index==0>
+                <thead>
+                <tr>
+                    <th colspan="8">${item.item@label}</th>
+                    <th colspan="3" align="center">${item.quantity@label}</th>
+                  <th colspan="2" align="center">${item.units@label}</th>
+                    <th colspan="8" align="right">${item.inventorydetail@label}</th>
+                </tr>
+                </thead>
+            </#if>
+            <tr>
+              <td colspan="8"><span class="itemname">${item.item}</span><br />${item.description}</td>
+                <td colspan="3" line-height="150%" align="center">${item.quantity}</td>
+                <td colspan="2" align="center">${item.units}</td>
+                <td colspan="8" align="right">${item.inventorydetail}</td>
+            </tr>
+        </#list>
+        <!-- end items -->
+    </table>
+    <hr />
+    </#if>
+
+
+              
+    <!--<#if record.assemblydetail?has_content>
+    <table class="itemtable" style="width: 100%; margin-top: 10px;">
+      
+        <#list record.assemblydetail as assembly>
+            <#if assembly_index==0>
+                <thead>
+                <tr>
+                    <th colspan="2" align="center">${assembly.quantity@label}</th>
+                    <th colspan="12">${assembly.item@label}</th>
+                    <th colspan="3" align="right">${assembly.issubassembly@label}</th>
+                </tr>
+                </thead>
+            </#if>
+            <tr>
+                <td colspan="2" align="center">${assembly.quantity}</td>
+                <td colspan="12"><span class="itemname">${assembly.item}</span><br />${assembly.description}</td>
+                <td colspan="3" align="right">${assembly.issubassembly}</td>
+            </tr>
+        </#list>
+     
+    </table></#if>-->
+
+              
+
+</body>
+</pdf>

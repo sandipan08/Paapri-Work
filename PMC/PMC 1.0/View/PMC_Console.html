@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Paapri Manufacturing Console</title>
+        <!-- Bootstrap CSS CDN Start -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Bootstrap CSS CDN End -->
+        <!-- External Stylesheet Link Start -->
+        <link rel="stylesheet" href="#FETCH-STYLESHEET#">
+        <!-- External Stylesheet Link End -->
+        <!-- Line Awsome Icons CSS CDN Start -->
+        <link rel="stylesheet"
+            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <!-- Line Awsome Icons CSS CDN End -->
+        <!-- Jquery Datatable CSS CDN Start -->
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.css" />
+        <!-- Jquery Datatable CSS CDN End -->
+    </head>
+
+    <body>
+        <!-- Navbar Design Start -->
+        <nav class="navbar navbar-expand navbar-dark shadow sticky-top">
+            <div class="container-fluid">
+                <span class="navbar-brand"><img src="#FETCH-LOGO#" alt="logo" height="30px" width="30px"
+                        class="btn-light"></span>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a id="user" class="nav-link active" href="#">No User</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-light" id="logOut" hidden>Logout</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar Design End -->
+
+        <!-- User Details Container Start -->
+        <div id="userDetailsDraggableDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="accordion m-3 shadow" id="basicDetailsContainers" hidden draggable="true"
+                ondragstart="drag(event)">
+                <div class="accordion-item card">
+                    <div class="card-header basic-flex-styling" id="basicDetailsContainersHeader">
+                        <p>User Details</p>
+                        <i class="la la-minus collapse-button" data-bs-toggle="collapse"
+                            data-bs-target="#basicDetailsContainersCollapse">
+                        </i>
+                    </div>
+                    <div id="basicDetailsContainersCollapse" class="accordion-collapse collapse show"
+                        aria-labelledby="basicDetailsContainersHeader">
+                        <div class="accordion-body">
+                            <div class="card shadow">
+                                <div class="card-body basic-flex-styling" id="basicDetails">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- User Details Container End ---->
+
+        <!-- Open Work Order Table Design Start -->
+        <div id="openWorkOrdersDraggableDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="accordion m-3 shadow" id="openWorkOrderContainer" hidden draggable="true"
+                ondragstart="drag(event)">
+                <div class="accordion-item card">
+                    <div class="card-header basic-flex-styling" id="openWorkOrderContainerHeader">
+                        <p>Open Work Orders</p>
+                        <div>
+                            <i class="las la-sync" id="worOrderTableRefresh"></i>
+                            <i class="la la-minus collapse-button" data-bs-toggle="collapse"
+                                data-bs-target="#openWorkOderCollapse"></i>
+                        </div>
+                    </div>
+                    <div id="openWorkOderCollapse" class="accordion-collapse collapse show"
+                        aria-labelledby="openWorkOrderContainerHeader">
+                        <div class="accordion-body">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <table id="openWorkOrderTable"
+                                        class="table table-striped table-borderless table-hover text-nowrap ">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Open Work Order Table Design End -->
+
+        <!-- Information & Buttons Section Design Start -->
+        <div id="informationAndButtonsSectionDraggableDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="informationAndButtonsSection" class="accordion m-3 shadow" hidden draggable="true"
+                ondragstart="drag(event)">
+                <div class="accordion-item card">
+                    <div class="card-header basic-flex-styling" id="informationAndButtonsSectionHeader">
+                        <p>Information & Actions</p>
+                        <i class="la la-minus collapse-button" data-bs-toggle="collapse"
+                            data-bs-target="#informationAndButtonsSectionCollapse"></i>
+                    </div>
+                    <div id="informationAndButtonsSectionCollapse" class="accordion-collapse collapse show"
+                        aria-labelledby="informationAndButtonsSectionHeader">
+                        <div class="accordion-body">
+                            <div class="d-flex m-1">
+                                <div id="informationSection" class="card col-4 shadow">
+                                    <div class="card-header" id="informationHeader">
+                                        <p>Information</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-borderless ">
+                                            <tbody id="informationTbody">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="m-1"></div>
+                                <div id="buttonsSection" class="card flex-fill shadow">
+                                    <div class="card-header" id="actionHeader">
+                                        <p>Actions</p>
+                                    </div>
+                                    <div class="functionalButtonContainer">
+                                        <button class="btn  functionalButtonDesign startTimer shadow"
+                                            id="production">Record
+                                            Production</button>
+                                        <button class="btn  functionalButtonDesign startTimer shadow" id="setup">Record
+                                            Setup</button>
+                                        <button class="btn functionalButtonDesign shadow" id="pauseTimer"
+                                            disabled>Downtime</button>
+                                        <button class="btn functionalButtonDesign shadow" id="workOrderIssue">Work Order
+                                            Issue</button>
+                                        <button class="btn functionalButtonDesign shadow" id="tool">Tool</button>
+                                        <button class="btn functionalButtonDesign shadow" id="quality">Quality</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <!-- Stopwatch Design Start -->
+                                        <div class="container" id="timerContainer">
+                                            <div class="card" id="timerTitle" hidden></div>
+                                            <div id="timerDisplay" class="card mt-1">
+                                                00 : 00 : 00 : 000
+                                            </div>
+                                        </div>
+                                        <div class="container m-fadeOut" id="downtimeTimerDisplayContainer" hidden>
+                                            <div class="card mt-1" id="downtimeTimerTitle">Downtime</div>
+                                            <div id="downtimeTimerDisplay" class="card">
+                                                00 : 00 : 00 : 000
+                                            </div>
+                                        </div>
+                                        <!-- Stopwatch Design End -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Information & Buttons Section Design End -->
+
+        <!-- Additional Details Design Start -->
+        <div id="additionalDataSectionDraggableDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="accordion m-3 shadow" id="additionalDataSection" hidden draggable="true"
+                ondragstart="drag(event)">
+                <div class="accordion-item card">
+                    <div class="card-header basic-flex-styling" id="additionalDataSectionHeader">
+                        <p>Additional Informations</p>
+                        <i class="la la-minus collapse-button" data-bs-toggle="collapse"
+                            data-bs-target="#additionalDataSectionCollapse"></i>
+                    </div>
+                    <div id="additionalDataSectionCollapse" class="accordion-collapse collapse show"
+                        aria-labelledby="additionalDataSectionHeader">
+                        <div class="accordion-body">
+                            <div class="card shadow">
+                                <div class="card-body" id="workOrderDataContent-tabContent">
+                                    <div class="card-title">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="workOrderDataContent-tab" role="tablist">
+                                                <button class="nav-link active" id="workOrderItemTableContainer-tab"
+                                                    data-bs-toggle="tab" data-bs-target="#workOrderItemTableContainer"
+                                                    type="button" role="tab" aria-controls="workOrderItemTableContainer"
+                                                    aria-selected="true">Items<span
+                                                        class="badge bg-primary ms-1 rounded-circle"
+                                                        id="workOrderItemTableContainer-span"></span>
+                                                </button>
+                                                <button class="nav-link" id="workOrderRoutingTableContainer-tab"
+                                                    data-bs-toggle="tab"
+                                                    data-bs-target="#workOrderRoutingTableContainer" type="button"
+                                                    role="tab" aria-controls="workOrderRoutingTableContainer"
+                                                    aria-selected="false">Routings<span
+                                                        class="badge bg-primary ms-1 rounded-circle"
+                                                        id="workOrderRoutingTableContainer-span"></span>
+                                                </button>
+                                                <button class="nav-link" id="toolFamilyTableContainer-tab"
+                                                    data-bs-toggle="tab" data-bs-target="#toolFamilyTableContainer"
+                                                    type="button" role="tab" aria-controls="toolFamilyTableContainer"
+                                                    aria-selected="false">Tools
+                                                </button>
+                                                <button class="nav-link" id="pmcTransactionTableContainer-tab"
+                                                    data-bs-toggle="tab" data-bs-target="#pmcTransactionTableContainer"
+                                                    type="button" role="tab"
+                                                    aria-controls="pmcTransactionTableContainer"
+                                                    aria-selected="false">PMC
+                                                    Transaction<span class="badge bg-primary ms-1 rounded-circle"
+                                                        id="pmcTransactionTableContainer-span"></span>
+                                                </button>
+                                                <button class="nav-link" id="pmcWorkInstructionTableContainer-tab"
+                                                    data-bs-toggle="tab"
+                                                    data-bs-target="#pmcWorkInstructionTableContainer" type="button"
+                                                    role="tab" aria-controls="pmcWorkInstructionTableContainer"
+                                                    aria-selected="false">Work
+                                                    Instruction<span class="badge bg-primary ms-1 rounded-circle"
+                                                        id="pmcWorkInstructionTableContainer-span"></span>
+                                                </button>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                    <div class="tab-content mt-3 w-100 text-nowrap" id="workOrderDataContent">
+                                        <div class="tab-pane fade show active" id="workOrderItemTableContainer"
+                                            role="tabpanel" aria-labelledby="workOrderItemTableContainer-tab">
+                                            <table id="workOrderItemTable" class="table table-striped table-borderless">
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="workOrderRoutingTableContainer" role="tabpanel"
+                                            aria-labelledby="workOrderRoutingTableContainer-tab">
+                                            <table id="workOrderRoutingTable"
+                                                class="table table-striped table-borderless">
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="toolFamilyTableContainer" role="tabpanel"
+                                            aria-labelledby="toolFamilyTableContainer-tab">
+                                            <ul class="nav nav-tabs" id="toolFamily" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="assemblyToolFamily-tab"
+                                                        data-bs-toggle="tab" data-bs-target="#assemblyToolFamily"
+                                                        type="button" role="tab" aria-controls="assemblyToolFamily"
+                                                        aria-selected="true">Assembly Tool
+                                                        Family<span class="badge bg-primary ms-1 rounded-circle"
+                                                            id="assemblyToolFamily-span"></span></button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="serializedTool-tab"
+                                                        data-bs-toggle="tab" data-bs-target="#serializedTool"
+                                                        type="button" role="tab" aria-controls="serializedTool"
+                                                        aria-selected="false">Serialized Tool
+                                                        <span class="badge bg-primary ms-1 rounded-circle"
+                                                            id="serializedTool-span"></span></button>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content mt-3" id="toolFamilyTableContainer">
+                                                <div class="tab-pane fade show active" id="assemblyToolFamily"
+                                                    role="tabpanel" aria-labelledby="assemblyToolFamily-tab">
+                                                    <table id="toolFamilyTable"
+                                                        class="table table-striped table-borderless">
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="serializedTool" role="tabpanel"
+                                                    aria-labelledby="serializedTool-tab">
+                                                    <table id="serializedToolTable"
+                                                        class="table table-striped table-borderless">
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pmcTransactionTableContainer" role="tabpanel"
+                                            aria-labelledby="pmcTransactionTableContainer-tab">
+                                            <table id="pmcTransactionTable"
+                                                class="table table-striped table-borderless">
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="pmcWorkInstructionTableContainer" role="tabpanel"
+                                            aria-labelledby="pmcWorkInstructionTableContainer-tab">
+                                            <table id="pmcworkInstructionTable"
+                                                class="table table-striped table-borderless">
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Additional Details Design End -->
+
+        <!-- Tools Table Design Start -->
+        <div class="card m-3 shadow" id="toolsDataSection" hidden>
+            <div class="card-header basic-flex-styling">
+                <p>Tools Item</p>
+            </div>
+            <div class="card-body">
+                <table id="toolsTable" class="table table-striped table-borderless">
+                </table>
+            </div>
+
+        </div>
+        <!-- Tools Table Design End -->
+
+        <!-- Work Order Issue Table Design Start -->
+        <div class="card m-3 shadow" id="workOrderIssueTableContainer" hidden aria-hidden="true">
+            <div class="card-header basic-flex-styling">
+                <p>Work Order Issue</p>
+                <i class="las la-sync" id="worOrderIssueTableRefresh"></i>
+            </div>
+            <div class="card-body">
+                <table id="workOrderIssueTable" class="table table-striped table-hover text-nowrap text-center">
+                </table>
+                <div class="card-footer d-flex">
+                    <button id="woissue_submit_inventoryDetail" class="btn btn-success me-2">Submit</button>
+                    <button id="work-order-issue-cancel" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <!-- Work Order Issue Table Design End -->
+
+        <!--Work Order issue modal start-->
+        <div class="modal fade shadow" id="woIssueModal" tabindex="-1" aria-labelledby="woIssueModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header card-header">
+                        <h5 class="modal-title w-100">Inventory Detail</h5>
+                        <button type="button" class="btn btn-close modalClose" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column text-center">
+                                <label for="woissue_modal_item_name">Item Internal Id</label>
+                                <span id="woissue_modal_item_name"></span>
+                            </div>
+                            <div class="d-flex flex-column text-center">
+                                <label for="woissue_modal_item_quantity">Quantity</label>
+                                <span id="woissue_modal_item_quantity"></span>
+                            </div>
+                            <div class="d-flex flex-column text-center">
+                                <label for="woissue_modal_committed_item_quantity">Committed Quantity</label>
+                                <span id="woissue_modal_committed_item_quantity"></span>
+                            </div>
+                            <div class="d-flex flex-column text-center">
+                                <label for="issue_row_no">Row Index</label>
+                                <span id="issue_row_no"></span>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <table class="table table-striped" id="woIssueModal_body_table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" width="25%" style="text-align:center">LOT</th>
+                                        <th scope="col" width="25%" style="text-align:center">BIN</th>
+                                        <th scope="col" width="15%" style="text-align:center">Quantity
+                                        </th>
+                                        <th scope="col" width="15%" style="text-align:center">Available
+                                            Quantity</th>
+                                        <th scope="col" width="7.5%" style="text-align:center"></th>
+                                        <th scope="col" width="7.5%" style="text-align:center"></th>
+                                        <th scope="col" width="5%" style="text-align:center">Is Committed</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="woIssueModalTableTbody">
+                                    <tr>
+                                        <td class="lotDropdownTd">
+                                        </td>
+                                        <td class="binDropdownTd">
+                                        </td>
+                                        <td><input type="number" id="woIssueModalCommitLineQty"
+                                                class="form-control woIssueModalCommitLineQuantity" value="0">
+                                        </td>
+                                        <td class="woIssueAvailableLineQuantity"
+                                            style="text-align: center; vertical-align: middle"></td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <button type="button"
+                                                class="btn btn-warning btn-sm woIssueModalCommitLineButton">Commit</button>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm woissue_modal_removeLine_button" >Remove</button>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <input type="checkbox"
+                                                class="form-check-input woissue_modal_line_is_committed" disabled></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="modal_footer_buttons">
+                            <button type="button" class="btn btn-success" id="woIssueModalSave">Save</button>
+                            <button type="button" class="btn btn-secondary modalClose" id="woIssueModalCancel"
+                                data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Work Order issue modal end-->
+        <!-- Work Order Issue Table Design End -->
+
+        <!-- Quality Table Start -->
+        <div class="card m-3 shadow" id="qualityTableContainer" hidden aria-hidden="true">
+            <div class="card-header basic-flex-styling">
+                <p>Quality</p>
+            </div>
+            <div class="card-body">
+                <!-- <table id="qualityTable" class="table table-striped table-hover text-nowrap text-center"></table> -->
+                <div id="qualityTableContainerBody">
+                    <div id="drawingSpecificationTableContainer">
+                        <label for="drawingSpecificationTable"
+                            style="display: flex; align-items: center; justify-content: center;">Drawing
+                            Specification</label>
+                        <table class="table table-hover table-bordered table-sm" id="drawingSpecificationTable">
+
+                        </table>
+                    </div>
+
+                    <div id="measurmentTableContainer">
+                        <label for="measurmentTable"
+                            style="display: flex; align-items: center; justify-content: center;">Measurement
+                            Results</label>
+                        <table class="table table-hover table-bordered table-sm" id="measurmentTable">
+
+                        </table>
+                    </div>
+                    <div id="inspectionTableContainer">
+                        <label for="inspectionTable"
+                            style="display: flex; align-items: center; justify-content: center;">Inspection
+                            Record</label>
+                        <table class="table table-hover table-bordered table-sm" id="inspectionTable">
+
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer d-flex">
+                    <button id="qualitySave" class="btn btn-success me-2">Submit</button>
+                    <button id="qualityCancel" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <!-- Quality Table End -->
+
+        <!-- Login Page Design Start -->
+        <div class="container w-25 mt-5" id="logInFormContainer" hidden>
+            <form id="loginForm" class="card shadow">
+                <div class="card-body">
+                    <div class="card-title mb-4 d-flex flex-column justify-content-center align-items-center">
+                        <h4>Paapri Manufacturing Console</h4>
+                        <img src="#FETCH-PAAPRI-LOGO#" alt="Image" height="100px" width="100px">
+                    </div>
+                    <div class="mb-3">
+                        <label for="badgeId" class="form-label text-uppercase d-flex justify-content-center">Enter
+                            Badgeid</label>
+                        <input type="number" id="badgeId" class="form-control" required>
+                    </div>
+
+                    <div class="card-title mb-3 d-flex flex-column justify-content-center align-items-center">
+                        <button type="submit" id="logIn" class="btn btn-primary btn-sm">LOGIN</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Login Page Design End -->
+
+        <!-- Toasts Design Start -->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto" id="toastHeader"></strong>
+                    <small id="toastTimeView"></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="toastBody">
+                </div>
+            </div>
+        </div>
+        <!-- Toasts Design End -->
+
+        <!-- Downtime Modal Start -->
+        <div class="modal fade" id="pmcModal" tabindex="-1" aria-labelledby="pmcModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class=" modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pmcModalLabel">DownTime</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <span class="mb-3" id="downtimeCategory">
+                            </span>
+                            <span class="mb-3" id="downtimeReason">
+                            </span>
+                            <div class="mb-3">
+                                <label for="modalNotes" class="col-form-label">Notes:</label>
+                                <textarea class="form-control" id="modalNotes"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="downTimeModalSubmit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Downtime Modal End -->
+
+        <!-- Loader Design Start -->
+        <div class="modal" id="loader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-body">
+                    <div class="shape-container">
+                        <div class="shape shape-9">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #cf7046"></div>
+                                <div class="shape-middle" style="background-color: #cf7046"></div>
+                                <div class="shape-bottom" style="background-color: #cf7046"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-8">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #ff5d60"></div>
+                                <div class="shape-middle" style="background-color: #ff5d60"></div>
+                                <div class="shape-bottom" style="background-color: #ff5d60"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-7">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #b85856"></div>
+                                <div class="shape-middle" style="background-color: #b85856"></div>
+                                <div class="shape-bottom" style="background-color: #b85856"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-6">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #008ca7"></div>
+                                <div class="shape-middle" style="background-color: #008ca7"></div>
+                                <div class="shape-bottom" style="background-color: #008ca7"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-5">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #6cab36"></div>
+                                <div class="shape-middle" style="background-color: #6cab36"></div>
+                                <div class="shape-bottom" style="background-color: #6cab36"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-4">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #97a822"></div>
+                                <div class="shape-middle" style="background-color: #97a822"></div>
+                                <div class="shape-bottom" style="background-color: #97a822"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-3">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #718f40"></div>
+                                <div class="shape-middle" style="background-color: #718f40"></div>
+                                <div class="shape-bottom" style="background-color: #718f40"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-2">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #00b8a8"></div>
+                                <div class="shape-middle" style="background-color: #00b8a8"></div>
+                                <div class="shape-bottom" style="background-color: #00b8a8"></div>
+                            </div>
+                        </div>
+                        <div class="shape shape-1">
+                            <div class="inner-shape">
+                                <div class="shape-top" style="background-color: #ffaf3a"></div>
+                                <div class="shape-middle" style="background-color: #ffaf3a"></div>
+                                <div class="shape-bottom" style="background-color: #ffaf3a"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Loader Design End -->
+
+        <!-- Footer Copyright Start -->
+        <footer class="mt-auto bg-light text-center">
+            <p id="copyRight" class="py-3 my-4 text-muted">© 2022 <a href="https://www.paapri.com/"
+                    target="_blank">Paapri
+                    Cloud
+                    Technologies.</a> All Rights Reserved.</p>
+        </footer>
+        <!-- Footer Copyright End -->
+
+        <!-- Utility Data Store Start -->
+        <span id="badgeIdFromWorkCenterView" hidden>#BADGE-ID#</span>
+        <span id="workCenterId" hidden>#WORK-CENTER#</span>
+        <span id="scriptIdFetchRestletId" hidden>#FETCH-SCRIPTID-RESTLET#</span>
+        <!-- Utility Data Store End -->
+
+        <!-- Jquery JS CDN Start -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Jquery JS CDN End -->
+        <!-- Bootstrap JS CDN Start -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <!-- Bootstrap JS CDN End -->
+        <!-- Controller Link Start -->
+        <script src="#FETCH-CONTROLLER#"></script>
+        <!-- Controller Link End -->
+        <!-- Jquery Datatable JS Link Start -->
+        <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+        <!-- Jquery Datatable JS Link End -->
+        <!-- BlockUi CDN Link Start -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"
+            integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"
+            integrity="sha512-QSb5le+VXUEVEQbfljCv8vPnfSbVoBF/iE+c6MqDDqvmzqnr4KL04qdQMCm0fJvC3gCWMpoYhmvKBFqm1Z4c9A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- BlockUi CDN Link ENd -->
+        <!-- Sweet alert CDN Start -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Sweet alert CDN End -->
+    </body>
+
+    </html>

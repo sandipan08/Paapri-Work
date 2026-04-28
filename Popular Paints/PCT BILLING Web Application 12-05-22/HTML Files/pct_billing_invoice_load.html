@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PCT Billing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="${ds.faviconUrl}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
+</head>
+<style>
+    img.logo-navbar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .top-buffer {
+        margin-top: 10px;
+    }
+
+    .body {
+        background: #4cb8c4;
+        background: -webkit-linear-gradient(to right, #4cb8c4, #3cd3ad);
+        background: linear-gradient(to right, #4cb8c4, #3cd3ad);
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+
+<body onload="startTime()" class="body">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="${ds.faviconUrl}" class="logo-navbar" width="auto"
+                        height="auto"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="empName">
+                            Welcome, ${ds.empName}!
+                        </a></li>
+                    <li><a
+                            href="https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=196&deploy=1&compid=7255402&h=38a57cec7478fc49f8d3"><span
+                                class="glyphicon glyphicon-off"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="panel-body">
+        <div style=" border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 10px;">
+            <form action="" class="fieldclass" method="post">
+                <div class="row mt-2">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Invoice Id</label>
+                            <input type="text" id="invNumber" class="form-control" name="invNumber" disabled
+                                value="${ds.invNumber}">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Transporter Name</label>
+                            <select class="form-control" id="transporterName" name="transporterName">
+                                '<option value="-1">-None-</option>';
+                                #VENDOR-DROPDOWN#
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Transporter Document Number</label>
+                            <input type="text" id="transporterDocumentNumber" class="form-control"
+                                name="transporterDocumentNumber">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Transporter Document Date</label>
+                            <input type="date" id="transporterDocumentDate" class="form-control"
+                                name="transporterDocumentDate">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <button type="submit" id="btnSubmit" name="btnSubmit"
+                                class="btn btn-success">Submit</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p class="attribution" style="text-align: center;">
+            Copyright @2021 All rights reserved | Designed & Developed by <a href="https://www.paapri.com/">Paapri
+                Business Technologies
+            </a>
+        </p>
+    </div>
+</body>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    document.getElementById("url").action = window.location.href;
+
+</script>
+
+
+</html>

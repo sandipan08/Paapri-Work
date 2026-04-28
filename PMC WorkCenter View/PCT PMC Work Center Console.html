@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMC Work Center View</title>
+    <!-- Bootstrap CSS CDN Start -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS CDN End -->
+    <!-- External Stylesheet Link Start -->
+    <link rel="stylesheet" href="#FETCH-STYLESHEET#">
+    <!-- External Stylesheet Link End -->
+    <!-- Line Awsome Icons CSS CDN Start -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- Line Awsome Icons CSS CDN End -->
+    <!-- Jquery Datatable CSS CDN Start -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.css" />
+    <!-- Jquery Datatable CSS CDN End -->
+</head>
+
+
+<body>
+    <!-- Navbar Design Start -->
+    <nav class="navbar navbar-expand navbar-dark shadow sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand"><img src="#FETCH-PAAPRI-LOGO#" alt="logo" height="30px" width="30px"
+                    class="btn-light"></span>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a id="user" class="nav-link active" href="#">Ratwika Mondal</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" id="logOut" hidden>Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar Design End -->
+    <div class="container-fluid mt-5 m-fadeOut" id="workCenterContainer">
+        <div class="grid-container mt-3" id="workCenterDiv">
+            <!-- populating Work Center Card through Controller  -->
+        </div>
+    </div>
+
+    <!-- Work center Modal Start -->
+    <div class="modal fade" id="workCenterModal" tabindex="-1" aria-labelledby="workCenterModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class=" modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="workCenterModalLabel">Work Center Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="workCeneterDataTable" class="table table-striped table-hover" width="100%">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Work center End -->
+
+    <!-- Login Page Design Start -->
+    <div class="container w-25 mt-5" id="logInFormContainer">
+        <div id="loginForm" class="card shadow">
+            <div class="card-body">
+                <div class="card-title mb-4 d-flex flex-column justify-content-center align-items-center">
+                    <h4>Paapri Manufacturing Console</h4>
+                    <img src="#FETCH-PAAPRI-LOGO#" alt="Image" height="100px" width="100px">
+                </div>
+                <div class="mb-3">
+                    <label for="badgeId" class="form-label text-uppercase d-flex justify-content-center">Enter
+                        Badgeid</label>
+                    <input type="number" id="badgeId" class="form-control" required>
+                </div>
+
+                <div class="card-title mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <button type="button" id="logIn" class="btn btn-primary btn-sm">LOGIN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Page Design End -->
+
+
+
+    <!-- Utility Data Store Start -->
+    <span id="scriptIdFetchRestletId" hidden>#FETCH-SCRIPTID-RESTLET#</span>
+    <!-- Utility Data Store End -->
+    <!-- Jquery JS CDN Start -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Jquery JS CDN End -->
+    <!-- Bootstrap JS CDN Start -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS CDN End -->
+    <!-- Controller Link Start -->
+    <script src="#FETCH-CONTROLLER#"></script>
+    <!-- Controller Link End -->
+    <!-- Jquery Datatable JS Link Start -->
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+    <!-- Jquery Datatable JS Link End -->
+    <!-- BlockUi CDN Link Start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"
+        integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"
+        integrity="sha512-QSb5le+VXUEVEQbfljCv8vPnfSbVoBF/iE+c6MqDDqvmzqnr4KL04qdQMCm0fJvC3gCWMpoYhmvKBFqm1Z4c9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- BlockUi CDN Link ENd -->
+    <!-- Sweet alert CDN Start -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Sweet alert CDN End -->
+</body>
+
+</html>

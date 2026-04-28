@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .grid-container {
+            display: grid;
+            /* grid-template-columns: repeat(2, 1rf); */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .grid-container>div {
+            /* background-color: gray; */
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+            display: inline-flex;
+            justify-content: flex-start;
+            /* text-align: center; */
+            /* padding: 5px; */
+            font-size: 30px;
+        }
+
+        .fgCoreTable {
+            width: 100%;
+            font-size: 10pt;
+            font-weight: bold;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div>
+            <table class="fgCoreTable">
+                <tr>
+                    <td>Part # </td>
+                    <td class="tableTd">shipAddress</td>
+                </tr>
+                <tr>
+                    <td>Lot # </td>
+                    <td class="tableTd">attenti</td>
+                </tr>
+                <tr>
+                    <td>Op # </td>
+                    <td class="tableTd">attenti</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

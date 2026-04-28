@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>PCT QMS | Filler Testing Report Form </title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+</head>
+<style>
+    img.logo-navbar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+
+    }
+
+    body {
+        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="nav navbar-brand" href="#" style="padding-top: 0.700rem;"><img src="${ds.faviconUrl}"
+                            class="logo-navbar" width="30px" height="30px"></a>
+                    <li><a style="font-size: medium; color: black;">PCT QMS</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> ${ds.custparam_userName}</a></li>
+                    <li><a href="${ds.logoutPageUrl}"><span class="glyphicon glyphicon-log-in" id="btn-change">
+                                Logout</span> </a></li>
+                    <!-- <button></button> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div style="width: 100%; ">
+        <div style="width: 100%; height: 100px; float: left; ">
+            <div
+                style="  margin-left: 20px; margin-right: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height: auto;   background: white">
+                <!-- <table class="table table-success table-striped"> -->
+                <form id="currentURL" method="post" enctype="multipart/form-data" onsubmit="defaultDate()"
+                    style="padding-top: 30px; padding-bottom: 30px; padding-left: 20px; padding-right: 20px;">
+
+                    <h3>Filler Testing Report Form</h3>
+                    <p>Please fill in this form.</p>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <input type="text" id="productName" class="form-control" name="productName" disabled
+                                    value="${ds.productName}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Document Type</label>
+                                <input type="text" id="documentType" class="form-control" name="documentType" disabled
+                                    value="${ds.documentType}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Document Number</label>
+                                <input type="text" id="documentNumber" class="form-control" name="documentNumber"
+                                    disabled value="${ds.documentNumber}">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" id="entryDate" class="form-control" name="entryDate">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Batch No</label>
+                                <input type="text" id="batchNo" class="form-control" name="batchNo" disabled
+                                    value="${ds.batchNo}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Party Name</label>
+                                <input type="text" id="partyName" class="form-control" name="partyName" disabled
+                                    value="${ds.partyName}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Vehicle No</label>
+                                <input type="text" id="vehicleNo" class="form-control" name="vehicleNo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Brightness</label>
+                                <input type="text" id="brightness" class="form-control" name="brightness">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Oil Absorption</label>
+                                <input type="text" id="oilAbsorption" class="form-control" name="oilAbsorption">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Water Absorption</label>
+                                <input type="text" id="waterAbsorption" class="form-control" name="waterAbsorption">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>PH Value</label>
+                                <input type="text" id="phValue" class="form-control" name="phValue">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Sp Gravity</label>
+                                <input type="text" id="spGravity" class="form-control" name="spGravity">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>HCL Reaction</label>
+                                <input type="text" id="hclReaction" class="form-control" name="hclReaction">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Mesh Analysis (300/500#)</label>
+                                <input type="text" id="meshAnalysis" class="form-control" name="meshAnalysis">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+
+                                <input type="checkbox" id="qcChecked" name="qcChecked">
+                                <label>Qc Approved</label><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-label" for="customFile">Attach File</label>
+                                    <input type="file" class="form-control" id="customFile" name="customFile" />
+                                </div>
+                            </div>
+                        </div> -->
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Report</label>
+                                <!-- <input type="text" id="report" class="form-control" name="report"
+                                    style="height: 100px;"> -->
+                                <input id="report" name="subject" placeholder="Write something.." class="form-control"
+                                    style="height:100px" name="report"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success ml-3 mr-2" onclick="check()">Submit</button>
+                        <button type="button" style="  background: #FF5370;" class="btn btn-success ml-3 mr-2"
+                            onclick="history.back()">Back</button>
+
+                    </div>
+                </form>
+                <footer>
+                    <p class="attribution" style="text-align: center; padding-bottom: 10px;">
+                        Copyright @2021 All rights reserved | Designed & Developed by <a
+                            href="https://www.paapri.com/">Paapri
+                            Business Technologies
+                        </a>
+                    </p>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+
+
+    function check()
+    {
+        // swal({
+        //     title: "Success",
+        //     text: "Record Created",
+        //     icon: "success",
+        //     buttons: false
+
+        // })
+        var f = document.getElementById("currentURL")
+        console.log(new FormData(f));
+        console.log(document.forms['currentURL']);
+        console.log("Value : " + $("#batchNo").val())
+        console.log("Value : " + $("#productName").val())
+
+    }
+    disable();
+    function disable()
+    {
+        var status = "${ds.documentStatus}";
+        console.log(status);
+        var qcCheck = "${ds.qcChecked}";
+        console.log(qcCheck);
+        var entryDate = "${ds.entryDate}";
+        if (status === "Existing")
+        {
+
+            $('#entryDate').prop('disabled', true);
+            $('#entryDate').get(0).type = 'text';
+            $("#entryDate").val(entryDate);
+            $('#vehicleNo').prop('disabled', true);
+            document.getElementById("vehicleNo").value = "${ds.vehicleNo}";
+            $('#brightness').prop('disabled', true);
+            document.getElementById("brightness").value = "${ds.brightness}";
+            $('#oilAbsorption').prop('disabled', true);
+            document.getElementById("oilAbsorption").value = "${ds.oilAbsorption}";
+            $('#waterAbsorption').prop('disabled', true);
+            document.getElementById("waterAbsorption").value = "${ds.waterAbsorption}";
+            $('#phValue').prop('disabled', true);
+            document.getElementById("phValue").value = "${ds.phValue}";
+            $('#spGravity').prop('disabled', true);
+            document.getElementById("spGravity").value = "${ds.spGravity}";
+            $('#hclReaction').prop('disabled', true);
+            document.getElementById("hclReaction").value = "${ds.hclReaction}";
+            $('#meshAnalysis').prop('disabled', true);
+            document.getElementById("meshAnalysis").value = "${ds.meshAnalysis}";
+            $('#qcChecked').prop('disabled', true);
+
+            //  document.getElementById("qcChecked").value = "${ds.qcChecked}";
+            var qcCheck = "${ds.qcChecked}";
+            console.log(qcCheck);
+            if (qcCheck == "true")
+            {
+                console.log("QC Checked True");
+                $("#qcChecked").prop("checked", true);
+            }
+            else if (qcCheck == "false")
+            {
+                console.log("QC Checked False");
+                $("#qcChecked").prop("checked", false);
+            }
+
+            $('#report').prop('disabled', true);
+            document.getElementById("report").value = "${ds.report}";
+
+            $(':input[type="submit"]').prop('disabled', true);
+
+        }
+        else
+        {
+
+            $('#entryDate').prop('disabled', false);
+            $('#vehicleNo').prop('disabled', false);
+            $('#brightness').prop('disabled', false);
+            $('#oilAbsorption').prop('disabled', false);
+            $('#waterAbsorption').prop('disabled', false);
+            $('#phValue').prop('disabled', false);
+            $('#spGravity').prop('disabled', false);
+            $('#hclReaction').prop('disabled', false);
+            $('#qcChecked').prop('disabled', false);
+            $('#report').prop('disabled', false);
+        }
+    }
+
+    function defaultDate()
+    {
+        var entryDate = "${ds.entryDate}";
+        if (entryDate[0] == "N")
+        {
+            console.log("Inside log");
+            document.getElementById("entryDate").value = "";
+        }
+    }
+
+</script>
+
+<!-- <script type="text/javascript">
+    function preventBack()
+    {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+
+    window.onunload = function () { null };
+</script> -->
+
+</html>

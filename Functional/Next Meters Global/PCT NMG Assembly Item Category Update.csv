@@ -1,0 +1,40 @@
+itemId,Internal Id,supplyreplenishmentmethod,planningitemcategory
+GW4,5,Master Production Scheduling,2
+GW4-L,1637,Master Production Scheduling,2
+RE4,9,Master Production Scheduling,2
+TR4-I,1640,Master Production Scheduling,2
+TR4-E,1641,Master Production Scheduling,2
+TR4-X,1642,Master Production Scheduling,2
+LS4,1643,Master Production Scheduling,2
+NM4,1644,Master Production Scheduling,2
+RR4,1645,Master Production Scheduling,2
+RR4-TR,1646,Master Production Scheduling,2
+FSK,1647,Master Production Scheduling,2
+NR4,1648,Master Production Scheduling,2
+BAT201,1649,Master Production Scheduling,2
+BAT301,1650,Master Production Scheduling,2
+BAT4,1651,Master Production Scheduling,2
+M201C-10G,1652,Master Production Scheduling,2
+M201C-10L,1653,Master Production Scheduling,2
+M201C-CA-10G,1654,Master Production Scheduling,2
+M201CH-10G,1655,Master Production Scheduling,2
+M201CH-10L,1656,Master Production Scheduling,2
+M201CH-CA-10G,1657,Master Production Scheduling,2
+3PC-Dual,1658,Master Production Scheduling,2
+LS4-Cable,1659,Master Production Scheduling,2
+LS4-Targeted,1660,Master Production Scheduling,2
+ST201,1661,Master Production Scheduling,2
+CS201,1662,Master Production Scheduling,2
+PLM,1663,Master Production Scheduling,2
+TR4 5.3 PCBA,1664,Master Production Scheduling,3
+RE4 3.1 PCBA,728,Master Production Scheduling,3
+TR4-X 6.3 PCBA,1666,Master Production Scheduling,3
+RR4 5.3 PCBA,1667,Master Production Scheduling,3
+RR4-TR 5.3 PCBA,1668,Master Production Scheduling,3
+NM4-I 1.5 PCBA,1669,Master Production Scheduling,3
+LS4 2.2 PCBA,1670,Master Production Scheduling,3
+GW4 4.6 PCBA,1671,Master Production Scheduling,3
+TR4-E 3.1 PCBA,1672,Master Production Scheduling,3
+NR4 2.2 PCBA,1673,Master Production Scheduling,3
+FSK 1.1 PCBA,1674,Master Production Scheduling,3
+TR4-I 4.4 PCBA,1675,Master Production Scheduling,3

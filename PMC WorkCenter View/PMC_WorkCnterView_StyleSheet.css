@@ -1,0 +1,69 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px 50px;
+    margin: 30px 60px 0px 60px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-container>div {
+    /* background-color: #f1f1f1; */
+    margin: 3px;
+    padding: 20px;
+    font-size: 20px;
+    align-items: center;
+    /* width: 33.33%;
+    height: 150px; */
+}
+
+/* Navbar CSS */
+.navbar {
+    background-color: #6cb2f3;
+}
+
+/* This CSS hides div or contents with transition effect */
+.m-fadeOut {
+    visibility: hidden;
+    opacity: 0;
+    transition: linear 1s ease-out;
+    height: 0;
+}
+
+/* This CSS shows hidden div or contents with transition effect */
+.m-fadeIn {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.8s ease-in;
+    height: initial;
+}
+
+.container {
+    width: 30%;
+}
+
+.card {
+    text-align: center;
+}
+
+.floatingButton button {
+    border-radius: 50%;
+    font-size: 32px;
+    margin: 17px;
+}
+
+.floatingButton span {
+    font-size: 15px;
+}
+
+.image {
+    height: 200px;
+    background-image: url('./download.jpg');
+    background-repeat: no-repeat;
+    text-align: center;
+    background-position: center;
+    background-size: contain;
+}

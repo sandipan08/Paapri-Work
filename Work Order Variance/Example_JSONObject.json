@@ -1,0 +1,75 @@
+//  -------------------------- Operational Data Object Start -----------------------------------
+{
+    "14730": {
+        "workOrderNumber": "WO96",
+        "operation": {
+            "": {
+                "operationName": "",
+                "run": {
+                    "plannedTotalQuantity": 320.0000004,
+                    "plannedTotalAmount": 242.13333364,
+                    "actualTotalQuantity": 0,
+                    "actualTotalAmount": 0
+                },
+                "setup": {
+                    "plannedTotalQuantity": 600,
+                    "plannedTotalAmount": 428,
+                    "actualTotalQuantity": 0,
+                    "actualTotalAmount": 0
+                }
+            }
+        }
+    }
+}
+// -------------------------- Operational Data Object End -----------------------------------
+//  -------------------------- Item Data Object Start -----------------------------------
+{
+    "14730": {
+        "217": {
+            "estimatedItemRate": 184.25090909,
+            "workOrderNumber": "WO96",
+            "item": "217",
+            "estimatedQuantity": "2",
+            "averageCost": null,
+            "itemName": "INV_Kapton Plastic",
+            "standardCost": null,
+            "costingMethod": "AVG",
+            "unit": "Each(1)",
+            "actualQuantity": "14",
+            "differentiateQuantity": -12,
+            "actualItemCost": "184.25086998",
+            "differentiateItemCost": 0.00003910999998879561
+        },
+        "218": {
+            "estimatedItemRate": 18.1103125,
+            "workOrderNumber": "WO96",
+            "item": "218",
+            "estimatedQuantity": "6",
+            "averageCost": null,
+            "itemName": "INV_2-Layer Copper",
+            "standardCost": null,
+            "costingMethod": "AVG",
+            "unit": "Each(1)",
+            "actualQuantity": "9",
+            "differentiateQuantity": -3,
+            "actualItemCost": "18.11026481",
+            "differentiateItemCost": 0.000047689999998823396
+        },
+        "219": {
+            "estimatedItemRate": 5,
+            "workOrderNumber": "WO96",
+            "item": "219",
+            "estimatedQuantity": "9",
+            "averageCost": null,
+            "itemName": "INV_Solder Mask - Blue",
+            "standardCost": null,
+            "costingMethod": "AVG",
+            "unit": "Each(1)",
+            "actualQuantity": "10",
+            "differentiateQuantity": -1,
+            "actualItemCost": "5.00",
+            "differentiateItemCost": 0
+        }
+    }
+}
+//  -------------------------- Item Data Object End -----------------------------------

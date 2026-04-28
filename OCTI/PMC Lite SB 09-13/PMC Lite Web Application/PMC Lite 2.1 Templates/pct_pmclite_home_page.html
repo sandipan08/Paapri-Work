@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PMC Lite 2.0 | Home</title>
+    <meta name="author" content="Rajesh Nandi">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/PMC Lite Web Application/PMC Lite 2.1 Templates/styles.css"> -->
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!--************************************************* SweetAlert CSS *************************************************-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css"
+        integrity="sha512-p4DnlqTeGE7mQ9HvOXlJjG/IwuKnR7NIAlsrVZRHRY2PODpuywYxdhOKy59zzeRcIlYwE6cSjrwEguzVC8TMgg=="
+        crossorigin="anonymous" />
+
+    <!--************************************************ SweetAlert2 JS ************************************************-->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@6.6.5/dist/sweetalert2.min.js"
+        integrity="sha256-xofl41Tt0WRg2Q0LrntvSB6qv1Mzz/ZLvSyi+O08d1g=" crossorigin="anonymous"></script>
+
+    <script
+        src="https://tstdrv2211536.app.netsuite.com/core/media/media.nl?id=21721&c=TSTDRV2211536&h=qCmh-tKRGrlvBi639s_8fZKe8rkcbXHgbaH9lxyn8VR8Dbk_&_xt=.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            /* display: flex; */
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background: #f2f2f2;
+        }
+
+
+
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .input-group-append .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+
+        .input-group .btn {
+            font-size: 1rem;
+        }
+
+        .scan-btn {
+
+            font-size: 1.5rem;
+            border-radius: 20px !important;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            margin: 0 5px;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            border-radius: 20px !important;
+            color: #fff;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        h5 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .btn {
+                font-size: 0.875rem;
+            }
+
+            .input-group-append .btn {
+                padding: 5px 10px;
+            }
+
+            .row>div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* loader CSS Start */
+        .shape-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 35%);
+            padding: 10rem;
+        }
+
+        .shape {
+            width: 2rem;
+            min-width: 25px;
+            height: 5.25rem;
+            min-height: 50px;
+            position: absolute;
+        }
+
+        .inner-shape {
+            width: 75%;
+            height: 75%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(30deg);
+            overflow: hidden;
+        }
+
+        .shape-top {
+            width: 125%;
+            height: 55%;
+            border-radius: 0 100% 0 0;
+            margin-left: -25%;
+        }
+
+        .shape-middle {
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .shape-bottom {
+            width: 100%;
+            height: 45%;
+            border-radius: 0 0 0 100%;
+        }
+
+        /* ANIMATION PART */
+        .shape-1 {
+            animation: myRotation 3s infinite;
+            animation-delay: 0ms;
+        }
+
+        .shape-2 {
+            animation: myRotation 3s infinite;
+            animation-delay: 200ms;
+        }
+
+        .shape-3 {
+            animation: myRotation 3s infinite;
+            animation-delay: 400ms;
+        }
+
+        .shape-4 {
+            animation: myRotation 3s infinite;
+            animation-delay: 600ms;
+        }
+
+        .shape-5 {
+            animation: myRotation 3s infinite;
+            animation-delay: 800ms;
+        }
+
+        .shape-6 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1000ms;
+        }
+
+        .shape-7 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1200ms;
+        }
+
+        .shape-8 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1400ms;
+        }
+
+        .shape-9 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1600ms;
+        }
+
+        .shape-10 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1800ms;
+        }
+
+        @keyframes myRotation {
+            0% {
+                transform-origin: bottom left;
+            }
+
+            100% {
+                transform-origin: bottom left;
+                transform: rotate(360deg);
+            }
+        }
+
+        /* loader CSS End */
+    </style>
+</head>
+
+<body>
+
+    <div id="qr-reader"></div>
+    <form action="" id="form-home" method="post" enctype="multipart/form-data" class="form-group mt-2">
+        <div class="container mt-1 p-3 shadow rounded bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+                <div>PMC Lite</div>
+                <div class="mb-1 text-center">
+                    <strong id="lbl-user-name">${ds.userName}</strong>
+                </div>
+                <div class="text-right">
+                    <div id="date" class="small">6/6/2024 </div><label for="pwd" id="time">11:30:50</label>
+
+                </div>
+            </div>
+
+            <div class="mb-1 text-center">
+                <h6>TODAYS UNIT: <strong for="pwd" id="today-quantity">${ds.todayQuantity}</strong></h6>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- <label for="item">Work Order</label> -->
+                        <input type="text" class="form-control" placeholder="Work Order" name="custparam_workorder"
+                            id="input-workorder" value="${ds.workorder}">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="item">Work Order</label> -->
+                        <input type="text" class="form-control" placeholder="Customer" name="custparam_customer"
+                            id="input-customer" value="${ds.customer}">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="item">Item</label> -->
+                        <input type="text" placeholder="Item" class="form-control" name="custparam_item" id="input-item"
+                            value="${ds.name}">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="description">Description</label> -->
+                        <textarea type="text" style="background: #f2f2f2;" class="form-control pct-medium-text"
+                            placeholder="Description" name="custparam_description" id="textarea-description"
+                            value="">${ds.description}</textarea>
+                    </div>
+
+
+                    <!-- <div class="form-group">
+                        <label for="work-station">Work Station</label>
+                        <input type="text" class="form-control" id="work-station" placeholder="Work Station">
+                    </div> -->
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- <label for="operation">Operation</label> -->
+                        <input type="text" class="form-control" name="custparam_operation" id="input-operation"
+                            value="${ds.sequence}" placeholder="Operation">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="item">Item</label> -->
+                        <input type="text" placeholder="Expected Ship Date" class="form-control"
+                            name="custparam_exp_ship_date" id="input-exp-ship-date" value="${ds.expShipDate}">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="quantity-remaining">Quantity Good</label> -->
+                        <input type="text" class="form-control" name="custparam_quantity" id="input-quantity"
+                            value="${ds.remainingQuantity}" placeholder="Quantity Good">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="description" ${ds.IsLastOperation}>Scrap Quantity</label> -->
+                        <input ${ds.IsLastOperation} type="number" placeholder="Scrap Quantity"
+                            class="form-control pct-medium-text" name="custparam_scrap_quantity"
+                            id="input-scrap-quantity">
+                        <input type="hidden" name="lastOperation" id="lastOperation" value="${ds.lastOperation}">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="quantity-remaining">Quantity Good</label> -->
+                        <input type="text" class="form-control" name="startTime" id="startTime" value="${ds.startTime}"
+                            placeholder="Operation Setup/Production Start Time">
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="mb-3 text-center">
+                    <strong>TICKET NUMBER</strong>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input-ticket-number_new"
+                        name="custparam_ticketNumberNew" value="${ds.ticketNumberNew}" placeholder="e.g. WO123/10">
+                    <input type="text" class="form-control" hidden id="input-ticket-number"
+                        name="custparam_ticketNumber" value="${ds.ticketNumber}" placeholder="e.g. 10/1234">
+
+                    <div class="input-group-append"> <select id="setupProduction" name="setupProduction"
+                            class="form-control" style="font-weight:bold; font-size:14pt;">
+                            <option value="Production">Production</option>
+                            <option value="Setup">Setup</option>
+                        </select></div>
+                    <div class="input-group-append">
+                        <button class="btn btn-info" type="submit" id="btn-view" style="background-color:#008ca7e3;"
+                            style="background-color: #008CA7;"><i class="fas fa-eye"></i>
+                            VIEW</button>
+                        <button class="btn btn-secondary scan-btn" type="button" id="btn-scan-ticket"><i
+                                class="fas fa-qrcode"></i></button>
+                        <div class="invalid-feedback">
+                            Please enter correct ticket number.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between mb-3">
+                <button class="btn flex-grow-1 mr-1 mb-1" style="background-color: #00b8a894;" type="submit"
+                    id="btn-start" ${ds.startBtnType}><i class="fas fa-play"></i>
+                    START</button>
+                <!-- <button class="btn btn-danger flex-grow-1 mx-1 mb-1" type="button"><i class="fas fa-stop"></i>
+                    STOP</button> -->
+                <button type="button" class="btn flex-grow-1 mx-1 mb-1" id="btn-break" ${ds.breakBtn}
+                    style="display: inline; color: white; background-color: #c25254e3;" data-toggle="modal"
+                    data-target="#stop-reason-modal"><i class="fas fa-coffee"></i> Stop</button>
+
+                <button type="submit" class="btn flex-grow-1 mx-1 mb-1n" id="btn-breakend"
+                    onclick="$('#Break_end').val('Break_end');" ${ds.breakStopBtn}
+                    style="display: inline; color: white; background-color: #ffaf3abd;"><i class="fas fa-clock"></i> End
+                    Break</button>
+                <button class="btn flex-grow-1 ml-1 mb-1" style="background-color: #97a822cc;" type="button"
+                    id="btn-complete" onclick="buildConfirm()" ${ds.completeBtnType}><i class="fas fa-check"></i>
+                    COMPLETE</button>
+
+
+                <!---->
+                <input type="hidden" id="Break_end" name="Break_end" value="">
+                <button type="button" class="btn flex-grow-1 mx-1 mb-1" id="btn-work-instruction"
+                    ${ds.workInstructionBtnType} style="display: inline; color: white; background-color: #386b9e;"
+                    data-toggle="modal" data-target="#work-instruction-modal"><i class="fa-solid fa-note-sticky"></i>
+                    Instruction</button>
+
+                <button type="button" class="btn btn-light shadow btn-lg btn-block pmc-button" id="btn-logout"
+                    style="display: inline;background-color: #756f6f8f;"><i class="fas fa-sign-out-alt"></i> Log
+                    Out</button>
+            </div>
+        </div>
+        <input type="hidden" id="build_status" name="build_status">
+        <input type="hidden" id="user-id" name="custparam_userId" value="${ds.userId}">
+        <input type="hidden" id="user-name" name="custparam_userName" value="${ds.userName}">
+        <input type="hidden" id="login-record-id" name="custparam_loginRecordId" value="${ds.loginRecordId}">
+        <input type="hidden" id="status" name="custparam_status" value="${ds.status}">
+        <input type="hidden" id="mode" name="custparam_mode" value="${ds.mode}">
+        <input type="hidden" id="start-record-id" name="custparam_startRecordId" value="${ds.startRecordId}">
+        <input type="hidden" id="op-internal-id" name="custparam_opInternalId" value="${ds.opInternalId}">
+        <input type="hidden" id="total-quantity" name="custparam_totalQuantity" value="${ds.quantity}">
+        <input type="hidden" id="remaining-quantity" name="custparam_remainingQuantity" value="${ds.remainingQuantity}">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<div class="modal fade" id="stop-reason-modal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Reason for stop</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+
+                    <label class="control-label col-sm-8" for="comment">Downtime Category:</label>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <select id="select-break-category" class="form-control"
+                            style="font-weight:bold; font-size:14pt;">
+                            <#list ds.downTimeCategory as downTime>
+                                <option value="${downTime.name}">${downTime.name}</option>
+                            </#list>
+                        </select>
+                    </div>
+
+                    <label class="control-label col-sm-8" for="Break">Downtime Reason</label>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <select id="select-break-option" class="form-control" style="font-weight:bold; font-size:14pt;">
+                            <#list ds.downTimeReason as downTime>
+                                <option value="${downTime.name}">${downTime.name}</option>
+                            </#list>
+                        </select>
+                    </div>
+
+                    <label class="control-label col-sm-8" for="notes">Notes:</label>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <textarea id="downtime_notes" name="downtime_notes" class="form-control"
+                            style="font-weight:bold; font-size:14pt;" placeholder=""></textarea>
+                    </div>
+
+
+                    <!--<textarea class="form-control col-sm-12 col-md-12 col-lg-12" rows="3"
+                        id="textarea-break-description" name="text"></textarea>-->
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="border-radius: 10px;" id="btn-model-submit"
+                    data-dismiss="modal">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="work-instruction-modal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Work Instruction</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+
+
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Instruction</th>
+                                <th scope="col">Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <#list ds.WorkInstrucionArray as workInstruction>
+                                <tr>
+                                    <td scope="row">${workInstruction.instruction}</td>
+                                    <td>
+                                        <#if workInstruction.url !=''><a href="${workInstruction.url}"
+                                                target="_blank">Link</a></#if>
+                                    </td>
+
+                                </tr>
+
+                            </#list>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Loader Design Start -->
+<div class="modal" id="loader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="shape-container">
+                <div class="shape shape-9">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #cf7046"></div>
+                        <div class="shape-middle" style="background-color: #cf7046"></div>
+                        <div class="shape-bottom" style="background-color: #cf7046"></div>
+                    </div>
+                </div>
+                <div class="shape shape-8">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #ff5d60"></div>
+                        <div class="shape-middle" style="background-color: #ff5d60"></div>
+                        <div class="shape-bottom" style="background-color: #ff5d60"></div>
+                    </div>
+                </div>
+                <div class="shape shape-7">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #b85856"></div>
+                        <div class="shape-middle" style="background-color: #b85856"></div>
+                        <div class="shape-bottom" style="background-color: #b85856"></div>
+                    </div>
+                </div>
+                <div class="shape shape-6">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #008ca7"></div>
+                        <div class="shape-middle" style="background-color: #008ca7"></div>
+                        <div class="shape-bottom" style="background-color: #008ca7"></div>
+                    </div>
+                </div>
+                <div class="shape shape-5">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #6cab36"></div>
+                        <div class="shape-middle" style="background-color: #6cab36"></div>
+                        <div class="shape-bottom" style="background-color: #6cab36"></div>
+                    </div>
+                </div>
+                <div class="shape shape-4">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #97a822"></div>
+                        <div class="shape-middle" style="background-color: #97a822"></div>
+                        <div class="shape-bottom" style="background-color: #97a822"></div>
+                    </div>
+                </div>
+                <div class="shape shape-3">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #718f40"></div>
+                        <div class="shape-middle" style="background-color: #718f40"></div>
+                        <div class="shape-bottom" style="background-color: #718f40"></div>
+                    </div>
+                </div>
+                <div class="shape shape-2">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #00b8a8"></div>
+                        <div class="shape-middle" style="background-color: #00b8a8"></div>
+                        <div class="shape-bottom" style="background-color: #00b8a8"></div>
+                    </div>
+                </div>
+                <div class="shape shape-1">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #ffaf3a"></div>
+                        <div class="shape-middle" style="background-color: #ffaf3a"></div>
+                        <div class="shape-bottom" style="background-color: #ffaf3a"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Loader Design End -->
+
+<!-- Footer Copyright Start -->
+<footer class="mt-auto bg-light text-center">
+    <p id="copyRight" class="py-3 my-4 text-muted">© 2024 <a href="https://www.paapri.com/" target="_blank">Paapri
+            Cloud
+            Technologies.</a> All Rights Reserved.</p>
+</footer>
+<!-- Footer Copyright End -->
+
+<script>
+    // date function
+    var now = new Date();
+    var day = now.getDate();
+    var month = now.getMonth() + 1;
+    var year = now.getFullYear();
+    var fullDate = month + "/" + day + "/" + year;
+    var COMPLETION_RECORD_ID = '${ds.COMPLETION_RECORD_ID}';
+
+    if (COMPLETION_RECORD_ID != '') {
+        Swal.fire({
+            title: "Completion Record is Created " + COMPLETION_RECORD_ID + "!",
+            icon: "success",
+            button: "Ok",
+        }).then((result) => {
+            //  location.reload()
+        });
+    }
+
+    $("#date").html(fullDate);
+    // date function end
+
+    // time function
+    getTime();
+    window.onload = function () {
+        getTime();
+    }
+
+    //functon to give alert only for last quantiity of last operation
+    function buildConfirm() {
+        if ($("#input-quantity").val().length === 0) {
+            Swal.fire({
+                title: "Please enter quantity",
+                icon: "error",
+                button: "Ok",
+            }).then((result) => {
+                $("#input-quantity").focus();
+            });
+            $("#input-quantity").val("");
+            return false;
+        }
+
+
+        if (!IsValidQuantity()) {
+            Swal.fire({
+                title: "Quantity must be a positive number!",
+                icon: "error",
+                button: "Ok",
+            }).then((result) => {
+                $("#input-quantity").focus();
+            });
+            $("#input-quantity").val("");
+            return false;
+        }
+
+
+        var isOverRunQty = '${ds.isOverRunQty}';
+        var predecessorCompletedquantity = '${ds.predecessorCompletedquantity}';
+        var predecessorName = '${ds.predecessorName}';
+        var completedQuantity = '${ds.completedQuantity}';
+        var quantityToComplete = $("#input-quantity").val();
+        if (isNaN(completedQuantity) || completedQuantity == '' || completedQuantity == null) {
+            completedQuantity = 0
+        }
+
+
+        if ($("#input-quantity").val().length === 0) {
+            swal({
+                title: "Please enter quantity",
+                icon: "error",
+                button: "Ok",
+            }).then((result) => {
+                $("#input-quantity").focus();
+            });
+            $("#input-quantity").val("");
+            return false;
+        }
+
+
+        if (!IsValidQuantity()) {
+            swal({
+                title: "Quantity must be a positive number!",
+                icon: "error",
+                button: "Ok",
+            }).then((result) => {
+                $("#input-quantity").focus();
+            });
+            $("#input-quantity").val("");
+            return false;
+        }
+
+        if ((predecessorName.length > 1)) {
+            // alert('predecessorCompletedquantity =' + predecessorCompletedquantity + '< quantityToComplete =' + quantityToComplete + ' completedQuantity =' + completedQuantity)
+            if (parseFloat(predecessorCompletedquantity) < (parseFloat(quantityToComplete) + parseFloat(completedQuantity))) {
+                console.log('predecessor quantity is less than current quantity')
+                Swal.fire({
+                    title: "predecessor quantity is less than current quantity!",
+                    icon: "error",
+                    button: "Ok",
+                }).then((result) => {
+                    $("#input-quantity").focus();
+                });
+                $("#input-quantity").val("");
+                return false;
+
+            }
+        }
+
+        if (!IsFollowRemainingQuantity() && isOverRunQty == 0) {
+            swal({
+                title: "Input quantity is greater than remaining quantity!",
+                icon: "error",
+                button: "Ok",
+            }).then((result) => {
+                $("#input-quantity").focus();
+            });
+            $("#input-quantity").val("");
+            return false;
+
+        }
+
+
+
+        if (($("#lastOperation").val() == 1) && ($("#input-quantity").val() >= ('${ds.quantity}' - '${ds.completedQuantity}'))) {
+            Swal.fire({
+                type: "warning",
+                title: "Do You Want To Build",
+                showCancelButton: true
+            }).then(function () {
+                $('#lastOperation').val();
+                complete(1)
+
+            }, function (dismiss) {
+                // alert(dismiss)
+                if (dismiss == 'cancel') {
+                    $('#lastOperation').val();
+                    complete(0)
+                }
+            });
+        }
+        else {
+            complete(0);
+        }
+
+
+    }
+
+    function complete(build) {
+        var LOGOUT_PAGE_URL = '${ds.logoutPageUrl}';
+        var BREAK_PAGE_URL = '${ds.breakPageUrl}';
+        var HOME_PAGE_URL = '${ds.homePageUrl}';
+        var WO_COMPLETION_URL = '${ds.woCompletionUrl}';
+        var QRAFTER_START_URL = 'https://qrafter.com/x-callback-url/scan?x-success=';
+        var QRAFTER_END_URL = '&qrcode={CODE}&browser=external'
+        var ZXING_START_UTL = "http://zxing.appspot.com/scan?ret=";
+
+        $('#loader').modal('show')
+        $("#btn-complete").attr("disabled", "disabled");
+        var userId = $("#user-id").val();
+        var userName = $("#user-name").val();
+        var loginRecordId = $("#login-record-id").val();
+        var quantityToComplete = $("#input-quantity").val();
+        var setupProduction = $('#setupProduction').val()
+        if (setupProduction == 'Setup') {
+            quantityToComplete = 0
+        }
+        var ticketNumber = $("#input-ticket-number").val();
+        var ticketNumberNew = $("#input-ticket-number_new").val();
+        var startRecordId = $("#start-record-id").val();
+        var operationName = $("#input-item").val();
+        var scrapQuantity = $("#input-scrap-quantity").val();
+        var quantityRework = $("#input-quantity-rework").val();
+
+        //return false
+        $(location).attr('href', WO_COMPLETION_URL +
+            '&custparam_userId=' + userId +
+            '&custparam_userName=' + userName +
+            '&custparam_loginRecordId=' + loginRecordId +
+            '&custparam_quantityToComplete=' + quantityToComplete +
+            '&custparam_startRecordId=' + startRecordId +
+            '&custparam_ticketNumber=' + ticketNumber +
+            '&custparam_ticketNumberNew=' + ticketNumberNew +
+            '&custparam_operationName=' + operationName +
+            '&custparam_build=' + build +
+            '&custparam_scrap_quantity=' + scrapQuantity +
+            '&custparam_setupProduction=' + setupProduction +
+            '&custparam_quantity_rework=' + quantityRework);
+
+
+    }
+    function getTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        // add a zero in front of numbers<10  
+        m = checkTime(m);
+        s = checkTime(s);
+        $('#time').html(h + ":" + m + ":" + s);
+        setTimeout(function () { getTime() }, 1000);
+    }
+    //setInterval("getTime()",1000);//another way  
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    // time function end
+
+
+
+    (function () {
+
+    })();
+    // $(document).ready(function () {
+    $(document).ready(async () => {
+
+        var LOGOUT_PAGE_URL = '${ds.logoutPageUrl}';
+        var BREAK_PAGE_URL = '${ds.breakPageUrl}';
+        var HOME_PAGE_URL = '${ds.homePageUrl}';
+        var WO_COMPLETION_URL = '${ds.woCompletionUrl}';
+        var QRAFTER_START_URL = 'https://qrafter.com/x-callback-url/scan?x-success=';
+        var QRAFTER_END_URL = '&qrcode={CODE}&browser=external'
+        var ZXING_START_UTL = "http://zxing.appspot.com/scan?ret=";
+        var PMCLiteTicketDataURL = '${ds.checkTicketPageUrl}'//'https://4369278-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2757&deploy=1&compid=4369278_SB1&ns-at=AAEJ7tMQ47Ioe6ZO6Kho3vKALW8toX686XnZuV9i32MzVmn3ieg'
+
+        var isOverRunQty = '${ds.isOverRunQty}';
+
+        var setupProduction = '${ds.setupProductionType}'
+        if (setupProduction != '') {
+            $('#setupProduction').val(setupProduction)
+            $("#setupProduction").attr("disabled", "disabled");
+            if (setupProduction == 'Setup') {
+                $("#btn-break").attr("disabled", "disabled");
+                $('#input-quantity').val(0)
+                $("#input-quantity").attr("disabled", "disabled");
+            }
+        }
+
+        //complete button
+        if ('${ds.completeBtnType}' == '') {
+            $('#btn-complete').removeClass('btn-secondary');
+            $('#btn-complete').addClass('btn-success');
+
+        }
+        // alert(isOverRunQty)
+
+        // Setting Home Page url in form action attr
+
+
+        document.getElementById("form-home").action = HOME_PAGE_URL;
+
+        const fetchGetRequest = async (url) => {
+            let responseObj = {
+                'responseSuccess': false,
+                'responseData': {},
+            }
+            //disableUI()
+            const response = await fetch(url, {
+                'method': 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                const result = await response.json();
+                responseObj.responseSuccess = true
+                responseObj.responseData = result;
+            }
+            return responseObj
+        }
+
+        $("#input-ticket-number_new").blur(async () => {
+            $("#input-ticket-number").val("");
+            $('#loader').modal('show')
+            $("#btn-complete").attr("disabled", "disabled");
+            let newTicetNumber = $('#input-ticket-number_new').val()
+            // alert(workOrderText)
+            let PMCLiteTicketDataResponse = await fetchGetRequest(PMCLiteTicketDataURL + '&ticket=' + newTicetNumber);
+            console.log(PMCLiteTicketDataResponse);
+            if (PMCLiteTicketDataResponse.responseSuccess && PMCLiteTicketDataResponse.responseData.isSuccess) {
+                $('#input-ticket-number').val(PMCLiteTicketDataResponse.responseData.data)
+                // workOrderId = workOrderAdditionalDataResponse.responseData.workOrderId
+                // selectedRowWorkOrderId = workOrderId
+
+                // workOrderAdditionalData[selectedRowWorkOrderId] = workOrderAdditionalDataResponse.responseData;
+
+            } else {
+                //alert('hi')
+                $("#input-ticket-number").focus()
+                Swal.fire({
+                    title: "Invalid ticket number, Please enter correct ticket number.",
+                    icon: "error",
+                    button: "Ok",
+                })
+
+
+            }
+            $('#loader').modal('hide')
+        });
+
+
+
+        // Scan button click
+        $("#btn-scan-ticket").click(function () {
+            var userId = $("#user-id").val();
+            var userName = $("#user-name").val();
+            var loginRecordId = $("#login-record-id").val();
+            var scannerUrl = "";
+            var device = GetDevice();
+
+            const html5QrCode = new Html5Qrcode("qr-reader");
+
+            /* handle success */
+            const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                document.getElementById("input-ticket-number").value = decodedText;
+                html5QrCode.stop();
+                html5QrCode.clear();
+            };
+
+            const config = { fps: 60, qrbox: { width: 250, height: 250 } };
+
+            html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+            /////////////////////////////////////////////////////////////////
+
+
+            //                 if (device == "Android") {
+            //                     var encodedUrlDroid = GenerateBase64String(HOME_PAGE_URL, userId, userName, loginRecordId);
+            //                     scannerUrl = ZXING_START_UTL + encodedUrlDroid + "%26qrcode%3D%7BCODE%7D%26SCAN_FORMATS%3DUPC_A"
+            // //alert(scannerUrl)
+            //                 } else {
+            //                     var encodedUrlIOS = GenerateBase64String(HOME_PAGE_URL, userId, userName, loginRecordId, QRAFTER_END_URL);
+            //                     scannerUrl = QRAFTER_START_URL + encodedUrlIOS;
+            //                 }
+            //                 $(location).attr('href', scannerUrl);
+        });
+        $('#select-break-category').change(async (e) => {
+            e.preventDefault();
+            var catId = $("#select-break-category").val();
+            console.log(catId)
+            var opt = "";
+            var downTimeUrl = 'https://4369278-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2758&deploy=1&compid=4369278_SB1&ns-at=AAEJ7tMQ5jYCS40FjaZF6u9RLxuBT0V6HR56-K656nb6OkuMz1A'
+            await fetchGetRequest(downTimeUrl + '&categoryId=' + catId);
+            let downtimeResponse = await fetchGetRequest(downTimeUrl + '&categoryId=' + catId);//await fetchGetRequest(`https://4369278-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=1961&deploy=1&compid=3998177&h=b785942875c24440988f&categoryId=" + ${catId}`);
+            console.log(downtimeResponse.responseData)
+            if (downtimeResponse.responseSuccess) {
+                downtimeResponse.responseData.forEach(function (result) {
+                    opt += "<option value='" + result.name + "'>" + result.name + "</option>";
+                });
+                $("#select-break-option").find("option").remove().end().append(opt);
+            }
+            // if (catId == -1) {
+            //     opt += `<option value="-1"> --Select Reason--</option>`;
+            //     $("#select-break-option").find("option").remove().end().append(opt);
+            // }
+            // else {
+            // $.ajax({
+            //     type: "GET",
+            //     url: "https://4369278-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=1961&deploy=1&compid=3998177&h=b785942875c24440988f&categoryId=" + catId,
+            //     success: function (data) {
+            //         var reasonData = JSON.parse(data);
+            //         reasonData.forEach(function (result) {
+            //             opt += "<option value='" + result.name + "'>" + result.name + "</option>";
+            //         });
+            //         $("#select-break-option").find("option").remove().end().append(opt);
+            //     },
+            //     error: function (e) {
+            //         swal({ title: "something wrong" + e });
+            //     }
+            // });
+            // }
+        });
+        // View button click
+        $("#btn-view").click(function (e) {
+            var ticketNumber = $("#input-ticket-number").val();
+            if (ticketNumber == "") {
+                e.preventDefault();
+                swal({
+                    title: "Ticket Blank!",
+                    icon: "error",
+                    button: "Ok",
+                }).then((result) => {
+                    $("#input-ticket-number").focus();
+                });
+                return false;
+            }
+            $("#mode").val("VIEW_MODE");
+        });
+
+        // Start button click
+        $("#btn-start").click(function (e) {
+            var ticketNumber = $("#input-ticket-number").val();
+            if (ticketNumber == "") {
+                e.preventDefault();
+                swal({
+                    title: "Ticket Blank!",
+                    icon: "error",
+                    button: "Ok",
+                }).then((result) => {
+                    $("#input-ticket-number").focus();
+                });
+                return false;
+            }
+            $("#mode").val("START_MODE");
+        });
+
+        // Restart button click
+        $("#btn-restart").click(function () {
+
+            var userId = $("#user-id").val();
+            var userName = $("#user-name").val();
+            var loginRecordId = $("#login-record-id").val();
+            $(location).attr('href', HOME_PAGE_URL +
+                '&custparam_userId=' + userId +
+                '&custparam_userName=' + userName +
+                '&custparam_loginRecordId=' + loginRecordId);
+
+        });
+
+
+        // Break - Submit button
+        $("#btn-model-submit").click(function () {
+
+            var userId = $("#user-id").val();
+            var userName = $("#user-name").val();
+            var loginRecordId = $("#login-record-id").val();
+            var selectedBreakOption = $("#select-break-option").val();
+            var breakDescription = $("#select-break-category").val();
+            var breakNotes = $("#downtime_notes").val();
+
+            if (selectedBreakOption == '-- Select Reason --' || breakDescription == '-- Select Category --') {
+                e.preventDefault();
+                swal({
+                    title: "Please Select a Proper Downtime Category & Reason",
+                    icon: "error",
+                    button: "Ok",
+                }).then((result) => {
+                    $("#select-break-category").focus();
+
+                });
+                return false;
+            }
+            else {
+                var mode = $("#mode").val();
+                var startRecordId = $("#start-record-id").val();
+                var ticketNumber = $("#input-ticket-number").val();
+                var ticketNumberNew = $("#input-ticket-number_new").val();
+
+
+                $(location).attr('href', BREAK_PAGE_URL +
+                    '&custparam_userId=' + userId +
+                    '&custparam_userName=' + userName +
+                    '&custparam_loginRecordId=' + loginRecordId +
+                    '&custparam_selectedBreakOption=' + selectedBreakOption +
+                    '&custparam_breakDescription=' + breakDescription +
+                    '&custparam_mode=' + mode +
+                    '&custparam_startRecordId=' + startRecordId +
+                    '&custparam_ticketNumber=' + ticketNumber +
+                    '&custparam_notes=' + breakNotes +
+                    '&custparam_ticketNumberNew=' + ticketNumberNew);
+            }
+
+        });
+
+        /*
+        // Complete button click
+        $("#btn-complete").click(function () {
+ 
+            if (buildConfirm() && $("#lastOperation").val() == 1) {
+ 
+ 
+ 
+                if ($("#input-quantity").val().length === 0) {
+                    swal({
+                        title: "Please enter quantity",
+                        icon: "error",
+                        button: "Ok",
+                    }).then((result) => {
+                        $("#input-quantity").focus();
+                    });
+                    $("#input-quantity").val("");
+                    return false;
+                }
+ 
+ 
+                if (!IsValidQuantity()) {
+                    swal({
+                        title: "Quantity must be a positive number!",
+                        icon: "error",
+                        button: "Ok",
+                    }).then((result) => {
+                        $("#input-quantity").focus();
+                    });
+                    $("#input-quantity").val("");
+                    return false;
+                }
+ 
+                if (!IsFollowRemainingQuantity() && isOverRunQty == 0) {
+                    swal({
+                        title: "Input quantity is greater than remaining quantity!",
+                        icon: "error",
+                        button: "Ok",
+                    }).then((result) => {
+                        $("#input-quantity").focus();
+                    });
+                    $("#input-quantity").val("");
+                    return false;
+ 
+                }
+ 
+                var userId = $("#user-id").val();
+                var userName = $("#user-name").val();
+                var loginRecordId = $("#login-record-id").val();
+                var quantityToComplete = $("#input-quantity").val();
+                var ticketNumber = $("#input-ticket-number").val();
+                var startRecordId = $("#start-record-id").val();
+                var operationName = $("#input-item").val();
+                var scrapQuantity = $("#input-scrap-quantity").val();
+ 
+ 
+                $(location).attr('href', WO_COMPLETION_URL +
+                    '&custparam_userId=' + userId +
+                    '&custparam_userName=' + userName +
+                    '&custparam_loginRecordId=' + loginRecordId +
+                    '&custparam_quantityToComplete=' + quantityToComplete +
+                    '&custparam_startRecordId=' + startRecordId +
+                    '&custparam_ticketNumber=' + ticketNumber +
+                    '&custparam_operationName=' + operationName +
+                    '&custparam_scrap_quantity=' + scrapQuantity);
+            }
+ 
+        });*/
+
+        // Logout button click
+        $("#btn-logout").click(function () {
+
+            var userId = $("#user-id").val();
+            var userName = $("#user-name").val();
+            var loginRecordId = $("#login-record-id").val();
+            var todayQuantity = $("#today-quantity").html();
+
+            $(location).attr('href', LOGOUT_PAGE_URL +
+                '&custparam_userId=' + userId +
+                '&custparam_userName=' + userName +
+                '&custparam_loginRecordId=' + loginRecordId +
+                '&custparam_todayQuantity=' + todayQuantity);
+
+        });
+
+
+        (function () {
+            var status = $("#status").val();
+            var getOperationStatus = '${ds.getOperationStatus}';
+            if ((status == "COMPLETE") || (getOperationStatus == "COMPLETE")) {
+                //alert("This operation is already completed!");
+                swal({
+                    title: "This operation is already completed!",
+                    icon: "warning",
+                    button: "Ok",
+                });
+            } else if (status == "INVALID_INTERNAL_ID") {
+                //alert("Invalid ticket number, Please enter correct ticket number.");
+                swal({
+                    title: "Invalid ticket number, Please enter correct ticket number.",
+                    icon: "info",
+                    button: "Ok",
+                });
+            }
+        })();
+
+        // Enable Complete button when you start any operation
+        (function () {
+            var MODE = $("#mode").val();
+            if (MODE == "START_MODE") {
+                $('#btn-complete').removeAttr('disabled');
+                $('#btn-complete').removeClass('btn-secondary');
+                $('#btn-complete').addClass('btn-success');
+            }
+        })();
+
+        /**
+        * Generate base 64 URL for qrafter 
+        */
+        function GenerateBase64String(HOME_PAGE_URL, userId, userName, loginRecordId, QRAFTER_END_URL) {
+
+            var base64 = encodeURIComponent(HOME_PAGE_URL) +
+                encodeURIComponent('&custparam_userId=' + userId) +
+                encodeURIComponent('&custparam_userName=' + userName) +
+                encodeURIComponent('&custparam_loginRecordId=' + loginRecordId) +
+                encodeURIComponent('&custparam_todayQuantity=786' + QRAFTER_END_URL);
+            return base64;
+        }
+
+
+
+    });
+
+    function IsValidQuantity() {
+        var inputQuantity = $("#input-quantity").val();
+        var remainingQuantity = $("#remaining-quantity").val();
+        if (inputQuantity >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    function IsFollowRemainingQuantity() {
+        var inputQuantity = parseInt($("#input-quantity").val());
+        var remainingQuantity = parseInt($("#remaining-quantity").val());
+        if (inputQuantity <= remainingQuantity) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    /**
+    * This method is used to get the device details
+    */
+    function GetDevice() {
+        var userAgent = window.navigator.userAgent,
+            platform = window.navigator.platform,
+            macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+            windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+            iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+            device = null;
+
+        if (macosPlatforms.indexOf(platform) !== -1) {
+            device = 'Mac OS';
+        } else if (iosPlatforms.indexOf(platform) !== -1) {
+            device = 'iOS';
+        } else if (windowsPlatforms.indexOf(platform) !== -1) {
+            device = 'Windows';
+        } else if (/Android/.test(userAgent)) {
+            device = 'Android';
+        } else if (!device && /Linux/.test(platform)) {
+            device = 'Linux';
+        }
+
+        return device;
+    }
+
+    function sweetAlert(type, title, timer, input, confirmButtonText, text) {
+        if (timer === undefined)
+            timer = null;
+        if (input === undefined)
+            input = null;
+        if (confirmButtonText === undefined)
+            confirmButtonText = 'OK';
+        swal({
+            type: type,
+            title: title,
+            timer: timer,
+            input: input,
+            confirmButtonText: confirmButtonText,
+            text: text,
+        }, function () {
+            swal.resetDefaults();
+        }).catch(function () {
+            swal.noop;
+            swal.resetDefaults();
+        });
+    }
+
+
+    /**
+    * (IIFE) for input ticket number validation
+    */
+    (validateTicketInput = function () {
+        var $regexname = /^([0-9]{1,3})+\/([0-9]{1,16})$/;
+        $('#input-ticket-number').on('keypress keydown keyup change', function () {
+            if (!$(this).val().match($regexname)) {
+                // there is a mismatch, hence show the error message
+                $(this).removeClass('is-valid');
+                $(this).addClass('is-invalid');
+                $("#btn-view").attr("disabled", "disabled");
+                $("#btn-start").attr("disabled", "disabled");
+            }
+            else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+                $("#btn-view").removeAttr("disabled", "disabled");
+                // $("#btn-start").removeAttr("disabled", "disabled");
+            }
+            // If input field is empty remove all validation 
+            $(this).focusout(function () {
+                if ($(this).val() == "") {
+                    $(this).removeClass('is-valid');
+                    $(this).removeClass('is-invalid');
+                    $("#btn-view").removeAttr("disabled", "disabled");
+                    $("#btn-start").removeAttr("disabled", "disabled");
+                }
+            });
+        });
+
+    })();
+
+    /* $(document).ready(async () => {
+         $("#workOrderIssue").click(async () => {
+ 
+ let workOrderText = $('#input-workorder').val()
+ // alert(workOrderText)
+ workOrderAdditionalDataResponse = await fetchGetRequest(customscript_pct_pmclite_sl_wo_issue_pg + '&workOrderId=' + workOrderText);
+ console.log(workOrderAdditionalDataResponse);
+ if (workOrderAdditionalDataResponse.responseSuccess && workOrderAdditionalDataResponse.responseData.isSuccess) {
+     workOrderId = workOrderAdditionalDataResponse.responseData.workOrderId
+     selectedRowWorkOrderId = workOrderId
+ 
+     workOrderAdditionalData[selectedRowWorkOrderId] = workOrderAdditionalDataResponse.responseData;
+ 
+ }
+
+ 
+     });*/
+
+
+</script>
+
+</html>

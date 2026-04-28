@@ -1,0 +1,40 @@
+itemId,Internal Id,displayname,unitstype,stockunit,purchaseunit,saleunits,Consumption Unit,Location,MPN,Track Landed Cost,costingmethod,cogsaccount,incomeaccount,assetaccount,taxSchedule,bomName,masterDefault,supplyreplenishmentmethod,planningitemcategory
+GW4,5,Gateway - GW4,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Gateway,Yes,Average,636,948,422,Taxable,GW4 BOM,,Master Production Scheduling,NMG Finished Goods
+GW4-L,1637,Gateway Lite - GW4,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Gateway Lite,Yes,Average,636,948,422,Taxable,GW4-L BOM,,Master Production Scheduling,NMG Finished Goods
+RE4,9,Repeater - RE4,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Repeater,Yes,Average,631,952,422,Taxable,RE4 BOM,,Master Production Scheduling,NMG Finished Goods
+TR4-I,1640,Transceiver - TR4-I,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Transceiver-I,Yes,Average,628,851,422,Taxable,TR4-I BOM,,Master Production Scheduling,NMG Finished Goods
+TR4-E,1641,Transceiver - TR4-E,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Trabsceiver-E,Yes,Average,626,850,422,Taxable,TR4-E BOM,,Master Production Scheduling,NMG Finished Goods
+TR4-X,1642,Outdoor Transceiver - TR4-X,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Outdoor Transceiver,Yes,Average,627,852,422,Taxable,TR4-X BOM,,Master Production Scheduling,NMG Finished Goods
+LS4,1643,Leak Sensor - LS4,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Leak Sensor,Yes,Average,645,1045,422,Taxable,LS4 BOM,,Master Production Scheduling,NMG Finished Goods
+NM4,1644,NextMeter Indoor - NM4-I,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Next Meter Indoor,Yes,Average,526,844,422,Taxable,NM4-I BOM,,Master Production Scheduling,NMG Finished Goods
+RR4,1645,Remote Reader - RR4,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Remote Reader,Yes,Average,639,952,422,Taxable,RR4 BOM,,Master Production Scheduling,NMG Finished Goods
+RR4-TR,1646,Remote Reader (with integrated Transceiver)- RR4-TR,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Remote Reader w/ Integrated Transceiver,Yes,Average,640,951,422,Taxable,RR4-TR BOM,,Master Production Scheduling,NMG Finished Goods
+FSK,1647,Field Splice Kit,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Field Splice Kit,Yes,Average,1055,1057,422,Taxable,FSK BOM,,Master Production Scheduling,NMG Finished Goods
+NR4,1648,Next Register,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Next Register,Yes,Average,644,1044,422,Taxable,NR4 BOM,,Master Production Scheduling,NMG Finished Goods
+BAT201,1649,CR123A Battery Kit,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,CR123A Battery Kit,Yes,Average,1055,1057,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+BAT301,1650,ER18505 Battery Kit,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,ER18505 Battery Kit,Yes,Average,1055,1057,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+BAT4,1651,CR18505 Battery Kit,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,CR18505 Battery Kit,Yes,Average,1055,1057,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+M201C-10G,1652,"3/4"" Polymer Water Meter Gallons Cold",Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,"3/4"" Polymer Water Meter Gallons Cold",Yes,Average,520,841,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+M201C-10L,1653,"3/4"" Polymer Water Meter Liters Cold",Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,"3/4"" Polymer Water Meter Liters Cold",Yes,Average,520,841,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+M201C-CA-10G,1654,"3/4"" Polymer Water CA Meter Gallons Cold",Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,"3/4"" Polymer Water CA Meter Gallons Cold",Yes,Average,520,841,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+M201CH-10G,1655,"3/4"" Polymer Water Meter Gallons Cold/Hot",Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,"3/4"" Polymer Water Meter Gallons Cold/Hot",Yes,Average,521,842,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+M201CH-10L,1656,"3/4"" Polymer Water Meter Liters Cold/Hot",Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,"3/4"" Polymer Water Meter Liters Cold/Hot",Yes,Average,521,842,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+M201CH-CA-10G,1657,"3/4"" Polymer Water CA Meter Gallons Cold/Hot",Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,"3/4"" Polymer Water CA Meter Gallons Cold/Hot",Yes,Average,521,842,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+3PC-Dual,1658,Gateway Connection Cable,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Gateway Connection Cable,Yes,Average,1055,1057,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+LS4-Cable,1659,Leak Sensor Cable,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Leak Sensor Cable,Yes,Average,1055,1057,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+LS4-Targeted,1660,Targeted Leak Sensor Cable,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Targeted Leak Sensor Cable,Yes,Average,1055,1057,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+ST201,1661,Spacer Tubes,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Spacer Tubes,Yes,Average,523,854,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+CS201,1662,Coupling Sets,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Coupling Sets,Yes,Average,524,846,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+PLM,1663,Pit Lid Mount,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Pit Lid Mount,Yes,Average,1055,848,422,Taxable,,,Master Production Scheduling,NMG Finished Goods
+TR4 5.3 PCBA,1664,Transceiver PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Transceiver ,Yes,Average,1055,1057,421,Taxable,TR4 5.3 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+RE4 3.1 PCBA,728,Repeater PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Repeater ,Yes,Average,1055,1057,421,Taxable,RE4 3.1 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+TR4-X 6.3 PCBA,1666,Outdoor Transceiver PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Outdoor Transceiver,Yes,Average,1055,1057,421,Taxable,TR4-X 6.3 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+RR4 5.3 PCBA,1667,Remote Reader PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Remote Reader ,Yes,Average,1055,1057,421,Taxable,RR4 5.3 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+RR4-TR 5.3 PCBA,1668,Remote Reader (with integrated Transceiver) PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Remote Reader (with integrated Transceiver),Yes,Average,1055,1057,421,Taxable,RR4-TR 5.3 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+NM4-I 1.5 PCBA,1669,NextMeter Indoor PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,NextMeter Indoor,Yes,Average,1055,1057,421,Taxable,NM4-I 1.5 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+LS4 2.2 PCBA,1670,Leak Sensor PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Leak Sensor ,Yes,Average,1055,1057,421,Taxable,LS4 2.2 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+GW4 4.6 PCBA,1671,Gateway PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Gateway Lite,Yes,Average,1055,1057,421,Taxable,GW4 4.6 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+TR4-E 3.1 PCBA,1672,Transceiver-E PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Transceiver-E ,Yes,Average,1055,1057,421,Taxable,TR4-E 3.1 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+NR4 2.2 PCBA,1673,Next Register PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Next Register,Yes,Average,1055,1057,421,Taxable,NR4 2.2 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+FSK 1.1 PCBA,1674,Field Splice Kit PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Field Splice Kit ,Yes,Average,1055,1057,421,Taxable,FSK 1.1 PCBA BOM,,Master Production Scheduling,NMG Subassembly
+TR4-I 4.4 PCBA,1675,Integrated Transceiver PCBA,Each,Eaches,Eaches,Eaches,Eaches,Cape Manufacturing,Integrated Transceiver,Yes,Average,1055,1057,421,Taxable,TR4-I 4.4 PCBA BOM,,Master Production Scheduling,NMG Subassembly

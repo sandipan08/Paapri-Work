@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<!--************************************************** Required meta tags **************************************************-->
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">      
+
+	<!--************************************************** Icons **************************************************-->
+
+	<link rel="icon" href="#FAVICON#" type="image/png" sizes="16x16">
+	<link rel="apple-touch-icon" href="#APPLE-ICON#">
+
+	<!--************************************************** Bootstrap CSS **************************************************-->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<!--************************************************** FontAwesome CSS **************************************************-->
+
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<!--************************************************** SweetAlert CSS **************************************************-->
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" integrity="sha512-p4DnlqTeGE7mQ9HvOXlJjG/IwuKnR7NIAlsrVZRHRY2PODpuywYxdhOKy59zzeRcIlYwE6cSjrwEguzVC8TMgg==" crossorigin="anonymous" />
+
+	<!--************************************************** Datatable CSS **************************************************-->
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.css"/>
+
+	<!--************************************************** JQuery UI CSS **************************************************-->
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css" integrity="sha512-+0Vhbu8sRUlg+R/NKgTv7ahM+szPDF10G6J5PcHb1tOrAaquZIUiKUV3TH16mi6fuH4NjvHqlok6ppBhR6Nxuw==" crossorigin="anonymous" />
+
+	<!--************************************************** START **************************************************-->
+
+	<title>Popular Paint Quality Checking Report</title>
+
+	<style>
+		html {
+			overflow-x: hidden;
+			overflow-y: scroll;
+			scroll-behavior: smooth;
+			background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+		}
+		*{
+			box-sizing: border-box;
+		}
+		::-webkit-scrollbar {
+			height: 6px;
+			width: 0px;  /* Remove scrollbar space */
+			background: transparent;  /* Optional: just make scrollbar invisible */      
+			-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.25);
+			border-radius: 5px;
+		}    
+		::-webkit-scrollbar-thumb {
+			background-image: linear-gradient(120deg, #c2e9fb 0%, #93d6f5 100%);
+			-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5);
+			border-radius: 5px;
+		}
+		.nobr { 
+			white-space: nowrap;
+		}    
+		body{
+			margin-top: 3.55rem;
+			background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+		}
+		.cursor-pointer {
+			cursor: pointer;
+		}
+		.cursor-grab {
+			cursor: grab;
+		}
+		.card-title {
+			font-size: 18pt;
+			font-weight: 550;
+		}
+		.reqd {
+			color:red;
+		}
+
+		/*<-------------------------------------------------- COLORS -------------------------------------------------->*/
+		
+		.card-title-gradient {
+			background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+		}
+
+	</style>
+</head>
+<body>
+
+	
+	<div class="mx-sm-3 my-sm-2" id="items-card">
+		<div class="shadow-sm bg-white rounded">
+			<div class="card">
+				<div class="card-header card-title-gradient">
+					<span class = "card-title cursor-grab">Popular Paint Quality Checking Report</span>
+					<div class="float-right">
+						<a class="btn" role="button" data-toggle="collapse" data-target="#itemsCardCollapse" aria-expanded="true" aria-controls="itemsCardCollapse" onclick="minimize_card(1)"><span class="align-text-bottom"><i class="fa fa-minus" id="minimizebutton1"></i></span>
+						</a>
+						<a class="btn ml-n3 mr-n2" role="button" id="refreshItemsCard"><i class="fa fa-refresh cursor-pointer" aria-hidden="true"></i></a>
+					</div>
+				</div>
+				<div class="collapse show" id="itemsCardCollapse">
+					<div class="card-body mr-n2">
+						<div class="container-fluid my-2 mx-n2">
+							<form>
+								<!--<div class="form-row" >
+									
+									<div class="form-group col-md-12" style="text-align: center;">
+										
+										<strong>ITEM</strong> <input type="text" name="item" id="item"  onBlur = "itemSearch()" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+										<strong>Location</strong> <select name="location" id="location"  onchange = "itemSearch()" >
+											<#list ds.locationArr as location>
+											<option value="${location.internalId}">${location.name}</option>
+											</#list>
+											</select>
+
+									</div>
+									
+								</div>-->
+								
+
+								
+							</form>
+							<div id="Table_div">
+								<table class="table table-bordered table-hover table-sm nobr cursor-pointer" id="example" style="width: 100%">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Created DATE</th>
+											<th>DATE</th>
+											<th>MATERIAL NAME(PRODUCT NAME)</th>
+											<th>BATCH NO</th>
+											<th>PARTY NAME</th>
+											<th>VEHICLES NO</th>
+											<th>SP. GRAVITY</th>
+											<th>VISCOSITY</th>
+											<th>TEMPERATURE @ (30 DEGREE C)</th>
+											<th>PH VALUE</th>
+											<th>SOLID %</th>
+											<th>COLOUR</th>
+                                            <th>Report</th>
+											<th>Brightness</th>
+											<th>Oil Absorption</th>
+											<th>Water Absorption</th>
+											<th>HCL Reaction</th>
+											<th>Mesh Analysis (300/500#)</th>
+											<th>Viscosity (40/50% Solution) </th>
+											<th>Colour On Gardner Scale</th>
+											<th>Acid Value</th>
+											<th>Clearity</th>
+											<th>Drying Time Surface</th>
+											<th>Drying Time Tack Free</th>
+											<th>Drying Time Hard</th>
+											<th>Tolerancy</th>
+											<th>Gloss On Meter (60 degree Gloss)</th>
+											<th>Colour On Matching Take Eco-1</th>
+											<th>Colour On Matching Paste</th>
+											<th>Whiteness</th>
+											<th>Bill No</th>
+											<th>Record Form</th>
+											<th>Document Number</th>
+											<th>QC Approved</th>
+											
+
+										</tr>
+									</thead>
+									<tbody id="table_tr">
+										<#list ds.dataArr as data>
+										<tr>
+											<th>${data.name}</th>
+											<th>${data.created}</th>
+											<th>${data.custrecord_pct_pp_date}</th>
+											<th>${data.custrecord_pct_pp_material_name_pdct_nme}</th>
+											<th>${data.custrecord_pct_pp_batch_no}</th>
+											<th>${data.custrecord_pct_pp_party_name}</th>
+											<th>${data.custrecord_pct_pp_vehicles_no}</th>
+											<th>${data.custrecord_pct_pp_sp_gravity}</th>
+											<th>${data.custrecord_pct_pp_viscosity}</th>
+											<th>${data.custrecord_pct_pp_temperature}</th>
+											<th>${data.custrecord_pct_pp_ph_value}</th>
+											<th>${data.custrecord_pct_pp_solid}</th>
+											<th>${data.custrecord_pct_pp_colour}</th>
+											<th>${data.custrecord_pct_pp_report}</th>
+											<th>${data.custrecord_pct_pp_brightness}</th>
+											<th>${data.custrecord_pct_pp_oil_absorption}</th>
+											<th>${data.custrecord_pct_pp_water_absorption}</th>
+											<th>${data.custrecord_pct_pp_hcl_reaction}</th>
+											<th>${data.custrecord_pct_pp_mesh_analysis}</th>
+											<th>${data.custrecord_pct_pp_viscosity_solution}</th>
+											<th>${data.custrecord_pct_colour_on_gardner_scale}</th>
+											<th>${data.custrecord_pct_pp_acid_value}</th>
+											<th>${data.custrecord_pct_pp_clearity}</th>
+											<th>${data.custrecord_pct_pp_drying_time_surface}</th>
+											<th>${data.custrecord_pct_pp_drying_time_tack_free}</th>
+											<th>${data.custrecord_pct_pp_drying_time_hard}</th>
+											<th>${data.custrecord_pct_pp_tolerancy}</th>
+											<th>${data.custrecord_pct_pp_gloss_on_meter}</th>
+											<th>${data.custrecord_pct_pp_colour_mtchng_take_eco}</th>
+											<th>${data.custrecord_pct_pp_colour_on_mtchng_paste}</th>
+											<th>${data.custrecord_pct_pp_whiteness}</th>
+											<th>${data.custrecord_pct_pp_bill_no}</th>
+											<th>${data.custrecord_pct_pp_record_form}</th>
+											<th>${data.custrecord_pct_pp_document_number}</th>
+											<th>${data.custrecord_pct_pp_qc_approved}</th>
+											
+
+										</tr>
+										</#list>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--****************************************************** AJAX ******************************************************-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!--**************************************************** JQuery UI ****************************************************-->
+
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+	<!--************************************************* SweetAlert2 JS *************************************************-->
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@6.6.5/dist/sweetalert2.min.js" integrity="sha256-xofl41Tt0WRg2Q0LrntvSB6qv1Mzz/ZLvSyi+O08d1g=" crossorigin="anonymous"></script>
+
+	<!--************************************************* BlockUI Plugin *************************************************-->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg==" crossorigin="anonymous"></script>
+
+	<!--****************************************************** Mouse Wheel plugin ******************************************************-->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js" integrity="sha512-rCjfoab9CVKOH/w/T6GbBxnAH5Azhy4+q1EXW5XEURefHbIkRbQ++ZR+GBClo3/d3q583X/gO4FKmOFuhkKrdA==" crossorigin="anonymous"></script>
+
+	<!--************************************************** DataTables JS **************************************************-->
+
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
+	
+	<script>
+
+		function minimize_card(cardNumber)
+		{
+			var elementID = "minimizebutton"+cardNumber;
+			var fa_button = document.getElementById(elementID);
+			if (fa_button.className == "fa fa-minus") {      
+				fa_button.className = "fa fa-plus";
+				if(cardNumber == 2 || cardNumber == 3)
+				{
+					document.getElementById("h-100-"+cardNumber).classList.remove("h-100");
+				}
+			}    
+			else {
+				fa_button.className = "fa fa-minus";
+				if(cardNumber == 2 || cardNumber == 3)
+				{
+					document.getElementById("h-100-"+cardNumber).classList.add("h-100");
+				}
+			}
+		}
+
+
+		$(document).ready(function() {
+			$('#example').DataTable(
+			{
+				searching: true, 
+				"scrollX": true,
+				dom: 'Bfrtip',
+                retrieve: true,
+                buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print'],
+                lengthMenu: [
+                    [10, 25, 50, 100, -1],
+                    ['10', '25', '50', '100', 'All']
+                ],
+                "processing": true,
+                "language": {
+                    "emptyTable": "No pending orders found",
+                    "infoEmpty": ""
+                },
+                // "columnDefs": [
+                //     { "targets": [10, 11, 12, 13], "visible": false }
+                // ],
+                preDrawCallback: function (settings) {
+                    var api = new $.fn.dataTable.Api(settings);
+                    $(this).closest('.dataTables_wrapper').find('.dataTables_paginate').toggle(api.page.info().pages > 1);
+                }
+            });
+			
+		});
+
+		
+		//itemSearch();
+
+
+		
+
+		function itemSearch(){
+			$.blockUI();
+			//alert('hi');
+			/*var item=$('#item').val();
+			var location = $('#location').val()*/
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				contentType: "application/json",
+				async: true,
+    			//crossDomain: false,
+    			url: "/app/site/hosting/restlet.nl?script=741&deploy=1",
+   				// headers: { "cache-control": "no-cache", "authorization": "NLAuth nlauth_account=TSTDRV2348232, nlauth_email=rajesh.paapri@gmail.com, nlauth_signature=Netsuite@2020, nlauth_role=3", "Access-Control-Allow-Origin": "*" },
+   				success: function (data) 
+   				{
+   					//var dd=array();
+					   document.getElementById("Table_div").innerHTML=data;
+					   $('#example').DataTable(
+						{searching: true, }/*paging: false, info: false*/
+						);
+						$.unblockUI();
+   				}
+   			});
+
+		}
+		
+$(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
+	</script>
+
+	<!--************************************************** BootStrap JS **************************************************-->
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+</body>

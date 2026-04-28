@@ -1,0 +1,9 @@
+Type,tranid,entity,Vendor Internal Id,reference no,terms,Currency,exchangerate,duedate,postingperiod,trandate,purchaseItemline_itemRef,purchaseItemline_quantity,purchaseItemLine_rate,usertotal,purchaseItemLine_location
+Vendor Credit,3056659,TDS,1509,3056659,Net 30,US Dollar, 1.00 ,11/1/2022,Nov-22,11/1/2022,Open AP Item,1, 114.50 ,-114.50  ,3
+Vendor Credit,0106277-CM,MIDWEST VALVE PARTS SUPPLY,1387,0106277-CM,Net 30,US Dollar, 1.00 ,11/1/2022,Nov-22,11/1/2022,Open AP Item,1, 124.00 ,-124.00  ,3
+Vendor Credit,S2906097.002,BPS SUPPLY GROUP.,1217,S2906097.002,Net 30,US Dollar, 1.00 ,11/10/2022,Nov-22,11/10/2022,Open AP Item,1, 492.00 ,-492.00  ,3
+Vendor Credit,S2812047.003,BPS SUPPLY GROUP.,1217,S2812047.003,Net 30,US Dollar, 1.00 ,11/10/2022,Nov-22,11/10/2022,Open AP Item,1,1148.00,"-1,148.00  ",3
+Vendor Credit,1,STAPLES ADVANTAGE,1494,001,Net 30,US Dollar, 1.00 ,11/17/2022,Nov-22,11/17/2022,Open AP Item,1, 13.04 ,-13.04  ,3
+Vendor Credit,TXKIN00000052,DHL EXPRESS,1269,TXKIN00000052,Net 30,US Dollar, 1.00 ,11/28/2022,Nov-22,11/28/2022,Open AP Item,1,6397.28,"-6,397.28  ",3
+Vendor Credit,7369781534-1-1,STAPLES ADVANTAGE,1494,7369781534-1-1,Net 30,US Dollar, 1.00 ,12/15/2022,Dec-22,12/15/2022,Open AP Item,1, 9.78 ,-9.78  ,3
+Bill,1190,ULINE,1534,1190,Net 30,US Dollar, 1.00 ,12/16/2022,Dec-22,12/16/2022,Open AP Item,1, 27.60 ,-27.60  ,5

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCT Mott RND Report</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+</head>
+
+
+<body>
+    <div class="card-header text-center text-dark alert alert-primary" style="font-size: 25px;">
+        Mott Project Cost Search</div>
+
+    <div class="card-body">
+        <div style=" border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 10px;">
+            <form action="" class="fieldclass">
+                <div class="row mt-2">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Mott Project Name</label>
+                            <select id="projectName" class="form-control" name="projectName">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Project Manager</label>
+                            <select id="projectManager" class="form-control" name="projectManager">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Employee Group</label>
+                            <select id="employeeGroup" class="form-control" name="employeeGroup">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Status</label>
+                            <select id="projectStatus" class="form-control" name="projectStatus">
+                                <option value="allStatus">-All-</option>
+                                <option value="1">Closed</option>
+                                <option value="2">In Progress</option>
+                                <option value="3">Not Awarded</option>
+                                <option value="4">Pending</option>
+                                <option value="5">Awarded</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <button type="button" id="btnSubmit" name="btnSubmit"
+                                    class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="card-body">
+        <table id="rndReport" class="table table-striped table-hover" width="100%">
+            <thead id="rndReportThead">
+            </thead>
+            <tbody id="rndReportTbody"></tbody>
+        </table>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script
+        src="https://4946548-sb1.app.netsuite.com/core/media/media.nl?id=5955673&c=4946548_SB1&h=RTAtaa184Go6DIRd4dfbJfXuzbY4e5vab8GEoBcyY_L0tBFh&_xt=.js"></script>
+    <script src="https://malsup.github.io/jquery.blockUI.js">
+    </script>
+
+
+</body>
+
+</html>

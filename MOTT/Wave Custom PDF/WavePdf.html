@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+
+    <head>
+        <link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}"
+            src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}"
+            src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+        <macrolist>
+            <macro id="nlfooter">
+                <table style="width: 100%; font-size: 8pt;">
+                    <tr>
+                        <td align="right" style="padding: 0;">
+                            <pagenumber /> of
+                            <totalpages />
+                        </td>
+                    </tr>
+                </table>
+            </macro>
+        </macrolist>
+        <style type="text/css">
+            .tableStyleGeneral {
+                font-size: 9pt;
+                table-layout: fixed;
+                border-collapse: collapse;
+            }
+
+            .tableStyleSpecific {
+                font-size: 10pt;
+                table-layout: fixed;
+                border-collapse: collapse;
+
+                /* width: 100%; */
+            }
+
+            .thStyle {
+                border: 1px solid black;
+                font-weight: bold;
+                font-size: 8pt;
+                vertical-align: middle;
+                padding: 5px 6px 3px;
+                background-color: #e3e3e3;
+                color: #333333;
+            }
+
+            .thStyleOrderItem {
+                border: 1px solid black;
+                font-weight: bold;
+                font-size: 8pt;
+                padding: 10px 6px;
+                background-color: #e3e3e3;
+                color: #333333;
+            }
+
+            .tdStyle {
+                border: 1px solid black;
+            }
+
+            td {
+                padding: 2px 2px;
+            }
+
+            td p {
+                align: left;
+            }
+        </style>
+    </head>
+
+    <body footer="nlfooter" footer-height="20pt" padding="0.5in 0.1in 0.5in 0.1in" size="Letter-LANDSCAPE">
+
+        #TABLEREPLACE-CONTENTS#
+    </body>
+</pdf>

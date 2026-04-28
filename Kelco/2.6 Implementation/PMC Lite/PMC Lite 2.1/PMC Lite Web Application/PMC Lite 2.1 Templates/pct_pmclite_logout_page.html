@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PMC Lite 2.0 | Logout</title>
+    <meta name="author" content="Rehan Nawaz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="${ds.faviconUrl}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    input {
+        width: 100%;
+    }
+
+    .stop-btn {
+        border-top: dotted;
+        border-bottom: dotted;
+    }
+
+    .round-btn {
+        border-radius: 25px;
+    }
+
+    .pct-button-text {
+        font-size: 24px;
+    }
+
+    @media only screen and (max-width: 580px) {
+
+        #top-container {
+            margin-top: 5px;
+        }
+
+        .pct-button-text {
+            font-size: 18px;
+        }
+
+    }
+</style>
+
+<body>
+
+    <div class="container" id="top-container" style="margin-top: 80px;">
+        <div class="row">
+            <div class="col-2 col-sm-2 col-md-2 "></div>
+            <div class="col-8 col-sm-8 col-md-8 ">
+                <img class="img-responsive" alt="" style="width:100%;" src="${ds.paapriFullImgUrl}">
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        </div>
+
+    </div>
+
+
+    <div class="container text-center">
+
+        <div class="row">
+            <div class="col-2 col-sm-2 col-md-2 "></div>
+            <div class="col-8 col-sm-8 col-md-8 "><label for="pwd" id="emp-name"
+                    style="font-size: 30px; color:#f18d71;">THANK YOU!</label></div>
+            <div class="col-2 col-sm-2 col-md-2 "></div>
+        </div>
+        <div class="row" style="margin-top:6px;">
+            <div class="col-1 col-sm-2 col-md-2"></div>
+            <div class="col-10 col-sm-8 col-md-8"
+                style="background-color:#B8B8B8; color:white; padding-top:4px; font-size: 25px;"><label for="pwd"
+                    id="user-name">${ds.userName}</label></div>
+            <div class="col-1 col-sm-2 col-md-2"></div>
+        </div>
+        <div class="row" style="margin-top:6px;">
+            <div class="col-1 col-sm-2 col-md-2"></div>
+            <div class="col-10 col-sm-8 col-md-8"
+                style="background-color:#B8B8B8; color:white; padding-top:4px; font-size: 25px;"><label for="pwd">PIECE
+                    WORK</label></div>
+            <div class="col-1 col-sm-2 col-md-2"></div>
+        </div>
+        <div class="row" style="margin-top:6px;">
+            <div class="col-1 col-sm-2 col-md-2"></div>
+            <div class="col-10 col-sm-8 col-md-8" style="font-size: 20px; color:gray">You have completed</div>
+            <div class="col-1 col-sm-2 col-md-2"></div>
+        </div>
+        <div class="row" style="margin-top:6px;">
+            <div class="col-4 col-sm-5 col-md-5"></div>
+            <div class="col-4 col-sm-2 col-md-2 " style="background-color:#B8B8B8;border-radius: 25px; color:white;">
+                <label for="pwd" id="label-complated-quantity"
+                    style="font-size: 25px; padding-top:5px;">${ds.todayQuantity}</label>
+            </div>
+            <div class="col-4 col-sm-5 col-md-5"></div>
+        </div>
+        <div class="row" style="margin-top:6px;margin-bottom:6px;">
+            <div class="col-2 col-sm-2 col-md-2"></div>
+            <div class="col-8 col-sm-8 col-md-8" style=" font-size: 20px; color:gray;">units today</div>
+            <div class="col-2 col-sm-2 col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-bottom: 100px;">
+        <hr class="new1" style="border-top: 8px dotted #f18d71; margin-left: 25px; margin-right: 25px;">
+        <div class="row" style="margin-top:6px;">
+            <div class="col-1 col-md-3 col-sm-3"></div>
+            <div class="col-10 col-md-6 col-sm-6">
+                <button type="button" id="btn-login-again" class="btn btn-lg btn-block pct-button-text"
+                    style="border-radius: 100px; background-color: #3B5998; color: white;"><i class="fa fa-sign-in"
+                        aria-hidden="true" style="float: left; padding-top: 4px;"></i>Login
+                    Again</button>
+            </div>
+            <div class="col-1 col-md-3 col-sm-3"></div>
+        </div>
+
+    </div>
+
+
+
+    <!--Scripting Section-->
+    <script>
+
+        $(document).ready(function () {
+            var LOGIN_PAGE_URL = '${ds.loginPageUrl}';
+
+            $("#btn-login-again").click(function () {
+
+                $(location).attr('href', LOGIN_PAGE_URL);
+
+            });
+
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+External Id,Name,Total process cost(per min),Memo
+EXT002,Allied - Complex,2.5,This cost template will be used with run operations on Allied. The costs defined in the template are based on estimations for a complex run.
+EXT002,Allied - Complex,2.5,This cost template will be used with setup operations on Allied. The costs defined in the template are based on estimations for a complex setup.
+EXT003,Allied - Normal,2.166666667,This cost template will be used with run operations on Allied. The costs defined in the template are based on estimations for a normal run.
+EXT003,Allied - Normal,2.166666667,This cost template will be used with setup operations on Allied. The costs defined in the template are based on estimations for a normal setup.
+EXT004,Allied - Simple,1.833333333,This cost template will be used with run operations on Allied. The costs defined in the template are based on estimations for a simple run.
+EXT004,Allied - Simple,1.833333333,This cost template will be used with setup operations on Allied. The costs defined in the template are based on estimations for a simple setup.
+EXT005,Azco,1.5,This cost template will be used with run operations on Azco. The costs defined in the template are based on estimations for all runs.
+EXT005,Azco,1.5,This cost template will be used with setup operations on Azco. The costs defined in the template are based on estimations for all setups.
+EXT006,Bunch Fan Folder,1.5,This cost template will be used with run operations on Bunch Fan Folder. The costs defined in the template are based on estimations for all runs.
+EXT006,Bunch Fan Folder,1.5,This cost template will be used with setup operations on Bunch Fan Folder. The costs defined in the template are based on estimations for all setups.
+EXT007,CatBridge,2.166666667,This cost template will be used with run operations on CatBridge. The costs defined in the template are based on estimations for all runs.
+EXT007,CatBridge,2.166666667,This cost template will be used with setup operations on CatBridge. The costs defined in the template are based on estimations for all setups.
+EXT008,CEI,1.5,This cost template will be used with run operations on CEI. The costs defined in the template are based on estimations for all runs.
+EXT008,CEI,1.5,This cost template will be used with setup operations on CEI. The costs defined in the template are based on estimations for all setups.
+EXT009,Cevenini,1.5,This cost template will be used with run operations on Cevenini. The costs defined in the template are based on estimations for all runs.
+EXT009,Cevenini,1.5,This cost template will be used with setup operations on Cevenini. The costs defined in the template are based on estimations for all setups.
+EXT010,Contech,1.5,This cost template will be used with run operations on Contech. The costs defined in the template are based on estimations for all runs.
+EXT010,Contech,1.5,This cost template will be used with setup operations on Contech. The costs defined in the template are based on estimations for all setups.
+EXT011,Core Cutter,1.333333333,This cost template will be used with run operations on Core Cutter. The costs defined in the template are based on estimations for all runs.
+EXT011,Core Cutter,1.333333333,This cost template will be used with setup operations on Core Cutter. The costs defined in the template are based on estimations for all setups.
+EXT012,Delta - Complex,3.333333333,This cost template will be used with run operations on Delta. The costs defined in the template are based on estimations for a complex run.
+EXT012,Delta - Complex,3.333333333,This cost template will be used with setup operations on Delta. The costs defined in the template are based on estimations for a complex setup.
+EXT013,Delta - Normal,2.5,This cost template will be used with run operations on Delta. The costs defined in the template are based on estimations for a normal run.
+EXT013,Delta - Normal,2.5,This cost template will be used with setup operations on Delta. The costs defined in the template are based on estimations for a normal setup.
+EXT014,Delta - Simple,1.833333333,This cost template will be used with run operations on Delta. The costs defined in the template are based on estimations for a simple run.
+EXT014,Delta - Simple,1.833333333,This cost template will be used with setup operations on Delta. The costs defined in the template are based on estimations for a simple setup.
+EXT015,Dusenbery,2.166666667,This cost template will be used with run operations on Dusenbery. The costs defined in the template are based on estimations for all runs.
+EXT015,Dusenbery,2.166666667,This cost template will be used with setup operations on Dusenbery. The costs defined in the template are based on estimations for all setups.
+EXT016,Engineering,3.333333333,This cost template will be used with run operations on Engineering. The costs defined in the template are based on estimations for all runs.
+EXT016,Engineering,3.333333333,This cost template will be used with setup operations on Engineering. The costs defined in the template are based on estimations for all setups.
+EXT017,Engineering Sample Laser,3.333333333,This cost template will be used with run operations on Engineering Sample Laser. The costs defined in the template are based on estimations for all runs.
+EXT017,Engineering Sample Laser,3.333333333,This cost template will be used with setup operations on Engineering Sample Laser. The costs defined in the template are based on estimations for all setups.
+EXT018,Finishing,1.333333333,This cost template will be used with run operations on Finishing. The costs defined in the template are based on estimations for all runs.
+EXT018,Finishing,1.333333333,This cost template will be used with setup operations on Finishing. The costs defined in the template are based on estimations for all setups.
+EXT019,Flash Cut,1.5,This cost template will be used with run operations on Flash Cut. The costs defined in the template are based on estimations for all runs.
+EXT019,Flash Cut,1.5,This cost template will be used with setup operations on Flash Cut. The costs defined in the template are based on estimations for all setups.
+EXT020,Pace - Complex,2.5,This cost template will be used with run operations on Pace. The costs defined in the template are based on estimations for a complex run.
+EXT020,Pace - Complex,2.5,This cost template will be used with setup operations on Pace. The costs defined in the template are based on estimations for a complex setup.
+EXT021,Pace - Normal,2.166666667,This cost template will be used with run operations on Pace. The costs defined in the template are based on estimations for a normal run.
+EXT021,Pace - Normal,2.166666667,This cost template will be used with setup operations on Pace. The costs defined in the template are based on estimations for a normal setup.
+EXT022,Pace - Simple,1.833333333,This cost template will be used with run operations on Pace. The costs defined in the template are based on estimations for a simple run.
+EXT022,Pace - Simple,1.833333333,This cost template will be used with setup operations on Pace. The costs defined in the template are based on estimations for a simple setup.
+EXT023,Preco - Complex,2.5,This cost template will be used with run operations on Preco. The costs defined in the template are based on estimations for a complex run.
+EXT023,Preco - Complex,2.5,This cost template will be used with setup operations on Preco. The costs defined in the template are based on estimations for a complex setup.
+EXT024,Preco - Normal,2.166666667,This cost template will be used with run operations on Preco. The costs defined in the template are based on estimations for a normal run.
+EXT024,Preco - Normal,2.166666667,This cost template will be used with setup operations on Preco. The costs defined in the template are based on estimations for a normal setup.
+EXT025,Preco - Simple,1.833333333,This cost template will be used with run operations on Preco. The costs defined in the template are based on estimations for a simple run.
+EXT025,Preco - Simple,1.833333333,This cost template will be used with setup operations on Preco. The costs defined in the template are based on estimations for a simple setup.
+EXT026,Production Sample Laser,1.333333333,This cost template will be used with run operations on Production Sample Laser. The costs defined in the template are based on estimations for all runs.
+EXT026,Production Sample Laser,1.333333333,This cost template will be used with setup operations on Production Sample Laser. The costs defined in the template are based on estimations for all setups.
+EXT027,Siat - Complex,2.5,This cost template will be used with run operations on Siat. The costs defined in the template are based on estimations for a complex run.
+EXT027,Siat - Complex,2.5,This cost template will be used with setup operations on Siat. The costs defined in the template are based on estimations for a complex setup.
+EXT028,Siat - Normal,2.166666667,This cost template will be used with run operations on Siat. The costs defined in the template are based on estimations for a normal run.
+EXT028,Siat - Normal,2.166666667,This cost template will be used with setup operations on Siat. The costs defined in the template are based on estimations for a normal setup.
+EXT030,Siat - Simple,1.833333333,This cost template will be used with run operations on Siat. The costs defined in the template are based on estimations for a simple run.
+EXT030,Siat - Simple,1.833333333,This cost template will be used with setup operations on Siat. The costs defined in the template are based on estimations for a simple setup.
+EXT031,Spool Winder,1.333333333,This cost template will be used with run operations on Spool Winder. The costs defined in the template are based on estimations for all runs.
+EXT031,Spool Winder,1.333333333,This cost template will be used with setup operations on Spool Winder. The costs defined in the template are based on estimations for all setups.
+EXT032,Web Techniques,1.333333333,This cost template will be used with run operations on Web Techniques. The costs defined in the template are based on estimations for all runs.
+EXT032,Web Techniques,1.333333333,This cost template will be used with setup operations on Web Techniques. The costs defined in the template are based on estimations for all setups.
+EXT033,Zebra,1.333333333,This cost template will be used with run operations on Zebra. The costs defined in the template are based on estimations for all runs.
+EXT033,Zebra,1.333333333,This cost template will be used with setup operations on Zebra. The costs defined in the template are based on estimations for all setups.

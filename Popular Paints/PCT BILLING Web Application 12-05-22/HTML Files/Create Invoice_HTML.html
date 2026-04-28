@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PCT Billing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="${ds.faviconUrl}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
+</head>
+<style>
+    img.logo-navbar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .item-table {
+        background-color: #f5f4f5;
+        margin: 10px 0px 0px 1px;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .top-buffer {
+        margin-top: 10px;
+    }
+
+    .body {
+        background: #007991;
+        background: -webkit-linear-gradient(to right, #78ffd6, #007991);
+        background: linear-gradient(to right, #78ffd6, #007991);
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+<body class="body">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="${ds.pctLogo}" class="logo-navbar" width="auto"
+                        height="auto"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>
+                            <!--<span class="glyphicon glyphicon-user"></span>--> Welcome, ${ds.empName}!
+                        </a></li>
+                    <li><a href="scriptlet.nl?script=196&deploy=1&compid=7255402&h=38a57cec7478fc49f8d3"><span
+                                class="glyphicon glyphicon-off"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <form class="form-inline" id="url" action="" enctype="multipart/form-data" method="post">
+            <div class="row" style="padding: 0px; margin: 0px;">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="sr-only" for="cust_id">So Number:</label>
+                        <input list="Customer" class="form-control" id="cust_id" placeholder="Sales Orders:"
+                            value="${ds.soDocNo}" name="cust_id" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="printed">Printed</label><br>
+                        <input type="checkbox" id="printed" name="printed" disabled>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+
+<script>
+    $(".primary").click(function ()
+    {
+        swal({
+            title: "Loading",
+            text: "Please Wait..",
+            icon: "info"
+        });
+
+
+    });
+    swal({
+        title: "Success!",
+        text: "Sales Order Found",
+        icon: "success",
+    }); 
+</script>
+#ItemRows#
+</div>
+</div>
+<div class="text-center" style="margin-top:5px;margin-bottom:5px">
+    <button type="button" class="btn btn-primary" id="generate">Generate Invoice</button>
+    <button type="button" class="btn btn-success" id="generateItemFulfillment">Generate Fulfillment</button>
+    <button type="button" class="btn btn-danger" id="go_back">Go Back</button>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+<script>
+    var soPrinted = "${ds.soPrinted}";
+    console.log("PCT-Billing : " + soPrinted + ", So Number : " + "${ ds.soDocNo }");
+    if (soPrinted == "true")
+    {
+        $("#printed").prop("checked", true);
+    }
+    else
+    {
+        $("#printed").prop("checked", false);
+    }
+    var itemIndex = "${ds.transactionIndex}";
+    console.log(itemIndex);
+    $(document).ready(function ()
+    {
+
+        $("#go_back").click(function ()
+        {
+            location.href = `https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=466&custparam_userName=${ds.empName}&deploy=1&compid=7255402&h=741700278bc9a50d40eb`;
+        });
+        $("#generate").click(function ()
+        {
+            console.log("For Invoice.......");
+            var itemDataObj = {};
+            var total = 0;
+            $('.itemDetails').each((key, value) =>
+            {
+                var itemName = $(value).find('.item-id').val();
+                var qty = $(value).find('.invoiceQuantity').val();
+                itemDataObj[itemName] = qty;
+                total += parseInt(qty);
+            })
+
+            console.log(itemDataObj);
+            console.log("Total:" + total);
+
+            if (total > 0)
+            {
+
+                location.href = `https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=203&custparam_userName=${ds.empName}&recordname=${ds.salesorderId}&deploy=1&compid=7255402&h=948b7c05170081bcb1d2&datalist=` + JSON.stringify(itemDataObj);
+            }
+            else
+            {
+                alert('Sales Order has been billed / Please enter a valid quantity');
+            }
+
+        })
+        $("#generateItemFulfillment").click(function ()
+        {
+            console.log("For Fulfillment.......");
+            var itemDataObj = {};
+            var total = 0;
+            $('.itemDetails').each((key, value) =>
+            {
+                var itemName = $(value).find('.item-id').val();
+                var qty = parseInt($(value).find('.fulfillmentQuantity').val());
+                console.log("Item Name : " + itemName + ", Qty : " + qty + " Type Of : " + typeof (qty))
+                itemDataObj[itemName] = qty;
+                total += parseInt(qty);
+            })
+
+            console.log(itemDataObj);
+            console.log("Total:" + total);
+
+            if (total > 0)
+            {
+                location.href = `https://7255402.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=589&custparam_userName=${ds.empName}&recordname=${ds.salesorderId}&deploy=1&compid=7255402&h=a9b1d59e4539b8ce88b5&datalist=` + JSON.stringify(itemDataObj);
+            }
+            else
+            {
+                alert('Sales Order has been Fulfilled / Please enter a valid Quantity');
+            }
+
+        })
+
+    })
+</script>
+
+</html>;
+
+</div>
+
+</html>
+</div>
+</div>
+</form>
+</div>
+<div class="col-xs-12">
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+    integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>

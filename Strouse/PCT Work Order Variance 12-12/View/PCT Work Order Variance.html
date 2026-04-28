@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCT WMV Report</title>
+    <!-- Bootstrap CSS CDN Start -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS CDN End -->
+    <!-- Line Awesome Icons CSS CDN Start -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Line Awesome Icons CSS CDN End -->
+    <!-- Jquery Datatable CSS CDN Start -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.css" />
+    <!-- Jquery Datatable CSS CDN End -->
+
+    <style>
+        .loader {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 20;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .shape-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -75%);
+            padding: 10rem;
+        }
+
+        .shape {
+            width: 2rem;
+            min-width: 25px;
+            height: 5.25rem;
+            min-height: 50px;
+            position: absolute;
+        }
+
+        .inner-shape {
+            width: 75%;
+            height: 75%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(30deg);
+            overflow: hidden;
+        }
+
+        .shape-top {
+            width: 125%;
+            height: 55%;
+            border-radius: 0 100% 0 0;
+            margin-left: -25%;
+        }
+
+        .shape-middle {
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .shape-bottom {
+            width: 100%;
+            height: 45%;
+            border-radius: 0 0 0 100%;
+        }
+
+        /* ANIMATION PART */
+        .shape-1 {
+            animation: myRotation 3s infinite;
+            animation-delay: 0ms;
+        }
+
+        .shape-2 {
+            animation: myRotation 3s infinite;
+            animation-delay: 200ms;
+        }
+
+        .shape-3 {
+            animation: myRotation 3s infinite;
+            animation-delay: 400ms;
+        }
+
+        .shape-4 {
+            animation: myRotation 3s infinite;
+            animation-delay: 600ms;
+        }
+
+        .shape-5 {
+            animation: myRotation 3s infinite;
+            animation-delay: 800ms;
+        }
+
+        .shape-6 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1000ms;
+        }
+
+        .shape-7 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1200ms;
+        }
+
+        .shape-8 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1400ms;
+        }
+
+        .shape-9 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1600ms;
+        }
+
+        .shape-10 {
+            animation: myRotation 3s infinite;
+            animation-delay: 1800ms;
+        }
+
+        @keyframes myRotation {
+            0% {
+                transform-origin: bottom left;
+            }
+
+            100% {
+                transform-origin: bottom left;
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Design Start -->
+    <nav class="navbar navbar-expand navbar-light shadow alert alert-primary sticky-top text-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="#FETCH-LOGO#" alt="" width="40" height="40" class="d-inline-block align-text-bottom fw-bold">
+                <span class="position-absolute top-50 start-50 translate-middle" style=" font-size: 25px;"> PCT Work
+                    Order Variance</span>
+            </a>
+            <!-- <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn" id="refreshAllTableButton">
+                            <i class="fa-solid fa-arrow-rotate-right"></i> Reload</button>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </nav>
+    <!-- Navbar Design End -->
+
+
+    <div class="card-body">
+        <div style=" border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 10px;">
+            <form action="" class="fieldclass" method="post">
+                <div class="row mt-2">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label style="padding: 3px;">Select Filter Type</label>
+                            <select id="filterType" class="form-control" name="filterType">
+                                <option value="-1">-Select Filter Type-</option>
+                                <option value="1">Work Order</option>
+                                <option value="2">Item</option>
+                                <option value="3">Work Orders By Date Range</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" id="workOrderFilter" hidden>
+                        <div class="form-group">
+                            <label style="padding: 3px;">Work Order</label>
+                            <select id="workOrder" class="form-control" name="workOrder">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" id="itemFilter" hidden>
+                        <div class="form-group">
+                            <label style="padding: 3px;">Item</label>
+                            <select id="itemValue" class="form-control" name="itemValue">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" id="fromDateFilter" hidden>
+                        <div class="form-group">
+                            <label style="padding: 3px;">From Date</label>
+                            <input type="date" id="fromDate" name="fromDate" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-2" id="toDateFilter" hidden>
+                        <div class="form-group">
+                            <label style="padding: 3px;">To Date</label>
+                            <input type="date" id="toDate" name="toDate" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-2" id="reportSubmit">
+                            <div class="form-group">
+                                <input type="text" name="customReportRecordId" id="customReportRecordId"
+                                    value="${ds.customRecordId}" hidden>
+                                <input type="submit" class="btn btn-success" id="searchButton" value="Search">
+                                <button class="btn btn-warning" type="button" id="refreshButton">Refresh</button>
+                                <button class="btn btn-primary" type="button" id="viewReportButton" hidden>View
+                                    Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div style=" border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 10px;">
+            <div class="collapse navbar-collapse d-flex justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <i class="btn fa-solid fa-arrows-rotate fa-lg mb-3" id="refreshAllTableButton" hidden></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-header text-dark alert alert-primary fw-bold" style="font-size: 15px;">
+                Material Analysis
+                <span>
+                    <button class="btn position-absolute top-50 end-0 translate-middle-y  collapse-button">
+                        <i class="fa-solid fa-caret-down"></i></button></span>
+            </div>
+
+            <div class="card-body">
+                <table id="itemTableReport" class="table table-striped table-hover" width="100%">
+                    <thead id="itemTableReportThead">
+                        <tr>
+                            <th>Work Order</th>
+                            <th>SCE #</th>
+                            <th>Materials</th>
+                            <th>UOM</th>
+                            <th>Estimated Material Quantity</th>
+                            <th>Estimated Material Cost</th>
+                            <th>Planned Material Quantity</th>
+                            <th>Planned Material Cost</th>
+                            <th>Actual Material Quantity</th>
+                            <th>Actual Material Cost</th>
+                            <th>Quantity Variance</th>
+                            <th>Cost Variance</th>
+
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="itemTableReportTbody">
+                        <#assign previousWorkOrder="">
+                            <#assign firstLine=1>
+                                <#list ds.fileData.WorkOrderWiseVarianceItemData as item>
+
+                                    <#assign workOrder="${item.workOrderNumber}">
+                                        <#if (firstLine==1)>
+                                            <#assign previousWorkOrder=workOrder>
+                                        </#if>
+                                        <#if (workOrder !=previousWorkOrder) && (firstLine==0)>
+                                            <#assign previousWorkOrder=workOrder>
+                                                <tr style="background: cadetblue;">
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td></td>
+                                                    <td> </td>
+                                                    <td></td>
+
+                                                </tr>
+                                        </#if>
+
+                                        <#assign firstLine=0>
+                                            <tr>
+                                                <td> ${item.workOrderNumber} </td>
+                                                <td> ${item.sceDocumentNumber} </td>
+                                                <td> ${item.itemName} </td>
+                                                <td> ${item.unit} </td>
+                                                <td> ${item.sceEstimatedQuantity} </td>
+                                                <td>${item.sceEstimatedMaterialCost} </td>
+                                                <td> ${item.estimatedQuantity} </td>
+                                                <td>${item.estimatedItemAmountCurrency} </td>
+                                                <td> ${item.actualQuantity} </td>
+                                                <td>${item.actualItemCostCurrency} </td>
+                                                <td> ${item.differentiateQuantity} </td>
+                                                <td style="color: ${item.color};">${item.differentiateItemCostCurrency}
+                                                </td>
+
+                                            </tr>
+
+
+
+                                </#list>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-header text-dark alert alert-primary fw-bold" style="font-size: 15px;">
+                Operation Analysis
+                <span>
+                    <button class="btn position-absolute top-50 end-0 translate-middle-y collapse-button">
+                        <i class="fa-solid fa-caret-down"></i> </button></span>
+            </div>
+            <div class="card-body">
+                <table id="operationTableReport" class="table table-striped table-hover" width="100%">
+                    <thead id="operationTableReportThead">
+                        <tr>
+                            <th>Work Order</th>
+                            <th>SCE #</th>
+                            <th>Operation Sequence</th>
+                            <th>Operation</th>
+                            <th>Total Setup Time (Estimated)</th>
+                            <th>Total Setup Time(Planned in Min)</th>
+                            <th>Total Setup Time(Actual in Min)</th>
+                            <th>Total Run Time (Estimated)</th>
+                            <th>Total Run Time(Planned in Min)</th>
+                            <th>Total Run Time(Actual in Min)</th>
+                            <th>Completed Quantity</th>
+                            <th>Total Cost (Estimated)</th>
+                            <th>Total Cost(Planned)</th>
+                            <th>Total Cost(Actual)</th>
+                            <th>Cost Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="operationTableReportTbody">
+                        <#assign previousWorkOrder="">
+                            <#assign firstLine=1>
+                                <#list ds.fileData.WorkOrderWiseVarianceOperationData as operation>
+
+                                    <#assign workOrder="${operation.WorkOrderNumber}">
+                                        <#if (firstLine==1)>
+                                            <#assign previousWorkOrder=workOrder>
+
+                                        </#if>
+                                        <#if (workOrder !=previousWorkOrder) && (firstLine==0)>
+                                            <#assign previousWorkOrder=workOrder>
+                                                <tr style="background: cadetblue;">
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td></td>
+                                                    <td> </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                        </#if>
+
+                                        <#assign firstLine=0>
+                                            <tr>
+                                                <td> ${operation.WorkOrderNumber}</td>
+                                                <td> ${operation.sceDocumentNumber}</td>
+                                                <td> ${operation.operationSequence} </td>
+                                                <td> ${operation.operation} </td>
+                                                <td> ${operation.estimatedTotalSetupTime}</td>
+                                                <td> ${operation.estSetupTime} </td>
+                                                <td> ${operation.actSetupTime} </td>
+                                                <td> ${operation.estimatedTotalRunTime} </td>
+                                                <td> ${operation.estRunTime} </td>
+                                                <td> ${operation.actRunTime} </td>
+                                                <td> ${operation.completedquantity} </td>
+                                                <td>${operation.estimatedTotalProcessCost} </td>
+                                                <td> ${operation.estCostCurrency}
+                                                </td>
+                                                <td> ${operation.actCostCurrency}
+                                                </td>
+                                                <td style="color: ${operation.color};"> ${operation.differenceCurrency}
+                                                </td>
+                                            </tr>
+                                </#list>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div id="sceDiv">
+            <div class="card-header text-dark alert alert-primary fw-bold" style="font-size: 15px;">
+                SCE Analysis
+                <span>
+                    <button class="btn position-absolute top-50 end-0 translate-middle-y collapse-button">
+                        <i class="fa-solid fa-caret-down"></i> </button></span>
+            </div>
+            <div class="card-body">
+                <table id="sceTableReport" class="table table-striped table-hover" width="100%">
+                    <thead id="sceTableReportThead">
+                        <tr>
+                            <th>SCE Number</th>
+                            <th>Assembly</th>
+                            <th>Customer</th>
+                            <th>Estimated Quantity</th>
+                            <th>Total Material Cost</th>
+                            <th>Total Process Cost</th>
+                            <th>Quote No</th>
+                            <th>Summary</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="sceTableReportTbody">
+                        <#list ds.fileData.sceReportObjData as element>
+                            <#list element as sceData>
+                                <tr>
+                                    <td> ${sceData.sceNumber}</td>
+                                    <td> ${sceData.assemblyName}</td>
+                                    <td> ${sceData.customer}</td>
+                                    <td> ${sceData.estimatedQuantity}</td>
+                                    <td> ${sceData.totalMaterialCost}</td>
+                                    <td> ${sceData.totalProcessCost}</td>
+                                    <td>${sceData.quoteNo}</td>
+                                    <td>${sceData.summary}</td>
+
+                                </tr>
+
+                            </#list>
+                        </#list>
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+            <div class="card-header text-dark alert alert-primary fw-bold" style="font-size: 15px;">
+                Summary
+                <span>
+                    <button class="btn position-absolute top-50 end-0 translate-middle-y collapse-button">
+                        <i class="fa-solid fa-caret-down"></i></button></span>
+            </div>
+            <div class="card-body">
+                <table id="summaryTableReport" class="table table-striped table-hover" width="100%">
+                    <thead id="summaryTableReportThead">
+                        <tr>
+                            <th hidden>Work Order Id</th>
+                            <th>Work Order</th>
+                            <th>Work Quantity</th>
+                            <th>Customer</th>
+                            <th>SCE #</th>
+                            <th>SCE Quantity</th>
+                            <th>Item</th>
+                            <th>Estimated Cost</th>
+                            <th>Actual Cost</th>
+                            <th>Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summaryTableReportTbody">
+                        <#list ds.fileData.WorkOrderWiseVarianceData as difference>
+                            <tr>
+                                <td hidden> ${difference.workOrderId} </td>
+                                 <td><a href=https://4344933.app.netsuite.com/app/accounting/transactions/workord.nl?id=${difference.workOrderId}&whence= target="_blank"> ${difference.workOrderNumber} </a></td>
+                                <td> ${difference.workOrderQty} </td>
+                                <td> ${difference.customerName} </td>
+                                <td> ${difference.sceDocumentNumber} </td>
+                                <td> ${difference.sceQty} </td>
+                                <td> ${difference.assemblyItem} </td>
+                                <td> ${difference.totalPlannedCost} </td>
+                                <td> ${difference.totalActualCost}</td>
+                                <td style="color: ${difference.color};">${difference.totalVariance}</td>
+                            </tr>
+                        </#list>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Footer Copyright Start -->
+    <footer class="mt-auto bg-light text-center">
+        <p id="copyRight" class="py-3 my-4 text-muted">© 2023 <a href="https://www.paapri.com/" target="_blank">Paapri
+                Cloud
+                Technologies.</a> All Rights Reserved.</p>
+    </footer>
+    <!-- Footer Copyright End -->
+
+
+    <!-- Jquery JS CDN Start -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Jquery JS CDN End -->
+
+    <!-- Bootstrap JS CDN Start -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS CDN End -->
+    <!-- Utility Data Store Start -->
+    <span id="scriptIdFetchRestletId" hidden>#FETCH-SCRIPTID-RESTLET#</span>
+    <!-- Utility Data Store End -->
+    <!-- Controller Link Start -->
+
+    <script src="#FETCH-CONTROLLER#"></script>
+    <!-- Controller Link End -->
+
+    <!-- Jquery Datatable JS Link Start -->
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+    <!-- Jquery Datatable JS Link End -->
+    <!-- BlockUi CDN Link Start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"
+        integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"
+        integrity="sha512-QSb5le+VXUEVEQbfljCv8vPnfSbVoBF/iE+c6MqDDqvmzqnr4KL04qdQMCm0fJvC3gCWMpoYhmvKBFqm1Z4c9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- BlockUi CDN Link ENd -->
+    <!-- Sweet alert CDN Start -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Sweet alert CDN End -->
+
+
+
+    <div class="container">
+        <!-- <div id="loader" class="spinner-border center" style="width: 7rem; height: 7rem; display: none;position: absolute;"></div> -->
+        <div class="loader" id="loader">
+            <div class="shape-container" id="loader">
+                <div class="shape shape-9">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #cf7046"></div>
+                        <div class="shape-middle" style="background-color: #cf7046"></div>
+                        <div class="shape-bottom" style="background-color: #cf7046"></div>
+                    </div>
+                </div>
+                <div class="shape shape-8">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #ff5d60"></div>
+                        <div class="shape-middle" style="background-color: #ff5d60"></div>
+                        <div class="shape-bottom" style="background-color: #ff5d60"></div>
+                    </div>
+                </div>
+                <div class="shape shape-7">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #b85856"></div>
+                        <div class="shape-middle" style="background-color: #b85856"></div>
+                        <div class="shape-bottom" style="background-color: #b85856"></div>
+                    </div>
+                </div>
+                <div class="shape shape-6">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #008ca7"></div>
+                        <div class="shape-middle" style="background-color: #008ca7"></div>
+                        <div class="shape-bottom" style="background-color: #008ca7"></div>
+                    </div>
+                </div>
+                <div class="shape shape-5">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #6cab36"></div>
+                        <div class="shape-middle" style="background-color: #6cab36"></div>
+                        <div class="shape-bottom" style="background-color: #6cab36"></div>
+                    </div>
+                </div>
+                <div class="shape shape-4">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #97a822"></div>
+                        <div class="shape-middle" style="background-color: #97a822"></div>
+                        <div class="shape-bottom" style="background-color: #97a822"></div>
+                    </div>
+                </div>
+                <div class="shape shape-3">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #718f40"></div>
+                        <div class="shape-middle" style="background-color: #718f40"></div>
+                        <div class="shape-bottom" style="background-color: #718f40"></div>
+                    </div>
+                </div>
+                <div class="shape shape-2">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #00b8a8"></div>
+                        <div class="shape-middle" style="background-color: #00b8a8"></div>
+                        <div class="shape-bottom" style="background-color: #00b8a8"></div>
+                    </div>
+                </div>
+                <div class="shape shape-1">
+                    <div class="inner-shape">
+                        <div class="shape-top" style="background-color: #ffaf3a"></div>
+                        <div class="shape-middle" style="background-color: #ffaf3a"></div>
+                        <div class="shape-bottom" style="background-color: #ffaf3a"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+</html>

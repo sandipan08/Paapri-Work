@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+
+    <head>
+        <link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}"
+            src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}"
+            src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+
+        <macrolist>
+            <macro id="nlheader" style="margin-bottom: 10px;">
+
+            </macro>
+            <macro id="nlfooter">
+
+            </macro>
+        </macrolist>
+        <style type="text/css">
+            * {
+                font-family: NotoSans, sans-serif;
+            }
+
+
+            table.mainTable tr {
+                border-bottom: 1px solid black;
+            }
+
+            table.mainTable td {
+                margin: 2px;
+                padding-bottom: 6px;
+                padding-top: 5px;
+            }
+
+            table.sideTable td {
+                margin: 1px;
+                /* padding-bottom: 2px;
+                padding-top: 2px; */
+            }
+
+            table.sideTable tr {
+                font-size: 9px;
+                border-bottom: 1px solid black;
+            }
+        </style>
+    </head>
+
+    <body topmargin="10" header="nlheader" header-height="1%" footer="nlfooter" footer-height="10pt"
+        padding="0.1in 0.1in 0.1in 0.1in" width="11.875in" height="4in">
+
+        <#list ds.tagdetails as item>
+            <table>
+                <tr>
+                    <td style="margin-right: 25px;">
+                        <span width="6.250in" height="4in">
+                            <table width="6.250in" class="mainTable">
+                                <tr width="15%" style="font-size: 15px; border-bottom: none;">
+                                    <td width="30%"> <b>Item Nbr : <span
+                                                style="font-size: 15px;"><b>${item.itemInternalId}</b></span></b></td>
+                                    <td width="28%" align="center" style="padding-left: 10px;"> <span
+                                            style="display: inline-block;"> <b> Cust.
+                                                Supplied </b></span>
+                                    </td>
+                                    <td width="10%" align="left"><img height="10px" width="10px"
+                                            src="${item.itemImage}" />
+                                    </td>
+                                    <td width="36%"><b> Exp Date: ${item.expirationDate}</b></td>
+                                </tr>
+                                <tr style="font-size: 35px;">
+                                    <td colspan="5" align="center"> <b>${item.vendorName}</b></td>
+                                </tr>
+                            </table>
+
+                            <table style="font-size: 10px;" width="6.250in" class="mainTable">
+                                <tr>
+                                    <td align="center" height="40px" colspan="5">
+                                        <b style="font-size: 50px; text-align: center;">${item.itemName}</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" height="50px" colspan="5">
+                                        <b style="font-size: 40px; text-align: center;">${item.width} x
+                                            ${item.quantityOnHand} ft</b>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <!-- <span style="height: 400px;">
+                                <br />
+                                <br /><br /><br />
+                            </span> -->
+                            <table style="font-size: 10px;padding-top: -10px;" width="6in" class="mainTable">
+                                <tr style="border-bottom: none;">
+                                    <td>
+                                        <table>
+                                            <thead></thead>
+                                            <tbody>
+                                                <tr style="border-bottom: none;">
+                                                    <td colspan="2" style="border-right: 1px solid black;">
+                                                        <p>Raw Material Id </p>
+                                                        <p style="font-size: 30px; margin-top: -30px;">
+                                                            <barcode style="width: 140pt; height:35pt; "
+                                                                codetype="code128" showtext="true"
+                                                                value="${item.inventoryNumberId}"></barcode>
+                                                        </p>
+                                                    </td>
+                                                    <td style="font-size: 30px;padding-left:-5px;" colspan="10">
+                                                        <p style="padding-bottom:-20px; padding-left: 5px;">PO
+                                                            <b>${item.documentNo}</b>
+                                                        </p>
+                                                        <hr style="width: 3in;" />
+                                                        <p style="padding-top:-20px;  padding-left: 5px;">Lot :
+                                                            <b>${item.inventoryNumber}</b>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table width="6.250in" style="padding-top: -10px;">
+                                <tr style="border-top: 1px solid black;">
+                                    <td></td>
+                                    <td style="text-align:center;">Received Date : ${item.dateCreated}</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <!-- <table style="font-size: 10px;page-break-after: always;" width="6.250in">
+
+        <tr style="font-size: 12px;">
+          <td colspan="2">${item.numberId}</td>
+          <td colspan="2"> Lot : <b>${item.number}</b></td>
+        </tr>
+
+      </table> -->
+
+                        </span>
+                    </td>
+                    <td style="padding-left: -80px;">
+                        <span width="6.250in">
+                            <p rotate="270" style="display: block;  margin-left: 2.5in;  padding-top: 50px;">
+                                <#assign n=5>
+                                    <#list 0..<n as i>
+
+                                        <table style=" width: 4in;" class="sideTable">
+                                            <tr style="transform: rotate(90deg); font-size: 10px;">
+                                                <td>${item.vendorName}</td>
+                                                <td>Item Nbr : <b>${item.itemInternalId}</b></td>
+                                                <td></td>
+                                                <td colspan="3">
+                                                    <barcode style="width: 60pt; height:10pt;" codetype="code128"
+                                                        showtext="false" value="${item.inventoryNumberId}"></barcode>
+                                                </td>
+                                            </tr>
+                                            <tr style="font-size: 10px;">
+                                                <td>${item.itemName} </td>
+                                                <td><span style="display: inline-block;">Cust. Supplied</span></td>
+                                                <td><img height="9px" width="9px" src="${item.itemImage}" /></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr style="font-size: 10px;">
+                                                <td></td>
+                                                <td>${item.width} x
+                                                    ${item.quantityOnHand} ft</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <table style=" width: 4in; margin-bottom: 14px;" class="sideTable">
+                                            <tr style="font-size: 10px;">
+                                                <td>PO <b>${item.documentNo}</b></td>
+                                                <td>Lot : <b>${item.inventoryNumber}</b></td>
+                                                <td></td>
+                                                <td style="word-wrap: keep-all;">
+                                                    <pre>Exp Date: <b>${item.expirationDate}</b></pre>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                    </#list>
+                            </p>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+
+        </#list>
+
+    </body>
+</pdf>

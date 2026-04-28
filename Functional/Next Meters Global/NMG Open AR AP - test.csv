@@ -1,0 +1,9 @@
+Type,tranid,entity,Vendor Internal Id,V Internal Id,reference no,terms,Currency,exchangerate,duedate,subsidiary,memo,trandate,purchaseItemline_itemRef,purchaseItemline_quantity,purchaseItemLine_rate,usertotal,purchaseItemLine_location
+Bill,2748,"Aerel Design, Inc",VEN046,115,,2,USD,1,3/5/2023,Next Meters Global,,2/3/2023,,1,12075,12075,
+Bill,S01544604,"AIT Worldwide Logistics, Inc",VEN036,104,,2,USD,1,3/10/2023,Next Meters Global,,2/8/2023,,1,1409.9,1409.9,
+Bill,S01547530,"AIT Worldwide Logistics, Inc",VEN036,104,,2,USD,1,3/16/2023,Next Meters Global,,2/14/2023,,1,844.1,844.1,
+Bill,107843,ARCCA,VEN048,117,,2,USD,1,3/16/2023,Next Meters Global,,2/14/2023,,1,9119.42,9119.42,
+Bill,1627018876,"Arrow Electronics, Inc",VEN006,15,,8,USD,1,2/26/2023,Next Meters Global,,11/3/2022,,1,3864.57,3864.57,
+Bill,1627019098,"Arrow Electronics, Inc",VEN006,15,,8,USD,1,2/26/2023,Next Meters Global,,11/3/2022,,1,713.83,713.83,
+Bill,1627027192,"Arrow Electronics, Inc",VEN006,15,,8,USD,1,3/2/2023,Next Meters Global,,11/7/2022,,1,642,642,
+Bill,1627027193,"Arrow Electronics, Inc",VEN006,15,,8,USD,1,3/2/2023,Next Meters Global,,11/7/2022,,1,642,642,

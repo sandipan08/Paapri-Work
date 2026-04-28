@@ -1,0 +1,796 @@
+<?xml version="1.0"?><!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+    <head>
+        <link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}" src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}" src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+        <#if .locale == "zh_CN">
+            <link name="NotoSansCJKsc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKsc_Regular}" src-bold="${nsfont.NotoSansCJKsc_Bold}" bytes="2" />
+            <#elseif .locale == "zh_TW">
+                <link name="NotoSansCJKtc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKtc_Regular}" src-bold="${nsfont.NotoSansCJKtc_Bold}" bytes="2" />
+                <#elseif .locale == "ja_JP">
+                    <link name="NotoSansCJKjp" type="font" subtype="opentype" src="${nsfont.NotoSansCJKjp_Regular}" src-bold="${nsfont.NotoSansCJKjp_Bold}" bytes="2" />
+                    <#elseif .locale == "ko_KR">
+                        <link name="NotoSansCJKkr" type="font" subtype="opentype" src="${nsfont.NotoSansCJKkr_Regular}" src-bold="${nsfont.NotoSansCJKkr_Bold}" bytes="2" />
+                        <#elseif .locale == "th_TH">
+                            <link name="NotoSansThai" type="font" subtype="opentype" src="${nsfont.NotoSansThai_Regular}" src-bold="${nsfont.NotoSansThai_Bold}" bytes="2" />
+                        </#if>
+                        <macrolist>
+                            <macro id="nlheader">
+                              
+                        </macro>
+                        <macro id="nlfooter">
+                            <table class="footer" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <barcode codetype="code128" showtext="true" value="${record.tranid}"/>
+                                    </td>
+                                    <td align="right">
+                                        <pagenumber/>
+ of <totalpages/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </macro>
+                    </macrolist>
+                    <style type="text/css">* {
+                        <#if .locale == "zh_CN">
+			font-family: NotoSans, NotoSansCJKsc, sans-serif;
+                            <#elseif .locale == "zh_TW">
+			font-family: NotoSans, NotoSansCJKtc, sans-serif;
+                                <#elseif .locale == "ja_JP">
+			font-family: NotoSans, NotoSansCJKjp, sans-serif;
+                                    <#elseif .locale == "ko_KR">
+			font-family: NotoSans, NotoSansCJKkr, sans-serif;
+                                        <#elseif .locale == "th_TH">
+			font-family: NotoSans, NotoSansThai, sans-serif;
+                                            <#else>
+			font-family: NotoSans, sans-serif;
+                                            </#if>
+		}
+        table {
+            font-size: 9pt;
+            table-layout: fixed;
+        }
+        th {
+            font-weight: bold;
+            font-size: 8pt;
+            vertical-align: middle;
+            padding: 5px 6px 3px;
+            background-color: #121ce0;
+            color: white;
+        }
+        td {
+            padding: 4px 6px;
+        }
+		td p { align:left }
+        b {
+            font-weight: bold;
+            color: #333333;
+        }
+        spam b{
+            color: white;
+        }
+        table.header td {
+            padding: 0;
+            padding-top: 10px;
+        }
+        table.body td {
+            padding-top: 2px;
+        }
+        table.total {
+            page-break-inside: avoid;
+        }
+        tr.totalrow {
+            background-color: #e3e3e3;
+            line-height: 200%;
+        }
+        td.totalboxtop {
+            font-size: 12pt;
+            background-color: #e3e3e3;
+        }
+        td.addressheader {
+            font-size: 8pt;
+            background-color: #121ce0,
+        }
+        .addressheader b{
+            color: white;
+        }
+        table.footer td {
+            padding: 0;
+            font-size: 8pt;
+        }
+        table.itemtable th {
+            padding-bottom: 10px;
+            font-size: 8pt;
+            padding-top: 6px;
+            padding-bottom: 2px;
+        }
+        td.address {
+            padding-top: 10px;
+            width: 300px;
+            height: 100px;
+            border: 1px solid blue;
+        }
+        td.totalboxmid {
+            font-size: 28pt;
+            padding-top: 20px;
+            background-color: #e3e3e3;
+        }
+        td.totalboxbot {
+            background-color: #e3e3e3;
+            font-weight: bold;
+        }
+        span.title {
+            font-size: 28pt;
+        }
+        span.number {
+            font-size: 10pt;
+        }
+        span.itemname {
+            font-weight: bold;
+            line-height: 150%;
+        }
+        hr {
+            width: 100%;
+            color: #d3d3d3;
+            background-color: #d3d3d3;
+            height: 1px;
+        }
+        ul {
+            list-style:none;
+        }
+      footer {
+		page-break-after: always;
+	}
+                                        </style>
+                                    </head>
+                                    <body header="nlheader" header-height="1%" footer="nlfooter" footer-height="20pt" padding="0.5in 0.5in 0.5in 0.5in" size="Letter" style="page-break-before:auto;">
+                                        <table class="header" style="width: 100%;">
+                                    <tr>
+                                        <td rowspan="3">
+                                            <table cellpadding="3">
+                                                <tr>
+                                                    <td margin-left="-7px" margin-top="-25px">
+                                                        <#if companyInformation.logoUrl?length != 0><img src="${companyInformation.logoUrl}" style="float: left; margin: 7px; width: 150px; height: 60px;" />
+                                                    </#if>
+                                                </td>
+                                            </tr>
+                                            <!-- <tr>
+		<td margin-left="-2px" margin-top="-10px">${companyInformation.companyname}</td></tr> -->
+                                            <tr>
+                                                <td margin-left="-2px" margin-top="-5px">${companyInformation.addressText}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td align="right">
+                                        <span class="title">${record@title}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="right">
+                                        <span class="number">
+                                            <b>Date</b>
+                                            : ${record.trandate}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <span class="number">
+                                            <b>Valid Until</b>
+                                            : ${record.duedate}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td align="right">
+                                        <span class="number">
+                                            <b>Quote #</b>
+                                            : ${record.tranid}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td align="right">
+                                        <span class="number">
+                                            <b>Customer ID</b>
+                                            :  ${record.entity.altname}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                                        <table style="width: 100%; margin-top: 10px;">
+                                            <tr>
+                                                <td class="addressheader" colspan="2" margin-left="-2px" margin-right="35px" >
+                                                    <b >Customer</b>
+                                                    
+                                                </td>
+                                                <td class="addressheader" colspan="2">
+                                                    <b >Quote/Project Description</b>
+                                                </td>
+                                                <!-- <td colspan="6" margin-left="23px"><span>Created date : ${record.trandate}</span> </td> -->
+                                                <!--<td class="totalboxtop" colspan="5"><b>${record.total@label?upper_case}</b></td>-->
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" rowspan="2" margin-left="-2px">
+                                                
+                                                    ${record.entity.altname}<br/>
+                                                    ${record.billaddress}<br/>
+                                                     ${record.entity.phone}<br/>
+                                                    ${record.entity.email}<br/>
+                                                 
+
+                        
+                                                </td>
+                                                <td class="address" colspan="2">
+                                                    <span>${record.memo}</span>
+                                                </td>
+                                                
+                                            </tr>
+                                        </table>
+
+                                        <table class="body" style="width: 100%; margin-top: 10px;">
+                                            <tr>
+                                                <th  align="center">RFQ Reference</th>
+                                               
+                                                <th  align="center">Payment Terms</th>
+                                                <th  align="center">${record.custbody_pct_spc_incoterns@label}</th>
+                                            </tr>
+                                            <tr>
+                                                <td  align="center">${record.duedate}</td>
+                                                
+                                                <td  align="center">${record.terms}</td>
+                                                <td  align="center">${record.custbody_pct_spc_incoterns}</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <#if record.item?has_content>
+
+<table class="itemtable" style="width: 100%; margin-top: 10px;">                                            <!-- start items -->
+                                            <#list record.item as item><#if item_index==0>
+<thead>
+<tr>
+<th align="center" width='10%'>Line Item</th>
+                                            <th align="center" width='13%'>${item.custcol_pct_spc_tag@label}</th>
+                                            <th align="center" width='21%' >${item.item@label}</th>
+                                            <th align="center" width='10%'>MFG</th>
+                                            <th align="center" width='10%'>${item.custcol_pct_spc_condition@label}</th>
+                                            <!--	<th width='10%'>${item.options@label}</th>-->
+                                            <th align="center" width='10%'>${item.rate@label}</th>
+                                            <th align="center" width='5%' >Qty</th>
+                                            <th align="center" width='10%' >${item.amount@label}</th>
+                                            <th align="center" width='10%' >${item.custcol_pct_delivery_time_frame@label}</th>
+                                        </tr>
+                                    </thead>
+                                </#if>
+                                <tr>
+                                  <!--  <#if item.amount != 0.00>-->
+<td align="center" width='10%' >${item.custcol_pct_spc_line}</td>
+                                    <td align="center" width='13%' >${item.custcol_pct_spc_tag}</td>
+                                    <!-- <td align="center" width='20%'  >
+                                        <#if item.custcolpart>
+<span class="itemname">${item.item}  </span>
+                                        <br />
+                                    </#if>
+      ${item.description}</td> -->
+                                  <td align="center" width='21%'><b>${item.item} </b><br />${item.description}</td>
+                                    <td align="center" width='10%'> ${item.custcol_pct_spc_manufacturer}</td>
+                                    <td align="center" width='10%' > ${item.custcol_pct_spc_condition}</td>
+                                    <td align="center" white-space = "nowrap" width='10%'>${item.rate}</td>
+                                    <td align="center" width='5%' >${item.quantity}</td>
+                                    <td align="center" white-space = "nowrap" width='10%'>${item.amount}</td>
+                                    <td align="center"  width='10%'>${item.custcol_pct_delivery_time_frame}</td>
+                                </#if>
+
+                            </tr>
+
+                        </#list>                        <!-- end items --></table>
+
+                    <hr />
+                </#if>
+                <table style="page-break-inside: avoid; width: 100%; margin-top: 10px;">
+                    <tr>
+                        <td colspan="4">&nbsp;</td>
+                        <td align="right" style="font-weight: bold; color: #333333;">${record.subtotal@label}</td>
+                        <td align="right">${record.custbody_pct_spc_item_total}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">&nbsp;</td>
+                        <td align="right" style="font-weight: bold; color: #333333;">${record.taxtotal@label} (${record.taxrate}%)</td>
+                        <td align="right">${record.taxtotal}</td>
+                    </tr>
+                    <tr style="background-color: #e3e3e3; line-height: 200%;">
+                        <td background-color="#ffffff" colspan="4">&nbsp;</td>
+                        <td align="right" style="font-weight: bold; color: #333333;">${record.total@label}</td>
+                        <td align="right">${record.total}</td>
+                    </tr>
+                </table>
+      
+                <pbr/>
+
+                <div align="center" margin-left="-47px" font-size="9pt">
+                    <br/>
+                    <b>
+      Sullivan Process Controls LLC – Standard Terms and Conditions </b>
+                </div>
+                <span align="center" font-size="7pt">This document sets forth the Standard Terms and Conditions (the “Terms and Conditions”) of Sullivan Process Controls LLC (the “Company”). Unless agreed otherwise by Company in a manner
+expressly permitted by these Terms and Conditions, these Terms and Conditions and the quantity and pricing for each order (collectively, the “Agreement”) exclusively govern the sale or other
+provision of all products and services (the “Products” and “Services”) by Company to you (the “Customer”). These Terms and Conditions cannot be amended, supplemented or superseded
+except in a writing signed by an officer of Company and which both specifically identifies these Terms and Conditions by the title first set forth above and expressly evidences Company’s intent
+to amend, supplement or supersede these Terms and Conditions. Customer acknowledges that it has reviewed and agrees to be bound by these Terms and Conditions and Customer’s assent
+to these Terms and Conditions shall be conclusively evidenced by Customer’s acceptance or retention of Products or Services from Company and/or by Customer’s placing an order with
+Company for any Products or Services after receipt of a quotation, invoice or other communication containing or including these Terms and Conditions. These Terms and Conditions shall
+prevail over any of Customer’s terms and conditions regardless of whether or when Customer has submitted its request for proposal, order, or such terms. Company’s provision of Products or
+Services to Customer does not constitute Company’s acceptance of any of Customer’s terms and conditions and does not serve to modify or amend these Terms and Conditions. Any proposed
+term or condition of Customer’s order which is in any way inconsistent with or purports to add to these Terms and Conditions shall not be binding upon Company, notwithstanding Company’s
+failure to specifically object to any such inconsistent or additional term or condition, and Company hereby objects to and rejects any such inconsistent or additional term or condition.
+Company’s fulfillment of Customer’s order containing terms or conditions inconsistent with or additional to these Terms and Conditions does not constitute Company’s acceptance thereof
+and does not serve to modify or amend these Terms and Conditions. If Customer objects to any of these Terms and Conditions, such objection must be in writing and received by Company
+prior to commencement of performance by Company hereunder. 
+
+                </span>
+                <br/>
+                <br/>
+                <span align="center" font-size="7pt">1. &nbsp;Pricing. Each Product and Service shall be invoiced at (and Customer shall pay) the respective price shown on the quote, or if no price is shown on the quote, at the price shown in the price
+list of Company at the time of invoicing. In addition, Customer shall pay any and all additional charges for mileage, transportation, freight, packing, handling and other related charges, as well
+as any federal, state or local tax, excise or charge applicable to the sale, transportation or use of any Product or Service, including but not limited to any permit, license or similar fees, unless
+otherwise specified. Prices quoted for Products are based on receiving orders for the quantity specified and are valid for thirty (30) days from the quotation date unless sooner canceled in
+writing by Company. Materials included in a quotation are subject to intervening sale.
+
+                </span>
+
+
+                <br/>
+                <br/>
+                <span align="center" font-size="7pt">2. &nbsp;Terms of Payment. Customer agrees to pay Company any and all payments due on or before thirty (30) days from invoice date. Any amount unpaid after such thirty (30) day period shall
+bear interest at the lesser of (i) one and one-half percent (1½%) per month and (ii) the maximum rate allowed by applicable law until paid in full. Customer shall also pay any and all of
+Company’s attorney’s fees and court costs reasonably required to collect or attempt to collect any overdue amount owed to Company by Customer. Company reserves the right to terminate
+this Agreement and/or to suspend Company’s performance upon failure of Customer to timely make any payment due to Company. Company reserves the right to issue an invoice at time of
+notification of readiness for shipment, or upon completion of or interruption to services rendered, even if Customer requests that shipment be delayed or services resumed at a later date.
+                </span>
+
+                <br/>
+                <br/>
+                <span align="center" font-size="7pt">3. &nbsp;Cancellation of Orders. Orders cannot be cancelled by Customer under any circumstances without Company’s written consent. Upon any permitted cancellation for standard Products,
+Customer agrees to pay a minimum percentage of the order amount based on the timing of such cancellation, as follows: Acceptance of PO – 15%; Engineering Complete – 25%; Initial
+Material(s) Ordered – 45%; Production Initiated – 55%; Test / Paint Initiated – 90%; Finished Production of Goods complete – 100%. Higher cancellation charges may apply. Special orders
+may not be cancelled. The cancellation fee for items made to order will be determined on a case by case basis in Company’s sole discretion, and Customer agrees to pay up to 100% of the
+order amount if cancellation is allowed. 
+
+                </span>
+
+
+
+                <br/>
+                <br/>
+                <span align="center" font-size="7pt">4. &nbsp;Return of Goods. Products cannot be returned without prior written consent from Company and all returns are subject to an inspection by Company to determine if the Products are
+returnable. All returns must be requested within thirty (30) days of delivery and must be undamaged, appropriate for resale and in new or original condition. In the event Company agrees to
+a return, Customer agrees to pay all shipping charges and a minimum restocking charge of 25% of the invoice amount. Higher return fees may apply. Under no circumstances can any goods
+be returned that are used, damaged, specially ordered or manufactured, or not regularly stocked by Company. 
+
+
+                </span>
+
+
+
+
+                <br/>
+                <br/>
+                <span align="center" font-size="7pt">5. &nbsp;Limited Warranty and Disclaimer. Subject to the applicable limitations set forth in this Agreement, Company warrants (i) that new and remanufactured Products of Company’s manufacture
+will be free from defects in material and workmanship for a period of twenty-four (24) months from the date of shipment; and (ii) that the results of Company’s repair Services will be free
+from defects in material and workmanship for a period of twenty-four (24) months from the date of shipment but only to the extent and scope of the Services provided. This warranty does
+not apply to any part or component not manufactured by Company. This warranty and the availability of any applicable remedy are subject to and conditioned upon: (a) proper storage,
+installation, operation and maintenance of the Product in accordance with the manuals and information provided by or available from Company; (b) Customer’s keeping accurate records of
+the operation and maintenance of the Product during the warranty period and providing such records to Company on request; (c) any modification or repair of a Product having been only as
+authorized by Company in writing; (d) Customer promptly notifying Company of any alleged defect in writing within thirty (30) days of Customer’s discovery of such alleged defect during the
+warranty period; and (e) Customer’s keeping the Product in a condition that can be meaningfully examined by Company under the circumstances and, if requested by Company, returning the
+Product to a facility designated by Company for testing and inspection. Any repair or replacement by Company shall not extend the warranty period. This warranty shall not apply and/or shall
+be immediately and automatically rendered void (i) if the Product is subject to misuse, neglect or unauthorized modification, (ii) if Customer uses the Product with any internal component
+that is not manufactured or approved by Company, (iii) to normal wear and tear, (iv) if the design of all or any part of the Product was provided to Company by Customer or on Customer’s
+behalf or was made by Company but subject to Customer approval, or (v) if damage to the Product is the result of something other than defects in material and workmanship of Company.
+Company does not warrant goods manufactured by others but upon request will use commercially reasonable efforts to assign to Customer any manufacturer’s warranty or guarantee available
+to Company (if any exists). EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, THE PRODUCTS (INCLUDING ALL RELATED CONTENT AND DOCUMENTATION) ARE PROVIDED "AS IS." EXCEPT
+AS EXPRESSLY SET FORTH IN THIS AGREEMENT, COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, WITH RESPECT TO THE PRODUCTS OR SERVICES AND
+COMPANY HEREBY DISCLAIMS ANY AND ALL IMPLIED WARRANTIES, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, TITLE, MERCHANTABILITY AND
+FITNESS FOR PURPOSE. BY WAY OF FURTHER EXAMPLE AND WITHOUT LIMITATION, COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, WITH RESPECT TO THE
+ACCURACY, RELIABILITY OR COMPLETENESS OF ANY CONTENT, DOCUMENTATION OR OTHER INFORMATION RELATING TO THE PRODUCTS; COMPANY MAY OFFER TECHNICAL ADVICE OR
+ASSISTANCE AND/OR PROVIDE DRAWINGS OR GENERAL INFORMATION TO CUSTOMER WITH REGARD TO THE PRODUCTS AND SERVICES BASED ON LABORATORY AND/OR FIELD EXPERIENCE
+AND CUSTOMER UNDERSTANDS AND AGREES THAT ANY AND ALL SUCH ADVICE AND OTHER INFORMATION CONSTITUTES ONLY GOOD FAITH OPINION AND DOES NOT CONSTITUTE A
+WARRANTY OR GUARANTEE OF ANY KIND. THE ENTIRE RISK OF USE OF THE PRODUCTS AND ALL RELATED INFORMATION IS ASSUMED BY CUSTOMER. 
+
+
+                </span>
+
+                <br/>
+                <br/>
+                <span align="center" font-size="7pt">6. &nbsp;Remedy. The exclusive remedy for the warranty provided in Section 5 above shall be limited to, in Company's sole discretion and judgment, (i) replacement of defective Product(s), or (ii)
+repair of defective Product(s), in each case Ex Works Company's fabrication plant (transportation, redesign, dismantling, disposal of material and installation are not included and shall be
+borne and paid for solely by Customer). Any repeat of Services or replacement or repair of Products shall not include any cost of items not sold by Company hereunder and specifically excludes
+any cost or obligation related to other property of Customer or of any third party. IN ANY EVENT, AND NOTWITHSTANDING ANY LANGUAGE TO THE CONTRARY IN THIS AGREEMENT, CUSTOMER
+ACKNOWLEDGES AND AGREES THAT COMPANY’S MAXIMUM CUMULATIVE LIABILITY FOR ANY CLAIM COMPANY MAY HAVE ARISING OUT OF OR IN CONNECTION WITH ANY WARRANTY OF
+ANY PRODUCT OR </span>
+                <br/>
+                <span align="center" font-size="7pt">
+                    <br/>
+                    <br/>
+                    <br/>
+SERVICE SHALL BE LIMITED TO AND SHALL NOT EXCEED THE AMOUNT CUSTOMER HAS ACTUALLY PAID TO COMPANY FOR SUCH PRODUCT OR SERVICE. Unless Customer is
+an authorized reseller of Company, Company’s warranty is nontransferable and shall extend only to Customer. This Section provides the exclusive remedy for all Claims based upon a failure
+of or defect in goods, whether or not the failure or defect occurs during the warranty period, and whether or not a claim is based upon contract, warranty, indemnity, tort, extra-contractual
+liability (including negligence), strict liability or otherwise. EVEN IF ANY REMEDY SET FORTH HEREIN FAILS OF ITS ESSENTIAL PURPOSE, AND REGARDLESS OF WHETHER A CLAIM ARISES UNDER
+CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF WARRANTY, STRICT LIABILITY OR OTHERWISE, AND WHETHER OR NOT COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+LOSS OR DAMAGE, IN NO EVENT SHALL COMPANY BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL LOSS OR DAMAGE OF ANY KIND (INCLUDING LOSS OF USE, DATA,
+BUSINESS OR PROFITS) NOR SHALL COMPANY’S TOTAL CUMULATIVE LIABILITY HEREUNDER EXCEED THE TOTAL AMOUNT CUSTOMER HAS ACTUALLY PAID TO COMPANY FOR SUCH PRODUCT(S)
+OR SERVICE(S) GIVING RISE TO THE CLAIM. The parties expressly agree that the allocation of risk contained in this Section is an essential basis of this Agreement.</span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> 7.  &nbsp;Change of Design. Company expressly reserves the rights to (i) change or modify the design or construction of any of its Products at any time without obligation to furnish or install such
+change or modification on any Product previously sold and (ii) make substitutions for and/or modifications to its Products or Services for any reason.</span>
+                <br/>
+                <br/>
+
+
+
+
+
+
+                <span align="center" font-size="7pt"> 8.  &nbsp;Limitation of Liability. CUSTOMER ACKNOWLEDGES AND AGREES THAT THE TOTAL LIABILITY OF COMPANY FOR ANY DIRECT OR INDIRECT LOSS OR DAMAGE OF ANY KIND OR NATURE OF
+OR TO CUSTOMER, CUSTOMER’S PROPERTY, OR ANY OTHER PERSON OR PERSON’S PROPERTY, FROM OR IN ANY WAY RELATING TO ANY PRODUCT OR SERVICE (INCLUDING WITHOUT
+LIMITATION ANY USE, MISUSE OR NONUSE OF ANY SUCH PRODUCT OR THE RESULT(S) OF ANY SUCH SERVICE) AND NOT COVERED BY SECTION 6 OF THIS AGREEMENT SHALL BE LIMITED TO
+AND SHALL NOT EXCEED THE AMOUNT CUSTOMER HAS ACTUALLY PAID TO COMPANY FOR SUCH PRODUCT OR SERVICE, REGARDLESS OF THE THEORY OR THEORIES OF LIABILITY ASSERTED.
+CUSTOMER ACKNOWLEDGES AND AGREES THAT IF COMPANY USES GOODS MANUFACTURED BY ANY PERSON OR ENTITY OTHER THAN COMPANY IN OR IN CONNECTION WITH THE PRODUCTS
+OR SERVICES AND SUCH OTHER MANUFACTURER’S GOODS ARE DEFECTIVE OR OTHERWISE FAIL RESULTING IN DIRECT OR INDIRECT LOSS OR DAMAGE OF ANY KIND OR NATURE OF OR TO
+CUSTOMER, CUSTOMER’S PROPERTY, OR ANY OTHER PERSON OR PERSON’S PROPERTY, THEN COMPANY’S LIABILITY SHALL EXIST ONLY IF, AND IF SO ONLY TO THE EXTENT THAT, COMPANY
+ATTEMPTS TO RECOVER, AND IF SO ACTUALLY RECOVERS, FROM SUCH MANUFACTURER FOR SUCH DEFECT OR OTHER FAILURE. NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS
+AGREEMENT, CUSTOMER ACKNOWLEDGES AND AGREES THAT COMPANY’S MAXIMUM LIABILITY UNDER THIS AGREEMENT SHALL NOT EXCEED THE LIMIT OF ANY INSURANCE POLICY THAT
+COVERS SAID LIABILITY. THE FOREGOING LIMITATIONS OF LIABILITY SHALL APPLY REGARDLESS OF WHETHER A LOSS OR DAMAGE IS CAUSED BY THE SOLE, JOINT OR CONCURRENT FAULT OR
+NEGLIGENCE OF COMPANY OR THIRD PARTIES AND REGARDLESS OF WHETHER BASED UPON A THEORY OF CONTRACT, TORT/EXTRA-CONTRACTUAL LIABILITY (INCLUDING NEGLIGENCE), OR
+STRICT LIABILITY. CUSTOMER HEREBY RELEASES, INDEMNIFIES AND HOLDS HARMLESS COMPANY (INCLUDING ITS AGENTS, REPRESENTATIVES, OFFICERS, DIRECTORS AND EMPLOYEES) FROM
+AND AGAINST ANY AND ALL LOSSES, EXPENSEES AND DAMAGES (WHETHER OF CUSTOMER OR OTHERWISE) ARISING OUT OF OR RELATING TO ANY ACT OR OMISSION COVERED BY THIS
+SECTION TO ANY AND ALL EXTENTS THAT SUCH LOSSES, EXPENSEES AND/OR DAMAGES EXCEED THE MOST LIMITING OF ANY OF THE FOREGOING LIMITATIONS HELD TO APPLY TO SUCH
+LOSSES, EXPENSEES AND/OR DAMAGES.</span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> 9.  &nbsp;Inspection. The results of any inspection or testing reported by Company to Customer represent only good faith opinion and are not warranties or guarantees of any kind or nature, including
+but not limited to with regard to the quality, classification, merchantability, fitness for purpose, condition or reliability of any good or material that has been inspected or tested by Company. </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> 10.  &nbsp;Indemnification; Release; Assumption of Liability for Acts and/or Omissions of Others. </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> a.  &nbsp;Customer Indemnity Obligations. CUSTOMER AGREES TO AND SHALL PROTECT, DEFEND, INDEMNIFY, AND HOLD HARMLESS COMPANY, ITS PARENTS, AFFILIATES, SUBSIDIARIES, PARTNERS,
+OWNERS, JOINT VENTURERS, AND CONTRACTORS OF ANY TIER (INCLUDING SUBCONTRACTORS), AND THE OFFICERS, DIRECTORS, AGENTS, REPRESENTATIVES, EMPLOYEES, INSURERS AND
+CONSULTANTS (SPECIFICALLY EXCLUDING CUSTOMER GROUP) OF ANY OF THE FOREGOING, AND ITS AND THEIR RESPECTIVE SUCCESSORS, HEIRS AND ASSIGNS (THE “COMPANY GROUP”)
+FROM AND AGAINST ANY AND ALL ACTIONS, CAUSES OF ACTION, COSTS (INCLUDING WITHOUT LIMITATION INVESTIGATION, LITIGATION, EXPERT AND COURT COSTS), DAMAGES, DEMANDS,
+FINES, INTEREST, JUDGMENTS, LIABILITIES, LOSSES, PENALTIES, PROCEEDINGS, CAUSES OF ACTION OF EVERY TYPE AND CHARACTER, SUITS (INCLUDING APPEAL), AND EXPENSES (INCLUDING
+WITHOUT LIMITATION REASONABLE ATTORNEYS’ FEES) (COLLECTIVELY, “CLAIMS”) THAT DIRECTLY OR INDIRECTLY ARISE OUT OF, RELATE TO OR RESULT FROM ANY (I) ACT OR OMISSION OF
+CUSTOMER, ITS PARENTS, AFFILIATES, SUBSIDIARIES, PARTNERS, OWNERS, JOINT VENTURERS, AND CONTRACTORS OF ANY TIER (INCLUDING SUBCONTRACTORS), AND THE OFFICERS,
+DIRECTORS, AGENTS, REPRESENTATIVES, EMPLOYEES, INSURERS AND CONSULTANTS (SPECIFICALLY EXCLUDING COMPANY GROUP) OF ANY OF THE FOREGOING, AND ITS AND THEIR
+RESPECTIVE SUCCESSORS, HEIRS AND ASSIGNS (THE “CUSTOMER GROUP”) IN CONNECTION WITH ANY MEMBER OF CUSTOMER GROUP’S POSSESSION, USE, NONUSE, STORAGE,
+TRANSPORTATION, HANDLING, DISPOSITION, MAINTENANCE, OR DISPOSAL OF, OR ANY OTHER MANAGEMENT OR CONDUCT WITH RESPECT TO, ANY PRODUCT OR SERVICE, INCLUDING
+WITHOUT LIMITATION ANY SYSTEM IN WHICH ANY PRODUCT IS INCORPORATED AND ANY SYSTEM ON WHICH SERVICES ARE PERFORMED OR OTHERWISE UTILIZED; (II) INJURY TO, OR ILLNESS
+OR DEATH OF, ANY MEMBER OF CUSTOMER GROUP ARISING OUT OF OR RELATING TO THIS AGREEMENT OR ANY PRODUCT OR SERVICE PROVIDED UNDER THIS AGREEMENT; (III) LOSS OF OR
+DAMAGE TO ANY PROPERTY OF ANY MEMBER OF CUSTOMER GROUP ARISING OUT OF OR RELATING TO THIS AGREEMENT OR ANY PRODUCT OR SERVICE PROVIDED UNDER THIS AGREEMENT;
+AND (IV) INJURY TO, OR ILLNESS OR DEATH OF, OR LOSS OF OR DAMAGE TO ANY PROPERTY OF, ANY MEMBER OF COMPANY GROUP OR ANY THIRD PARTY ARISING OUT OF OR RELATING TO
+ANY ACT OR OMISSION OF ANY MEMBER OF CUSTOMER GROUP IN CONNECTION WITH THIS AGREEMENT OR ANY PRODUCT OR SERVICE PROVIDED UNDER THIS AGREEMENT. FOR AVOIDANCE
+OF DOUBT, THIS SECTION DOES NOT RELIEVE COMPANY OF THE WARRANTY PROVISIONS SET FORTH IN THIS AGREEMENT. 
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> b.  &nbsp;Fair Notice. CUSTOMER ACKNOWLEDGES AND AGREES THAT THE FOREGOING CUSTOMER INDEMNITY OBLIGATIONS ARE INTENDED TO BE ENFORCEABLE AGAINST CUSTOMER EVEN IF ANY
+SUCH CLAIM IS CAUSED BY OR CONTRIBUTED TO BY THE NEGLIGENCE, STRICT LIABILITY, GROSS NEGLIGENCE OR OTHER NONWILLFUL FAULT OF ANY MEMBER OF COMPANY GROUP (I) IN
+PART AND/OR (II) IN WHOLE.</span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> c.  &nbsp;Release of Company Group; Fair Notice. CUSTOMER AGREES TO AND HEREBY DOES RELEASE AND FOREVER DISCHARGE COMPANY GROUP FROM ANY LIABILITY FOR ANY (I) ACT OR OMISSION
+OF ANY MEMBER OF CUSTOMER GROUP IN CONNECTION WITH ANY MEMBER OF CUSTOMER GROUP’S POSSESSION, USE, NONUSE, STORAGE, TRANSPORTATION, HANDLING, DISPOSITION,
+MAINTENANCE, OR DISPOSAL OF, OR ANY OTHER MANAGEMENT OR CONDUCT WITH RESPECT TO, ANY PRODUCT OR SERVICE, INCLUDING WITHOUT LIMITATION ANY SYSTEM IN WHICH ANY
+PRODUCT IS INCORPORATED AND ANY SYSTEM ON WHICH SERVICES ARE PERFORMED OR OTHERWISE UTILIZED; (II) INJURY TO, OR ILLNESS OR DEATH OF, ANY MEMBER OF CUSTOMER GROUP
+ARISING OUT OF OR RELATING TO THIS AGREEMENT OR ANY PRODUCT OR SERVICE PROVIDED UNDER THIS AGREEMENT; (III) LOSS OF OR DAMAGE TO ANY PROPERTY OF ANY MEMBER OF
+CUSTOMER GROUP ARISING OUT OF OR RELATING TO THIS AGREEMENT OR ANY PRODUCT OR SERVICE PROVIDED UNDER THIS AGREEMENT; AND (IV) INJURY TO, OR ILLNESS OR DEATH OF,
+OR LOSS OF OR DAMAGE TO ANY PROPERTY OF, ANY MEMBER OF COMPANY GROUP OR ANY THIRD PARTY ARISING OUT OF OR RELATING TO ANY ACT OR OMISSION OF ANY MEMBER OF
+CUSTOMER GROUP IN CONNECTION WITH THIS AGREEMENT OR ANY PRODUCT OR SERVICE PROVIDED UNDER THIS AGREEMENT. CUSTOMER ACKNOWLEDGES AND AGREES THAT THE
+FOREGOING RELEASE OF COMPANY GROUP IS INTENDED TO BE ENFORCEABLE AGAINST CUSTOMER EVEN IF ANY SUCH CLAIM IS CAUSED BY OR CONTRIBUTED TO BY THE NEGLIGENCE, STRICT
+LIABILITY, GROSS NEGLIGENCE OR OTHER NONWILLFUL FAULT OF ANY MEMBER OF COMPANY GROUP (I) IN PART AND/OR (II) IN WHOLE.</span>
+                <br/>
+                <br/>
+
+
+
+
+                <span align="center" font-size="7pt"> 11.  &nbsp;Title and Risk of Loss; Acceptance.</span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> a.  &nbsp; Title and risk of loss shall pass to Customer upon delivery as specified in Section 13 below. Customer’s receipt of a Product shall constitute unqualified acceptance of such Product unless
+Customer gives Company written notice otherwise within fifteen (15) days after such receipt. Customer acknowledges and agrees that the aforementioned time period constitutes a reasonable
+opportunity to inspect the Products under the circumstances of this Agreement. Notwithstanding anything to the contrary in this Agreement, any installation, modification or use of a Product
+shall constitute irrevocable acceptance of the Product. Customer assumes all risk and liability for the results obtained by or otherwise resulting from the use of any Product by or on behalf of
+Customer. 
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> b.  &nbsp;If Customer fails to take delivery or otherwise delays delivery after the parties’ originally agreed delivery date, Company reserves the right to immediately place Products in storage and
+charge Customer storage fees at a rate of $500.00 per day (or more, if reasonably required under the circumstances). Customer agrees to pay Company for all such storage fees reasonably
+charged to Customer. During any such storage time, title to the Products will remain with Company until actually shipped to Customer but risk of loss shall be and remain with Customer as of
+the parties’ originally agreed delivery date. Company assumes no liability, and hereby disclaims any such liability, while maintaining temporary storage of Cust</span>
+                <br/>
+                <br/>
+
+
+
+
+                <span align="center" font-size="7pt"> c.  &nbsp;For Services, Company shall not be liable for loss or deterioration of any property of Customer under Company’s control or stored on Company’s premises after Company has completed its
+Services.
+                </span>
+                <br/>
+                <br/>
+
+
+
+
+
+
+
+                <span align="center" font-size="7pt"> 12.  &nbsp;Termination. Company reserves the right to terminate any order, in whole or in part, at any time for any reason (including no reason) upon notice thereof to Customer. Company shall
+have the right to cancel any unfilled order without notice to Customer in the event that Customer becomes insolvent, adjudicated bankrupt, petitions for or consents to any relief under any
+bankruptcy law or statute, violates a term of these Terms and Conditions, or is unable to meet its financial obligations in the normal course of business. In the event of such termination,
+Company shall have the right to immediately stop all performance hereunder without penalty, cost, liability or other detriment to Company. 
+                </span>
+                <br/>
+                <br/>
+
+
+
+
+
+
+                <span align="center" font-size="7pt"> 13.  &nbsp;Delivery. Unless otherwise agreed in a manner permitted by this Agreement, all sales are “Ex Works.” This means Company fulfills its obligation of delivery when it has made the Product(s)
+available at Company’s premises (i.e., works, factory, warehouse, etc.). Upon notification by Company of delivery, Customer shall become liable for and shall bear all risk of loss associated
+with the Products regardless of whether the Products are at a location controlled by Company. Excess packing, marking, shipping and transportation charges resulting from compliance with
+Customer’s request shall be for Customer’s account. Freight charges will be supported by appropriate shipping documents and an administrative fee, as solely determined by Company, will
+be added to prepaid freight shipments. Unless otherwise agreed in a manner permitted by this Agreement, delivery time is not of the essence. 
+                </span>
+                <br/>
+                <br/>
+
+
+
+
+                <span align="center" font-size="7pt"> 14.  &nbsp;Delays; No Consequential Damages. Shipping dates and schedules are subject to prior orders received, availability of adequate labor and equipment and to other unavoidable or
+unforeseeable contingencies (including without limitation Force Majeure). Proposed dates of delivery are estimates only and are dependent upon, among other things, timely receipt by
+Company of all materials and information necessary, in Company’s sole discretion, to proceed with the work. Company does not warrant or otherwise guarantee delivery dates. Company
+reserves the right to choose the facility from which it ships goods to Customer. In no event shall Company be liable to Customer for any harm resulting from shipping delays, including without
+limitation business delays, curtailment of plant operations, process failure, pollution, cost for removing any parts or equipment to be repaired or replaced, transportation, and installation
+charges in connection with the repair, replacement, or servicing of any parts or equipment. EVEN IF ANY REMEDY SET FORTH HEREIN FAILS OF ITS ESSENTIAL PURPOSE, AND REGARDLESS OF
+WHETHER A CLAIM ARISES UNDER CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF WARRANTY, STRICT LIABILITY OR OTHERWISE, AND WHETHER OR NOT COMPANY HAS BEEN
+ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE, IN NO EVENT SHALL COMPANY BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL LOSS OR DAMAGE OF ANY
+KIND (INCLUDING LOSS OF USE, DATA, BUSINESS OR PROFITS) ARISING OUT OF OR RELATING TO ANY DELAY IN SHIPMENT OR DELIVERY OF PRODUCTS OR COMPLETION OF SERVICES, EVEN IF
+ANY SUCH DELAY IS CAUSED BY OR CONTRIBUTED TO BY THE NEGLIGENCE, STRICT LIABILITY, GROSS NEGLIGENCE OR OTHER NONWILLFUL FAULT OF COMPANY.
+                </span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> 15.  &nbsp;Intellectual Property. 
+
+                </span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> a.  &nbsp;No License. Neither anything in this Agreement nor the sale or provision of any Product or Service is intended or shall be construed to convey to Customer any license or other right (whether
+by implication, estoppel or otherwise) in or to any intellectual property or intellectual property right of Company and Company expressly reserves all such intellectual property and intellectual
+property rights, including without limitation all such rights pertaining to patents, trademarks (including service marks), copyrights, trade secrets and any subject matter eligible for protection
+by way of any of the foregoing or any other mechanism of intellectual property protection provided by law. Company reserves and retains all copyrights in and to all copyrightable works
+provided to Customer by Company in connection with this Agreement, including without limitation all documents, catalogs, manuals, price lists and plans. Company reserves and retains all
+rights in and to all tooling used in the production or provision of any Company Product or Service. 
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> b.  &nbsp;Rights of Third Parties. Company makes no representations or warranties whatsoever with regard to whether any system, device or method of Customer in or with which any Product is
+implemented or otherwise utilized does or may infringe any intellectual property right of any third party. Customer acknowledges and agrees that Customer assumes all risk with regard to,
+and is solely responsible for, any actual or alleged infringement arising out of Customer’s own actions or inactions. REGARDLESS OF WHETHER ALSO COVERED BY ANOTHER PROVISION OF
+THIS AGREEMENT, CUSTOMER AGREES TO AND SHALL PROTECT, DEFEND, INDEMNIFY, AND HOLD HARMLESS, AND CUSTOMER AGREES TO AND HEREBY DOES RELEASE AND FOREVER
+DISCHARGE, COMPANY GROUP FROM AND AGAINST ANY AND ALL ALLEGATIONS OF INFRINGEMENT ARISING OUT OF OR RELATING TO ANY SYSTEM, DEVICE OR METHOD IN OR WITH WHICH
+ANY PRODUCT IS IMPLEMENTED OR OTHERWISE UTILIZED BY OR FOR CUSTOMER OR ANY PERSON OR ENTITY THAT OBTAINED ANY SUCH PRODUCT FROM CUSTOMER, INCLUDING WITHOUT
+LIMITATION ANY INFRINGEMENT CLAIM BASED IN WHOLE OR IN PART ON ANY ACT OR OMISSION, OR ANY RESULT OF ANY ACT OR OMISSION, OF CUSTOMER. 
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> c.  &nbsp;Ownership of Company Developments. All subject matter developed or created in whole or in part by any member of Company Group in connection with the sale or provision of any Product
+or Service hereunder and eligible for application or protection under any intellectual property law of any jurisdiction (including without limitation via patent, trademark, copyright, or trade
+secret), including all rights appurtenant thereto (collectively, the “Company Developments”), shall be and remain the exclusive property of Company. Customer hereby assigns to Company
+any and all rights, title and interest it may have or may come to have in and to any Company Development arising out of or relating to this Agreement, including without limitation with regard
+to any patent eligible invention or copyrightable work jointly conceived or authored by personnel of Company and Customer. Upon reasonable request by Company, Customer shall take such
+further actions and lend such further assistance as Company or its counsel deems necessary or appropriate to perfect Company’s rights, title or interest in or to any Company Development,
+including without limitation by way of execution and delivery of declarations, instruments of conveyance and other documents pertaining to any application or registration Company may file
+or obtain. 
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> 16.  &nbsp;Choice of Law and Venue. THIS AGREEMENT SHALL BE GOVERNED BY AND CONSTRUED IN ACCORDANCE WITH THE LAWS OF THE STATE OF TEXAS WITHOUT REGARD TO CONFLICTS OF
+LAW PRINCIPALS. THE PARTIES HEREBY STIPULATE AND AGREE THAT ANY SUIT OR PROCEEDING BROUGHT TO ENFORCE ANY OBLIGATION OR COVENANT UNDER THIS AGREEMENT SHALL BE
+BROUGHT EXCLUSIVELY IN A COURT OF COMPETENT JURISDICTION IN HARRIS COUNTY, TEXAS AND THE PARTIES HEREBY SUBMIT TO THE PERSONAL JURISDICTION OF SUCH COURT(S). 
+
+
+                </span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> 17.  &nbsp;Authority. Both Customer and any individual involved with accepting, paying for or using any Product or Service on behalf of Customer warrant and represent that each such individual has
+the authority to enter into these Terms and Conditions on behalf of Customer and to bind Customer to these Terms and Conditions. 
+
+                </span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt"> 18.  &nbsp;Force Majeure. Company shall not be liable to Customer for failure to perform or to timely perform any of Company’s obligations under this Agreement when such performance is prevented
+or delayed by Force Majeure or by a decision of Company reasonably made under the circumstances for the purpose of limiting or preventing the exposure of Company, its personnel and/or
+others to Force Majeure. For purposes of this Agreement, “Force Majeure” shall mean causes, events or other circumstances which are beyond the reasonable control of Company and which
+could not have been avoided or prevented by Company’s reasonably diligent foresight, planning and implementation. Such causes, events or other circumstances shall include, without
+limitation, acts of God, war (declared or undeclared), terrorism, insurrection, hostility, riot, flood, fire, storm, casualty loss, disease, pandemic, epidemic, governmental law, regulation or
+administrative order, lack of or inability to obtain materials, fuel, transportation or required supplies, acts of Customer, acts of civil or military authorities, power or utility failures, breakdown
+of equipment, machinery, tools, or production facilities, differences with workmen, strike, boycott, and labor shortage, and each of the foregoing whether or not wholly unforeseeable.
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> 19.  &nbsp;Confidentiality. Customer represents and warrants that it has not and will not disclose to Company any Confidential Information (as hereinafter defined) of Customer without Company’s
+prior written consent. Customer acknowledges and agrees that Company may disclose to Customer Company Confidential Information in connection with the Products and/or Services or the
+provision thereof. Customer agrees to refrain from disclosing any Company Confidential Information to any third party without prior written approval from Company and to protect all
+Company Confidential Information from unauthorized disclosure using at least the same level of care and diligence that Customer uses to protect its own Confidential information (and in no
+case less than reasonable care). Customer further agrees to refrain from using, and from encouraging or aiding others to use, any Company Confidential Information for any purpose not
+authorized by Company. All Company Confidential Information disclosed to Customer shall be and remain the property of Company and nothing in this Agreement is intended or shall be
+construed to grant or confer any right to such Company Confidential Information to Customer. Upon request, Customer shall promptly return to Company all Company Confidential Information
+in Customer’s possession, custody or control, including all copies, notes and other materials reflecting or based on any such Company Confidential Information. Customer acknowledges and
+agrees that Company will suffer irreparable injury if any Company Confidential Information is made public, released to a third party or otherwise disclosed or used in breach of this Agreement
+and that Company shall be entitled to obtain preliminary and permanent injunctive relief against any actual or threatened breach of this Section. As used herein, the term “Confidential
+Information” means all information protectable as a trade secret under federal or Texas state law, and all proprietary business, technical and other information, regardless of form or manner
+of disclosure, including but not limited to: a) information concerning inventions, discoveries, techniques, processes, designs, computer programs, manuals, specifications, algorithms, data,
+materials, finances and plans, customer lists, business plans, contracts, marketing plans, production plans, pricing, quotes, products, distribution plans, system implementation plans, business
+concepts, supplier information, business procedures, business operations; b) know-how; and c) all unpublished copyrightable material. “Confidential Information” does not include any
+information which: (i) becomes public information or is generally available to the public as a whole other than by an unauthorized act or omission of the receiving party; (ii) is received by the
+receiving party from a third party who rightfully possessed the information and who had the legal right to disclose the information to the receiving party at the time of the disclosure; (iii) the
+receiving party can show it rightfully possessed prior to any disclosure thereof by the disclosing party; (iv) the receiving party can show was generated independently of any Confidential
+Information of the disclosing party by personnel of the receiving party who did not know of or have access to Confidential Information of the disclosing party; or (v) is approved for disclosure
+or use without restriction by written authorization of the disclosing party. CUSTOMER AGREES TO FULLY REIMBURSE, INDEMNIFY AND HOLD HARMLESS COMPANY GROUP FROM AND AGAINST
+ANY AND ALL COSTS, LOSSES AND DAMAGES ARISING OUT OF OR IN CONNECTION WITH ANY ACTUAL OR ALLEGED VIOLATION BY ANY MEMBER OF CUSTOMER GROUP OF THIS SECTION. 
+
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> 20.  &nbsp;Compliance with Laws, Rules and Regulations. Customer agrees to comply with and abide by, and is solely responsible for Customer’s compliance with, all federal, state and local laws and
+regulations governing or otherwise relating to Customer’s receipt, disposition, disposal or use of any and all Products and Services, including but not limited to all applicable rules and regulations
+(e.g., OSHA, EPA, etc.) now existing or future promulgated. CUSTOMER AGREES TO DEFEND, INDEMNIFY AND HOLD HARMLESS COMPANY GROUP FROM AND AGAINST ANY AND ALL CLAIMS
+BROUGHT BY OR ON BEHALF OF ANY CLAIMANT ARISING OUT OF OR IN CONNECTION WITH ANY ACTUAL OR ALLEGED VIOLATION BY ANY MEMBER OF CUSTOMER GROUP OF THIS SECTION
+OR OF ANY LAW, REGULATION OR RULE. 
+ 
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> 21.  &nbsp;Export Controls. Upon request, Company will provide reasonable assistance to Customer in obtaining any required licenses or governmental permits for export of the Products from the
+United States. Nonetheless, Customer is and shall remain solely responsible for obtaining any licenses or governmental permits for export and import of the Products to the country of final
+destination or any other country where the Products may be landed or utilized, and for creating and maintaining all applicable records as required by law (which records shall be made available
+to Company upon request for inspection and copying). Customer warrants it will not allow Products to be transferred at any time on either a temporary or permanent basis in any manner that
+would violate United States export laws or regulations (“Export Laws”), including but not limited to the Export Administration Act of 1979, and the Arms Export Control Act of 1976, the Office
+of Foreign Assets Control (“OFAC”) Regulations, the Export Administration Regulations (“EAR”), and the International Traffic in Arms Regulations (“ITAR”), as such may be amended from time
+to time. Customer shall be deemed the Foreign Principal Party in Interest for purposes of the Foreign Trade Statistics Regulations and the exporter of record for purposes of the EAR. Customer
+shall promptly alert Company to any known violation or suspected violation of this Section or of the Export Laws in relation to any Product. CUSTOMER AGREES TO DEFEND, INDEMNIFY AND
+HOLD HARMLESS COMPANY GROUP FROM AND AGAINST ANY AND ALL CLAIMS BROUGHT BY OR ON BEHALF OF ANY PERSON OR ENTITY (INCLUDING WITHOUT LIMITATION ANY
+GOVERNMENTAL AUTHORITY) (EACH A “CLAIMANT”) ARISING OUT OF OR IN CONNECTION WITH ANY ACTUAL OR ALLEGED VIOLATION OF THIS SECTION OR OF THE EXPORT LAWS BY ANY
+MEMBER OF CUSTOMER GROUP.
+
+                </span>
+                <br/>
+                <br/>
+
+
+                <span align="center" font-size="7pt">22.  &nbsp;Hazardous Waste and/or Materials. Customer shall be and remain solely responsible for management of any hazardous or toxic waste or material (collectively, “Waste”) owned by Customer
+or otherwise associated with Customer’s business or property, including without limitation any Waste present or that becomes present during the delivery, installation, maintenance or removal
+of any Product or during the performance of any Service. As used in this Section, the terms “manage” and “management” include without limitation transporting, collecting, processing,
+treating, using, selling, disposing of, storing, handling and/or safekeeping. Company is not permitted, certified or licensed to manage Waste present during, e.g., cleaning or servicing Customer’s
+equipment, and Company shall bear no responsibility or liability for the same. CUSTOMER AGREES THAT IT SHALL BE SOLELY RESPONSIBLE FOR THE MANAGEMENT AND EFFECTS OF ANY AND
+ALL WASTE AND/OR OTHER HAZARDOUS SUBSTANCES PRESENT AT CUSTOMER’S FACILITIES AND/OR INTRODUCED TO COMPANY’S FACILITIES BY CUSTOMER (INCLUDING BY ANY EMPLOYEE,
+AGENT OR PRODUCT OF CUSTOMER), INCLUDING WITHOUT LIMITATION IN CONNECTION WITH ANY ITEM PROVIDED TO COMPANY FOR SERVICES, AND THAT CUSTOMER SHALL PERFORM OR
+SECURE THE PERFORMANCE OF ANY AND ALL NECESSARY OR APPROPRIATE CLEAN-UP AND REMOVAL OF SUCH WASTE AND/OR OTHER HAZARDOUS SUBSTANCES AT CUSTOMER’S SOLE
+EXPENSE. CUSTOMER FURTHER AGREES TO NOTIFY COMPANY AHEAD OF TIME AND IN WRITING OF ANY WASTE AND/OR OTHER HAZARDOUS SUBSTANCE ASSOCIATED WITH ANY CUSTOMER
+ITEM TO BE SERVICED BY COMPANY OR ANY CUSTOMER FACILITY WHERE SERVICES ARE CONTEMPLATED. CUSTOMER AGREES TO DEFEND, INDEMNIFY AND HOLD HARMLESS COMPANY
+GROUP FROM AND AGAINST ANY AND ALL CLAIMS BROUGHT BY OR ON BEHALF OF ANY CLAIMANT ARISING OUT OF OR IN CONNECTION WITH ANY ACTUAL OR ALLEGED VIOLATION BY ANY
+MEMBER OF CUSTOMER GROUP OF THIS SECTION OR OF ANY LAW OR REGULATION GOVERNING TOXIC OR OTHERWISE HAZARDOUS MATERIALS, EVEN IF ANY PORTION OF ANY SUCH CLAIM
+IS CAUSED BY OR CONTRIBUTED TO BY ANY NONWILLFUL FAULT OF ANY MEMBER OF COMPANY GROUP. 
+
+
+                </span>
+                <br/>
+                <br/>
+
+                <span align="center" font-size="7pt"> 23.  &nbsp;Anti-Corruption. Customer shall at all times comply with the U.S. Foreign Corrupt Practices Act of 1977, as amended (the “FCPA”) and with all other anti-corruption and/or anti-bribery
+laws applicable in any jurisdiction in which the Products are or will be disposed and/or the Services are being or will be performed. Customer represents and warrants that neither it nor any
+of its employees or agents has taken or will take any action to cause Customer or Company to be in violation of the FCPA. Customer represents and warrants that neither it nor any of its
+employees or agents has paid, offered or agreed to pay, caused to be paid, or caused to be offered or agreed to be paid, directly or indirectly, in respect of this Agreement, any political
+contributions, fees or commissions to any public or governmental employee or official anywhere for the purpose of influencing such official’s act or decision to provide business to Customer
+or Company. CUSTOMER AGREES TO DEFEND, INDEMNIFY AND HOLD HARMLESS COMPANY GROUP FROM AND AGAINST ANY AND ALL CLAIMS BROUGHT BY OR ON BEHALF OF ANY CLAIMANT
+ARISING OUT OF OR IN CONNECTION WITH ANY ACTUAL OR ALLEGED VIOLATION BY ANY MEMBER OF CUSTOMER GROUP OF THIS SECTION OR OF THE FCPA OR ANY OTHER ANTI-CORRUPTION
+AND/OR ANTI-BRIBERY LAW OR REGULATION. 
+ 
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+                <span align="center" font-size="7pt"> 24.  &nbsp;Miscellaneous. Customer is an independent contractor and not an employee, agent, joint venturer or partner of Company. No right or obligation of Customer under this Agreement can
+be assigned without the prior written consent of Company; any purported assignment in violation of the foregoing phrase is void. Any notice required or permitted by this Agreement shall be
+deemed given upon the earlier of actual receipt and three (3) days after mailing via U.S. Mail or a nationally recognized courier. This Agreement contains the entire agreement between the
+parties hereto as to the subject matter hereof and supersedes all prior oral and written agreements with respect thereto. Customer represents and agrees that in entering into this Agreement,
+Customer did not rely upon any statements or representations not expressly set forth in this Agreement. No other agreement of any kind relating to the matters covered by this Agreement
+shall be binding upon Company unless made in a manner expressly permitted by this Agreement. No provision of this Agreement can be amended, modified or supplemented by any request
+for quotation, purchase order, invoice, work order, change order or similar document emanating from or on behalf of Customer; any offer to amend, modify or supplement any provision of
+this Agreement by way of any such document is hereby rejected. The captions contained in this Agreement are included for convenience only and shall not affect the interpretation of the
+Agreement. All terms defined in this Agreement shall have such defined meanings when used herein. Terms such as “herein” and “hereunder” refer to the Agreement as a whole unless
+otherwise indicated. Failure to enforce any provision of this Agreement in any particular instance shall not constitute or be deemed to constitute a waiver of or preclude subsequent
+enforcement of the same provision or any other provision in any other instance. This Agreement shall be binding upon and shall inure to the benefit of the parties and their respective
+successors, heirs and permitted assigns. Customer warrants and agrees that no brokers or intermediaries have been engaged by Customer in connection with this Agreement. Customer
+acknowledges and agrees that it has or could have had its attorney review this Agreement and that the rule of construction to the effect that any ambiguities be resolved against the drafting
+party shall not be employed in the interpretation of this Agreement. Should any part of this Agreement be held invalid or unenforceable for any reason by a court of competent jurisdiction,
+such holding shall not affect the remainder of this Agreement, which remainder shall continue in full force and effect. Customer acknowledges and agrees that these Terms and Conditions
+are a part of the consideration for the Products and/or Services purchased by Customer and that if such Terms and Conditions were not accepted and agreed to by Customer then a greater
+cash consideration would be charged by Company for the Products and/or Services. 
+
+                </span>
+                <br/>
+                <br/>
+
+
+
+
+            </body>
+        </pdf>
